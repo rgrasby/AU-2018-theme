@@ -1,0 +1,82 @@
+/**
+* #.# Mixins and Variables
+*
+* SASS variables, mixins, and functions
+*/
+@import "mainsite/utilities/variables.scss";
+@import "mainsite/utilities/mixins.scss";
+
+/**
+* #.# Vendors 
+*
+* External libraries and frameworks
+*/
+@import "mainsite/vendor/owl-carousel";
+@import "mainsite/vendor/owl-theme-default";
+@import "mainsite/vendor/susy"; 
+@import "mainsite/vendor/normalize";
+@import "mainsite/vendor/jquery-ui";
+@import "mainsite/vendor/jquery-ui.structure";
+@import "mainsite/vendor/jquery.fancybox";
+@import "subsite/vendor/ableplayer";
+
+/**
+* #.# Boilerplate
+*
+* Standard styles for commonly used HTML elements.
+*/
+@import "mainsite/base/base";
+@import "mainsite/base/helpers";
+@import "mainsite/base/typography";
+
+/**
+* #.# Layout
+*
+* Main parts of the site (header, footer, navigation, sidebar…)
+*/
+@import "mainsite/layout/footer";
+@import "mainsite/layout/header";
+@import "mainsite/layout/utility";
+@import "mainsite/layout/footer";
+@import "mainsite/layout/content"; 
+@import "subsite/layout/two-column";
+
+/* Subsite specific layout styles */
+@import "subsite/layout/header";
+@import "subsite/layout/grid";
+
+/**
+* #.# Pages
+*
+* Unique styles for specifc page (home page, landing pages…). 
+* Subsite specific layout styles
+*/
+@import "subsite/pages/default";
+@import "subsite/pages/homepage";
+
+/**
+* #.# Components
+*
+* Specific modules/elements like (buttons, forms, menus…)
+*/
+@import "mainsite/components/forms";
+@import "mainsite/components/buttons";
+@import "mainsite/components/breadcrumb";
+@import "mainsite/components/icons"; 
+@import "mainsite/components/cta";
+@import "mainsite/components/msg-boxes";
+@import "mainsite/components/stats";
+@import "mainsite/components/testimonials";
+@import "mainsite/components/tables";
+@import "mainsite/components/panels";
+@import "mainsite/components/tooltips";
+@import "mainsite/components/owl-carousel-custom";
+@import "mainsite/components/fancybox-custom";
+
+/* Subsite specific layout styles */
+@import "subsite/components/sidebar-menu"; 
+@import "subsite/components/accordion";
+@import "subsite/components/ableplayer-popup";
+@import "subsite/components/search";
+@import "subsite/components/on-page-dropdown";
+@import "subsite/components/_owl-carousel-custom";

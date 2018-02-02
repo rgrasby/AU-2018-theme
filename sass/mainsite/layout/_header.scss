@@ -1,0 +1,1329 @@
+/**
+* #.# Hamburger Menu
+*
+* .......
+*/
+
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    overflow: visible;
+    @media (min-width: $screen-sm-min) {
+        margin-top: -5px;
+    }
+    .nav-panel-label {
+        @media (min-width: $screen-sm-min) {
+            vertical-align: middle;
+        }
+    }
+}
+
+.hamburger-box {
+    width: $hamburger-width;
+    height: $hamburger-height;
+    display: block;
+    position: relative;
+    vertical-align: middle;
+    margin: auto;
+    top: 1px;
+    @media (min-width: $screen-sm-min) {
+        display: inline-block;
+        margin: 0;
+    }
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+    left: 0;
+    display: inline-block;
+    transition-duration: 0.075s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    &::before,
+    &:after {
+        content: "";
+        display: block;
+    }
+    &::before {
+        top: -8px;
+        transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+    }
+    &::after {
+        bottom: -8px;
+        transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: $hamburger-width;
+    height: $hamburger-layer-height;
+    background-color: white;
+    border-radius: $hamburger-layer-border-radius;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+
+
+/* Stop scrolling on body */
+
+.nav-panel-visible {
+    overflow: hidden;
+    @media (min-width: $screen-sm-min) {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+} 
+
+.minor {
+    font-size: 0.9em;
+    a {
+        font-weight: 400!important;
+    }
+}
+
+/**
+* #.# Fixed header
+*
+* Main site header with logo and site navigation
+*/
+
+.header-shiv {
+    transition: all 0.3s ease-in;
+    height: $header-height-sm;   
+    @media (min-width: $screen-sm-min) {
+        height: $header-height-md;
+    }
+    @media (min-width: $screen-xxl-min) {
+        height: $header-height-lg;
+    }
+    &.header-sticky{
+        height: $header-height-xs;
+        @media (min-width: $screen-xs-min) {
+            height: $header-height-sm
+        }
+        @media (min-width: $screen-sm-min) {
+            height: $header-height-md;
+        }
+    }
+}
+
+
+#main-header {
+    background: $blue;
+    z-index: 99995;
+    left: 0;
+    width: 100%;
+    height: $header-height-sm;
+    position: relative;
+    display: flex;
+    transition: all 0.3s ease-in;
+    padding: 0;
+    @media (min-width: $screen-sm-min) {
+        padding: 0 2rem;  
+        height: $header-height-md;
+    }
+    @media (min-width: $screen-xxl-min) {
+        height: $header-height-lg;
+        padding: 0 2.5rem;
+    } 
+    &.sticky {
+        top: 0;
+        position: fixed;
+        height: $header-height-xs;
+        @media (min-width: $screen-xs-min) {
+            height: $header-height-sm
+        }
+        @media (min-width: $screen-sm-min) {
+            height: $header-height-md;
+        }
+        @media (min-width: $screen-xxl-min) {
+            padding: 0 2rem;
+        } 
+        #au-logo {
+            width: 60px;
+            height: 100%;
+            margin: 0 0 0 -30px;
+            @media (min-width: $screen-sm-min) {
+                margin: 0 0 0 -1em;    
+            }
+            
+            .full-logo {
+                display: none;
+            }
+            .shield-logo {
+                display: block;
+                transform: scale(1);
+                opacity: 1;
+                width: 30px;
+                height: 50px;
+                position: absolute; 
+                @media (min-width: $screen-sm-min) {
+                    position: relative;
+                    top: 0.1em;  
+                }
+            }
+        }
+        #my-au-trigger {
+            margin-right: 40px;
+            @media (min-width: $screen-sm-min) {
+                margin-right: 0;
+            }
+        }
+        #help-trigger {
+            margin-left: 40px;
+            @media (min-width: $screen-sm-min) {
+                margin-left: 0;
+            }
+        }
+        #search-trigger{
+            >a{
+                .fa{
+                    left: 0!important;
+                }
+            }
+        }
+    }
+    #au-logo {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        width: 100px;
+        transition: all 0.3s ease-in;
+        background: inherit;
+        position: absolute;
+        z-index: 9;
+        left: 50%;
+        margin-left: -50px;
+        overflow: hidden;
+        height: 100%;
+        @media (min-width: $screen-sm-min) {
+            border-right: 0;
+            left: 0;
+            margin: 0;
+            position: relative;
+            width: 120px;
+        }
+        @media (min-width: $screen-lg-min) {
+            margin: 0 1.9em 0 0;
+        }
+        @media (min-width: $screen-xl-min) {
+            width: 145px;
+        }
+        .shield,
+        .tagline {
+            fill: $orange;
+        }
+        .main,
+        {
+            fill: white;
+        }
+        svg {
+            position: relative;
+            top: 2px;
+        }
+        div {
+            width: 100%;
+        }
+        .full-logo {
+            display: block;
+            margin-top: 0.2em;
+        }
+        .shield-logo {
+            opacity: 0;
+            width: 30px;
+            transform: scale(0.5);
+            transition: all 0.3s ease-in;
+            position: absolute;
+            left: 50%;
+            margin: -23px 0 0 -15px;
+            top: 50%;
+            @media (min-width: $screen-sm-min) {
+                position: relative;
+                left: 0;
+                margin: auto;
+                display: none;
+                top: auto;
+            }
+        }
+    }
+    #my-au-trigger {
+        margin-right: 60px;
+        @media (min-width: $screen-xs-min) {
+            margin-right: 80px;
+        }
+        @media (min-width: $screen-sm-min) {
+            margin-right: 0;
+        }
+    }
+    #help-trigger {
+        margin-left: 60px;
+        @media (min-width: $screen-xs-min) {
+            margin-left: 80px;
+        }
+        @media (min-width: $screen-sm-min) {
+            margin-left: 0; 
+        }
+    }
+    .btn-orange{
+        @include full-width;
+    }
+}
+
+    
+/**
+* #.# myAU, Help, and Search Navigation
+*
+* Located on right side in desktop. 
+*/
+
+#au-right-nav {
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    padding-left: 0;
+    flex-shrink: 1;
+    margin-right: 0;
+    @media (min-width: $screen-lg-min) {
+        width: auto;     
+    }
+    @media (min-width: $screen-xl-min) {
+        flex-shrink: 0;   
+    }
+    .myAU-logo{
+        width: 50px;
+        height: 30px;
+        display: none;
+        @media (min-width: $screen-sm-min) {
+            display: block;
+        }
+        @media (min-width: $screen-xl-min) {
+            width: 65px;
+            height: 38px;            
+        }
+    }
+    .nav-panel-actions {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        text-align: center;
+        @media (min-width: $screen-sm-min) {
+            margin-right: -1.4em;    
+        }
+        @media (min-width: $screen-lg-min) {
+            justify-content: flex-end;
+        }
+        .nav-panel-label {
+            display: block;
+            font-size: 0.6em;
+            margin: 3px 0 0;
+            @media (min-width: $screen-xs-min) {
+                font-size: 0.7em;    
+            }
+            @media (min-width: $screen-sm-min) {
+                font-size: 0.9em;
+            }
+            @media (min-width: $screen-sm-min) {
+                font-size: 1em;
+                display: inline-block;
+                margin: 0 0 0 10px;
+            }
+        }
+        >li {
+            height: 100%;
+            width: 100%;
+            flex-shrink: 1;
+            position: relative;
+            overflow: visible;
+            transition: all .3s ease-in;
+            @media (min-width: $screen-sm-min) {
+                width: auto;
+            }
+            >a {
+                height: inherit;
+                width: inherit;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                color: white;
+                padding: 0 0.4rem;
+                border-left: 0;
+                text-decoration: none;
+                @include nav-top-states;
+                @media (max-width: $screen-xs-max) {
+                    .fa {
+                        display: block;
+                    }
+                    &.active {
+                        .nav-panel-close {
+                            display: inline-block;
+                        }
+                        .fa {
+                            display: none;
+                        }
+                    }
+                }
+                @media (min-width: $screen-sm-min) {
+                    flex-flow: row;
+                    align-items: center;
+                    padding: 0 1.35rem;
+                }
+                @media (min-width: $screen-xl-min) {
+                    padding: 0 1.5rem;    
+                }
+                .fa {
+                    font-size: 1.35rem;
+                    height: 22px;
+                }
+                &.current {
+                    background: none;
+                }
+                &.active {
+                    background: white;
+                    color: $blue;
+                    .fa {
+                        color: $orange;
+                    }
+                }
+                .icon {
+                    fill: white;
+                    width: 10px;
+                    height: 10px;
+                    margin-left: 10px;
+                    position: relative;
+                    top: 1px;
+                    display: none;
+                    @media (min-width: $screen-sm-min) {
+                        display: inline-block;
+                    }
+                }
+                .nav-panel-close {
+                    position: relative;
+                    width: $hamburger-width;
+                    height: $hamburger-height;
+                    display: none;
+                    margin: 0 auto;
+                    &::before,
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        height: $hamburger-layer-height;
+                        border-radius: $hamburger-layer-border-radius;
+                        width: 100%;
+                        top: 50%;
+                        left: 0;
+                        background: $orange;
+                    }
+                    &::before {
+                        transform: rotate(45deg);
+                    }
+                    &::after {
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+        #my-au-trigger {
+            @media (min-width: $screen-sm-min) {
+                .nav-panel-label {
+                    display: none;
+                }
+                >a {
+                    &.active{
+                        .white{
+                            fill: $blue;
+                        }
+                    }
+                    .fa {
+                        display: none;
+                    }
+                }
+            }
+        }
+        #help-trigger {
+            /* Show "& Support" in large screens only */
+            span {
+                span {
+                    display: none;
+                    @media (min-width: $screen-xl-min) {
+                        display: inline;
+                    }
+                }
+            }
+            >a {
+                .fa {
+                    @media (min-width: $screen-sm-min) {
+                        position: relative;
+                        top: 1px;
+                    }
+                }
+            }
+        }
+        #search-trigger {
+            >a {
+                @media (min-width: $screen-sm-min) {
+                    .nav-panel-label {
+                        display: none;
+                    }
+                }
+                @media (min-width: $screen-xxl-min) {
+                    .fa{
+                        position: relative;
+                        top: -1px;
+                    }
+                }
+            }
+        }
+    }
+    #mobile-menu-trigger {
+        @media (min-width: $screen-sm-min) {
+            margin: 0 auto 0 1em;
+        }
+        @media (min-width: $screen-lg-min) {
+            display: none;
+        }
+        .btn-orange{
+            border-radius: none;
+        }
+        .nav-panel-toggle {
+            &.active {
+                .hamburger-inner,
+                .hamburger-inner::before,
+                .hamburger-inner::after {
+                    background-color: $orange;
+                }
+                .hamburger-inner {
+                    transform: rotate(45deg);
+                    transition-delay: 0.12s;
+                    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                    &::before {
+                        top: 0;
+                        opacity: 0;
+                        transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+                    }
+                    &:after {
+                        bottom: 0;
+                        transform: rotate(-90deg);
+                        transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav-panel {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    top: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+    background: white;
+    @media (min-width: $screen-sm-min) {
+        position: absolute;
+        width: 500px;
+        top: 100%;
+        height: auto;
+        left: auto;
+        bottom: auto;
+        right: 0;
+        background: none;
+        overflow: visible;
+        padding-top: 0!important;
+        /* Override padding JavaScript padding setting for mobile */
+    }
+    &#au-site-nav-panel {
+        left: 0;
+        width: 100%;
+        padding-bottom: 60px;
+        @media (min-width: $screen-sm-min) {
+            width: 350px;
+        }
+        nav {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+        .btn-mobile-menu{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 9;
+            display: block;
+            @media (min-width: $screen-sm-min) {
+                display: none;
+            }
+            .fa-external-link{
+                display: inline-block;
+                margin-top: 0;
+            }
+        }
+        //apply now mobile menu call to action
+        .btn-mobile-menu{
+            display: block;
+            border-radius: 0;
+            @media (min-width: $screen-sm-min) {
+                display: none;
+            }
+        }
+    }
+    &.is-visible {
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.3s ease-in;
+        #au-site-nav {
+            display: block;
+        }
+    }
+    .nav-panel-inner {
+        background: white;
+        height: 100%;
+        text-align: left;
+        position: relative;
+        @media (min-width: $screen-sm-min) {
+            height: auto;
+            box-shadow: 0 10px 25px 0 rgba(49, 49, 93, 0.1);
+        }
+    }
+    &#site-search,
+    &#my-au {
+        .nav-panel-inner {
+            padding: 2rem 1rem;
+            p {
+                margin: 0;
+                font-size: 1rem;
+            }
+            @media (min-width: $screen-xs-min) {
+                padding: 2rem;
+            }
+        }
+    }
+    &#my-au {
+        @media (min-width: $screen-sm-min) {
+            max-width: 350px;
+        }
+        .btn-orange {
+            margin: 0;
+            font-size: 1.1rem;
+            .fa {
+                display: inline-block;
+                position: relative;
+                top: 1px;
+                margin-right: 0.3em;
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Primary site navigation
+*
+* Located on left side in desktop.
+*/
+
+#au-site-nav {
+    text-align: left;
+    background: white;
+    display: none;
+    flex-shrink: 1;
+    @media (min-width: $screen-sm-min) {
+        background: $blue;
+    }
+    @media (min-width: $screen-lg-min) {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (max-width: $screen-sm-max) {
+    #au-primary-nav {
+        >li:not(.minor) {
+            >a {
+                font-size: 1em;
+            }
+        }
+    }
+}
+
+.au-primary-nav,
+.au-primary-nav ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(0);
+    transition: transform .3s, opacity .3s, box-shadow .3s;
+    padding: 0;
+    list-style: none;
+    background: white;
+    padding: 1.3em 1em;
+    overflow-x: hidden;
+    @media (max-width: $screen-xs-max) {
+        height: 100%!important;
+        &.moves-out {
+            >li {
+                height: 0;
+                overflow: hidden;
+            }
+        }
+    }
+    @media (min-width: $screen-lg-min) {
+        padding: 1.3em;
+    }
+    @media (min-width: $screen-sm-min) {
+        ul{
+            box-shadow: 0 10px 25px 0 rgba(49, 49, 93, 0.1);
+            height: auto;
+            overflow: visible;
+        }
+        /* Without this secondary nav items don't show drop shadow */
+    }
+    .fa {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        top: -2px;
+        margin: 0 0.5em 0 -0.2em;
+        width: 25px;
+        text-align: center;
+        color: $blue-secondary;
+        @media (min-width: $screen-lg-min) {
+            display: none;
+        }
+    }
+    li {
+        a {
+            display: block;
+            line-height: 1.5em;
+            padding: 0.7rem 1rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: transform .3s, opacity .3s;
+            text-decoration: none;
+            color: $blue;
+            font-size: 0.9em;
+            position: relative;
+            background: white;
+            font-weight: 600;
+            @media (min-width: $screen-sm-min) and ( max-height: 735px ){
+                padding: 0.45rem 1rem;
+                font-size: 0.8em;
+            }
+            &:hover,{
+                background: $gray-light;
+            }
+            &:focus,
+            &:active{
+                background: darken($gray-light, 8%);    
+            }
+            .nav-arrow {
+                transform: rotate(270deg);
+                fill: lighten($text-color, 40%);
+                width: 12px;
+                height: 12px;
+                vertical-align: middle;
+                position: absolute;
+                top: 50%;
+                right: 1rem;
+                margin-top: -7px;
+            }
+            &.current {
+                background: $gray-light;
+                &:hover,
+                &:focus,
+                &:active {
+                    color: $blue;
+                    &::before {
+                        background: lighten($text-color, 40%);
+                    }
+                    &::after {
+                        color: lighten($text-color, 40%);
+                    }
+                }
+            }
+            &.btn-orange{
+                margin-top: 1em;
+                padding: 1em 1em 1.1em;
+                font-weight: 600;
+                .fa{
+                    display: inline-block!important;
+                    color: white;
+                    top: 0;
+                    margin-top: 0;
+                }
+            }
+        }
+        &.go-back {
+            a {
+                text-transform: uppercase;
+                font-size: 0.75em;
+                font-weight: 600;
+                line-height: 1em;
+                padding-top: 1em;
+                padding-bottom: 1em;
+                border-bottom: 0;
+                padding-left: 2.2rem;
+                color: lighten($text-color, 10%);
+            }
+            .nav-arrow {
+                transform: rotate(-270deg);
+                left: 1rem;
+                width: 11px;
+                height: 11px;
+                margin-top: -6px;
+            }
+            +li {
+                a {
+                    /* Home icon */
+                    &:after {
+                        content: '\f015';
+                        font-family: FontAwesome;
+                        position: absolute;
+                        right: 0.9rem;
+                        font-size: 1rem;
+                        color: lighten($text-color, 40%);
+                    }
+                    &.current {
+                        background: $gray-light;
+                    }
+                }
+            }
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+        &.has-children {
+            a {
+                padding-right: 3em;
+            }
+        }
+    }
+    &.is-hidden {
+        /* secondary navigations hidden by default */
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+        background: transparent;
+        box-shadow: none;
+    }
+    &.moves-out {
+        background: transparent;
+        transition: transform .3s, opacity .3s, background-color .3s, box-shadow .3s;
+        box-shadow: 0 3px 25px 0 rgba(49, 49, 93, 0);
+    }
+    &.moves-out>li>a {
+        /* push the navigation items to the left - and lower down opacity - when secondary nav slides in */
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+    .cd-secondary-nav {
+        li {
+            &:last-child {
+                a {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+///height 100% does not work in Safari with Flexbox. This is a work around
+
+#main-header {
+    #au-primary-nav {
+        #nav-admissions{
+            .btn-orange{
+                display: none;
+                @media (min-width: $screen-md-min) {
+                    display: block;
+                }
+            }   
+        }
+        @media (min-width: $screen-lg-min) {
+            height: $header-height-md;    
+        }
+        @media (min-width: $screen-xl-min) {
+            height: $header-height-md;
+        }
+        @media (min-width: $screen-xxl-min) {
+            height: $header-height-lg;
+        }
+    }
+    &.sticky {
+        #au-primary-nav {
+            @media (min-width: $screen-xl-min) {
+                height: $header-height-md;
+            }
+        }
+    }
+}
+
+@media (min-width: $screen-lg-min) {
+    #au-primary-nav {
+        position: relative;
+        width: auto;
+        margin: 0;
+        overflow: visible;
+        display: flex;
+        padding: 0;
+        background: none;
+        border-bottom: 0;
+        transition: all 0.3s ease-in;
+        &.moves-out>li>a {
+            /* reset mobile style */
+            visibility: visible;
+            transform: translateX(0);
+            opacity: 1;
+        }
+        //top level nav items
+        >li {
+            position: relative;
+            height: inherit;
+            display: flex;
+            &.has-children {
+                >a {
+                    padding-right: 0.9em;
+                    @media (min-width: $screen-xxl-min) {
+                        padding-right: 1.3em;
+                    }
+                }
+            }
+            >a {
+                height: inherit;
+                display: flex;
+                align-items: center;
+                padding: 0 0.7rem;
+                background: transparent;
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.8em;
+                transition: none;
+                border: 0;
+                @include nav-top-states;
+                @media (min-width: $screen-xxl-min) {
+                    font-size: 0.9em;
+                    padding: 0 1rem;
+                }
+                &.current{
+                    background: none;
+                    &::after{
+                        content:'';
+                        position: absolute;
+                        left: 10px;
+                        top: auto;
+                        bottom: 0;
+                        width: calc(100% - 20px);
+                        background: $orange;
+                        height: 5px; 
+  
+                    }
+                }
+                &.selected {
+                    background: white;
+                    color: $blue;
+                    &.current{
+                        &::after{
+                            display: none;
+                        }
+                    }
+                    .icon {
+                        fill: $orange;
+                        transform: rotate(-180deg);
+                    }
+                }
+                .icon {
+                    fill: rgba(255, 255, 255, 0.5);
+                    width: 10px;
+                    height: 10px;
+                    margin: 0 0 0 10px;
+                    right: auto;
+                    top: 1px;
+                    position: relative;
+                    transform: rotate(0);
+                }
+            }
+        }
+        .cd-secondary-nav {
+            /* dropdown menu style */
+            position: absolute;
+            width: 325px;
+            left: 0;
+            transform: translateX(0);
+            top: 100%;
+            z-index: -1;
+            &.is-hidden {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateX(0);
+            }
+            //hide first level "go back" button until mobile
+            >li {
+                &.go-back {
+                    display: none;
+                    height: 0;
+                }
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Navigation arrow icons
+*
+* Left, right and close icons
+*/
+
+.au-primary-nav ul .has-children,
+.go-back {
+    >a {
+        .nav-arrow {
+            transform: rotate(-90deg);
+        }
+    }
+}
+
+
+/**
+* #.# Help Centre
+*
+* Located in the fixed header. Uses a tabbed interface
+*/
+
+.help-tabs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: $help-tab-width-sm;
+    z-index: 9;
+    height: 100%;
+    background: $gray-light;
+    list-style: none;
+    @media (min-width: $screen-xs-min) {
+        width: $help-tab-width-lg;
+    }
+    li {
+        &:last-of-type {
+            a {
+                &.active {
+                    border-bottom: 0;
+                }
+            }
+        }
+        a {
+            display: block;
+            padding: 1em 1em;
+            font-size: 0.8em;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 400;
+            position: relative;
+            color: lighten($text-color, 10%);
+            border-bottom: 1px solid $border-color;
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken($gray-light, 4%);
+                color: $text-color;
+            }
+            @media (min-width: $screen-xs-min) {
+                ont-size: 0.9em;
+            }
+            @media (min-width: $screen-sm-min) {
+                padding: 2em 1em;
+                &::after {
+                    content: '';
+                    width: 5px;
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: auto;
+                    bottom: 0;
+                    background: $orange;
+                    opacity: 0;
+                }
+            }
+            &.active {
+                background: white;
+                color: $blue;
+                &::after {
+                    opacity: 1;
+                }
+            }
+            .fa{
+                color: lighten($text-color, 15%);
+                display: block;
+                font-size: 1.5em;
+                margin: 0 auto 0.2em;
+                @media (min-width: $screen-sm-min) {
+                    font-size: 1.7em; 
+                    margin: 0 auto 0.5em;
+                }
+            }
+            span {
+                line-height: 1.1em;
+            }
+        }
+    }
+}
+
+.help-tab-container {
+    padding-left: $help-tab-width-sm;
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    @media (min-width: $screen-xs-min) {
+        padding-left: $help-tab-width-lg;
+    }
+    @media (min-width: $screen-sm-min) {
+        min-height: 445px;
+    }
+    .help-tab-content {
+        display: none;
+        padding: 2em;
+        &#contact {
+            display: block;
+        }
+        &#locations,
+        &#contact {
+            p:first-of-type {
+                font-size: 0.85em;
+                margin: 0 0 1em;
+            }
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul,
+        ol {
+            margin: -0.4em 0 0 0;
+            li {
+                position: relative;
+                padding: 0.35em 0;
+                a {
+                    display: block;
+                    text-decoration: none;
+                    font-weight: 600;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                &.minor {
+                    a {
+                        margin-top: 0.2em;
+                    }
+                }
+                &:last-of-type {
+                    a {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+        ol {
+            @include custom-count;
+            padding-left: 0;
+            li {
+                padding-top: 0.3em;
+                padding-bottom: 0.3em;
+                &:last-of-type {
+                    border-bottom: 0;
+                }
+                &::before {
+                    text-align: center;
+                    width: 25px;
+                    height: 100%;
+                    font-size: 0.9em;
+                }
+            }
+        }
+    }
+    
+    /* Contact */
+    #contact {
+        p{
+            a{
+                display: block;
+            }
+        }
+        ul {
+            border-top: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+            margin: 1em 0;
+            padding: 0.8em 0;
+            .fa {
+                margin-right: 0.6em;
+                color: lighten($text-color, 25%);
+                font-size: 0.9em;
+                line-height: 1rem;
+                width: 15px;
+                position: relative;
+                top: -1px;
+            }
+        }
+        .phone-numbers {
+            strong {
+                font-weight: 600;
+                font-size: 1.2em;
+            }
+            span {
+                display: block;
+                margin-bottom: 1em;
+                font-size: 0.9em;
+            }
+        }
+        /* Status Indicator */
+        .status {
+            .status-indicator {
+                display: inline-block;
+                background: none;
+                .fa{
+                    font-size: 1.1em;
+                    display: none;
+                    margin-right: 0.2em;
+                }
+                &.optimal {
+                    .fa{
+                        color: $brand-success;
+                        &.fa-check-circle{
+                            display: inline-block;
+                        }
+                    }
+                }
+                &.caution {
+                    .fa{
+                        color: $brand-warning;
+                    }
+                }
+                &.warning { 
+                    .fa{
+                        color: $brand-danger;
+                        &.fa-times-circle{
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* Locations */
+    .item-location {
+        padding-bottom: 0.8em;
+        margin-bottom: 0.4em;
+        &:first-of-type {
+            margin-top: 1em;
+        }
+        strong {
+            display: block;
+            margin: 0 0 0.3em;
+            font-weight: 600;
+        }
+        ul {
+            font-size: 0.85em;
+            li {
+                display: inline-block;
+                margin-right: 0.5em;
+                padding-right: 0.5em;
+                a {
+                    padding: 0;
+                    .fa {
+                        font-size: 0.9em;
+                        top: -1px;
+                        position: relative;
+                        margin-right: 0.3em;
+                        color: lighten($text-color, 25%);
+                    }
+                }
+            }
+        }
+    }
+    #directories,
+    #questions {
+        font-size: 0.95em;
+    }
+    #directories {
+        ul {
+            @include custom-lists(10px, "\f054", 7px);
+            padding-left: 0;
+        }
+    }
+    /* Top Questions */
+    #questions {
+        a {
+            font-weight: 400;
+        }
+        .btn-orange {
+            margin: 1.7em 0 0;
+        }
+    }
+}
+
+
+/**
+* #.# Search
+*
+* ....
+*/
+
+#au-search {
+    float: none;
+    width: 100%;
+    position: relative;
+    input {
+        width: 100%;
+        padding: 1em 6em 1em 1em;
+        border: 1px solid $border-color;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        &:focus {
+            border: 1px solid $orange;
+            outline: 0;
+        }
+    }
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $orange;
+        color: white;
+        border: 0;
+        height: 100%;
+        padding: 0 1.5em;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        @media (min-width: $screen-xs-min) {
+            padding: 0 2em;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            background: darken($orange, 8%);
+        }
+    }
+}

@@ -1,0 +1,86 @@
+.msg {
+    position: relative;
+    border: 2px solid $blue;
+    padding: 1em 1.25em 1em 4.69em;
+    width: 100%;
+    background: white;
+    margin: .625em 0 2.5em;
+    h3,
+    h4,
+    h5 {
+        font-size: 1.3rem;
+        margin: .0 0 .6em;
+    }
+    p, ul, span{
+        font-size: .95em!important;
+        line-height: 1.5em;  
+        display: block;
+    } 
+    p {
+        color: $text-color;
+        margin: 0;
+    }
+    i {
+        position: absolute;
+        top: 50%;
+        margin-top: -11px;
+        left: 14px;
+        color: white;
+        font-size: 1.4em;
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        background: $blue;
+        top: -1px;
+        left: -1px;
+        height: calc(100% + 2px);
+        width: 50px;
+    }
+    &.info, &.deadline {
+        border-color: $brand-info;
+        &:before {
+            background: $brand-info;
+        }
+    }
+    &.error {
+        border-color: $brand-danger;
+        &:before {
+            background: $brand-danger;
+        }
+        h3,h4,li,p, span {
+            color: $brand-danger; 
+        }
+    }
+    &.success {
+        border-color: $brand-success;
+        &:before {
+            background: $brand-success;
+        }
+        h3,h4,li,p, span { 
+            color: darken($brand-success, 10%);
+            
+        }    
+    }
+    &.warning {
+        border-color: $brand-warning;
+        &:before {
+            background: $brand-warning;
+        }
+        h3,h4,li,p, span { 
+            color: darken($brand-warning, 20%);
+        }    
+    }
+    +.content-testimonial {
+        margin-top: 3.1em;
+    }
+}
+
+#main-content {
+    .msg {
+        margin: 1.875em 0;
+        p {
+            font-size: 1em;
+        }
+    }
+}

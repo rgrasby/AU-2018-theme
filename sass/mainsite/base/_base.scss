@@ -1,0 +1,215 @@
+/////////////////////////////////////////
+////// Display Defaults  ////////////////
+/////////////////////////////////////////
+::-moz-selection {
+    background: $gray-light;
+    text-shadow: none;
+}
+
+::selection {
+    background: $gray-light;
+    text-shadow: none;
+}
+
+body {
+    @include sans;
+    font-size: 100%;
+    background: #FFFFFF;
+    color: $text-color;
+    overflow-x: hidden;
+}
+
+a,
+a:link,
+a:visited {
+    color: $blue;
+    text-decoration: underline;
+}
+
+a:focus,
+a:active,
+a:hover {
+    color: $orange;
+    text-decoration: underline;
+    outline: none;
+}
+
+#main{
+    p, ul, ol{
+        line-height: 1.55em;
+    }
+}
+
+.missing{
+    background: yellow;
+    display: inline!important;
+}
+
+#site-wrap{
+    overflow-x: hidden;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background: $border-color;
+    margin: 2.5em 0 2.3em;
+    +h2{
+        margin-top: -0.4em;    
+    }
+    &.spacer{
+        background: transparent;
+    }
+}
+
+/* Code examples powered by Github */
+.gist{
+    margin-top: 2em;
+}
+
+//////////////////////////////////////////////
+//          utility classes                 //
+//////////////////////////////////////////////
+.hide,
+#skipToContent a {
+    position: absolute!important;
+    left: -10000px!important;
+    top: auto!important;
+    width: 1px!important;
+    height: 1px!important;
+    overflow: hidden!important;
+}
+
+.clear,
+cl {
+    clear: both;
+}
+
+.panel {
+    display: none;
+}
+
+iframe {
+    width: 100%;
+}
+
+.loading {
+    background: #E8ECEF url("../images/ajax-loader.gif") 50% 50% no-repeat;
+}
+
+.float {
+    width: 50%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.float p {
+    margin-right: 10px;
+}
+
+.indent{
+    padding-left: 1em;
+    @media (min-width: $screen-sm-min) {
+        padding-left: 2em;    
+    }
+}
+
+//// skip to content, for accessibility
+#skipToContent {
+    float: left;
+}
+
+#skipToContent a:focus {
+    background: #FFFFFF;
+    z-index: 9999999999;
+    position: absolute;
+    padding: 0.5em;
+    border: 2px solid $blue;
+    left: 0.5em;
+    top: 0.5em;
+    width: auto;
+    height: auto;
+}
+
+.svg-img{
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+/**
+* #.# Frequently Asked Questions
+*/
+.qa-item {
+    h3 {
+        font-size: 1.3em;
+    }
+    > h3, > div {
+        position: relative;
+        padding-left: 35px;
+        .qa-letter {
+            font-size: 20px;
+            color: $orange;
+            position: absolute;
+            left: 0;
+            top: -2px; 
+            font-weight: 700;
+            display: inline-block;
+            width: 25px;
+        }
+    }
+}
+
+
+.callout-box{
+    padding: 0.75em;
+    margin: 3.5em 0 2em;
+    background-color: $gray-light;
+    position: relative;
+    [id*="tab-wrapper"], .callout-box-content, #resource-block{
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+    }
+    @media (min-width: $screen-xs-min) {
+        padding: 1.5em;    
+    }
+    .callout-box-content{
+        background: white;
+        padding: 2em;
+        h2:first-of-type, h3:first-of-type{
+            margin-top: 0;
+        }
+    }
+    > h3 {
+        color: $blue;
+        font-weight: 400;
+        margin: 0.3em 0 1.2em;
+        text-align: center;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        margin-left: -25px;
+        width: 0; 
+        height: 0; 
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 25px solid $gray-light;
+    }
+    &.no-arrow{
+        margin: 1.5em 0 2em;  
+        &:before{
+            display: none;
+        }
+    }
+    hr{
+        margin: 2em 0!important;
+    }
+    .btn{
+        + hr{
+            margin-top: 1.5em!important;
+        }
+    }
+}

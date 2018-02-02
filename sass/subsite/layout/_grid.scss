@@ -1,0 +1,101 @@
+$susy: (
+    columns: 12,
+    container: 60em,
+    gutters: 1,
+    global-box-sizing: border-box,
+);
+
+/**
+* #.# General grid
+*
+* Used through out subsite template
+*/
+ 
+.page {
+    @include page-padding;
+    @include container;
+} 
+
+.row{
+    @extend .clearfix;
+    margin-bottom: 1em;
+}
+
+.content-container{
+    position: relative;
+}
+
+#main-content {
+    @include container;
+    padding: 2em 1.5em;
+    @media (min-width: $screen-sm-min) {
+        padding: 3em 2em 4em;    
+    }
+}
+
+.content-container{
+    transition: 0.3s ease-in;
+    @media (min-width: $screen-sm-min) {
+        page-right: 20px;
+        padding-left: 250px;    
+    }
+    @media (min-width: $screen-md-min) {
+        padding-left: 300px;    
+    }  
+}
+
+/* Simple Grid System */
+.one-half-md{
+    @media (min-width: $screen-md-min) {
+        @include span(6); 
+        &:last-of-type{
+            @include span(6 last);
+        }
+    }
+}
+
+.one-third-md{
+    @media (min-width: $screen-md-min) {
+        @include span(4); 
+        &:last-of-type{
+            @include span(4 last);
+        }
+    }
+}
+
+.one-fourth-md{
+    @media (min-width: $screen-md-min) {
+        @include span(3); 
+        &:last-of-type{
+            @include span(3 last);
+        }
+    }
+}
+
+.one-half-lg {
+    @include span(12 of 12);
+    @media (min-width: $screen-lg-min) {
+        @include span(6 of 12);
+        padding-right: .5em;
+        &:last-of-type {
+            @include last;
+            padding-left: .5em;
+            padding-right: 0;
+        }
+    }
+}
+
+/* Only used to show example of grid system */
+.grid-example{
+    margin: 1.5em 0;
+    .row{
+        div{
+            background: $gray-light;
+            padding: 1em;
+            margin-bottom: 1em;
+            @media (min-width: $screen-md-min) {
+                margin-bottom: 0;    
+            }
+        }
+    }
+}

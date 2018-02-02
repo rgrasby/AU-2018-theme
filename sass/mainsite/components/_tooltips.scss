@@ -1,0 +1,26 @@
+.ui-tooltip {
+    background: $blue-tertiary;
+    color: white;
+    border: none;
+    padding: 0;
+    opacity: 1;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0px 3px 11px 0px rgba(0,0,0,0.45);
+}
+.ui-tooltip-content {
+    position: relative;
+    padding: 1em;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 0; 
+        height: 0; 
+        top: -8px;
+        left: 10%;
+        margin-left: -5px;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid $blue-tertiary;
+    }
+}

@@ -1,0 +1,267 @@
+/////////////////////////////////////////////////
+//    form and form validation styles    ////////
+/////////////////////////////////////////////////
+form {
+    float: left;
+    #thank-you {
+        display: none;
+        margin: 0 2em;
+    }
+}
+
+input,
+textarea,
+select,
+{
+    width: 100%;
+    display: block;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.10), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+}
+
+.material-form, .au-form {
+    float: none; 
+    .req-msg {
+        text-align: right;
+        margin: -10px 0 10px;
+        font-size: .8em;
+        color: $gray-darker;
+    }
+    .req-asterisk {
+        font-size: 11px;
+        color: $brand-danger;
+        display: inline-block;
+        position: relative;
+        left: -4px;
+    }
+    .custom-select {
+        .req-asterisk {
+            position: absolute;
+            top: 50%;
+            margin-top: -6px;
+            left: 19px;
+        }
+        &.required {
+            select {
+                padding-left: 2.1em;
+            }
+        }
+    }
+    span.error{
+        display: none!important;
+    }
+    input,
+    textarea,
+    select {
+        border-radius: 3px;
+        &:focus {
+            border: 1px solid $orange;
+            outline: 0;
+        }
+    }
+    textarea {
+        min-height: 150px;
+    }
+    .input-group-split {
+        @extend .clearfix;
+        .input-group {
+            @media (min-width: $screen-sm-min) {
+                @include span(6 of 12);
+                &:last-of-type {
+                    @include last;
+                }
+            }
+        }
+    }
+    .checkbox,
+    .radio,
+    .input-group,
+    .radio-group {
+        border-radius: 3px;
+        position: relative;
+        margin-bottom: .9em;
+    }
+    .input-group {
+        label {
+            color: $blue;
+            position: absolute;
+            left: 22px;
+            font-size: .9em;
+            cursor: text;
+            transition: .2s ease-out;
+            pointer-events: none;
+            font-weight: 500;
+        }
+        input {
+            +label {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+        textarea {
+            +label {
+                top: 10px;
+            }
+        }
+        input:focus+label,
+        input.has-value:focus+label,
+        input.has-value+label,
+        textarea:focus+label,
+        textarea.has-value+label,
+        textarea.has-value+label {
+            font-size: 11px;
+            color: #aaa;
+        }
+        input:focus+label,
+        input.has-value+label {
+            top: 15px;
+        }
+        textarea:focus+label,
+        textarea.has-value+label {
+            top: 8px;
+        }
+    }
+    .radio-group, .checkbox-group {
+        border: 1px solid darken($border-color, 5%);
+        .group-title {
+            padding: 0.7em 1.5em 0.6em;
+            margin: 0;
+            background: $gray-lighter;
+            color: $blue;
+            font-size: .9em;
+            border-bottom: 1px solid $border-color;
+        }
+        .radio-group-inner, .checkbox-group-inner {
+            padding: 1em;
+        }
+        p {
+            margin: 0 0 1em;
+        }
+        .radio, .checkbox {
+            .radio {
+                margin-bottom: .6em;
+            }
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+    input,
+    textarea {
+        padding: 1.5em 1em .825em;
+        background-image: none!important;
+        border: 1px solid $border-color;
+        background: $gray-lighter;
+    }
+    select {
+        padding: 1.3em;
+        border: 1px solid $border-color;
+        color: $blue;
+        font-size: .9em;
+        background: $gray-lighter;
+        option:disabled {
+            color: #B0A4A4;
+        }
+    }
+    input,
+    textarea,
+    select {
+        &.error {
+            border: 1px solid $brand-danger;
+            background: lighten($brand-danger, 50%);
+            color: $brand-danger;
+            + label {
+                color: $brand-danger;
+            }
+        }
+    }
+    #form-error {
+        display: none;
+    }
+}
+ 
+.checkbox,
+.radio {
+    position: relative;
+    input {
+        display: inline-block;
+        width: auto;
+        position: absolute;
+        top: 4px;
+        left: 0;
+        border: 0;
+        padding: 0;
+        &:hover {
+            cursor: pointer;
+        }
+        +label {
+            left: 0;
+            padding-left: 2em;
+            position: relative;
+            display: block;
+            color: $text-color;
+            font-size: .9em;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+/**
+* #.# Lead generation form with image
+*/
+
+.lead-gen-wrap, .form-wrap {
+    position: relative;
+    margin-top: 3.5em;
+    border: 1px solid $border-color;
+    padding: 1.5em;
+    background: white;
+    @media (min-width: $screen-sm-min) {
+        padding: 3em 3.5em;
+    }
+    .btn.btn-orange {
+        margin-top: 2em;
+    }
+    .lead-gen-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background: url(../images/lead-gen-form-img.jpg) no-repeat center / cover;
+        height: 100%;
+        display: none;
+        @media (min-width: $screen-lg-min) {
+            width: 325px;
+            display: block;
+        }
+    }
+    .lead-gen-form-wrap {
+        @media (min-width: $screen-lg-min) {
+            padding-left: 325px;
+        }
+    }
+    &#led-gen-full {
+        @media (min-width: $screen-md-min) {
+            padding: 0;
+        }
+        .lead-gen-img {
+            @media (min-width: $screen-md-min) {
+                width: 40%;
+                display: block;
+            }
+        }
+        .lead-gen-form-wrap {
+            @media (min-width: $screen-md-min) {
+                padding: 3em 0 3em 40%;
+            }
+        }
+        form {
+            @media (min-width: $screen-md-min) {
+                padding: 0 3em;
+            }
+            @media (min-width: $screen-lg-min) {
+                padding: 0 5em;
+            }
+        }
+    }
+}

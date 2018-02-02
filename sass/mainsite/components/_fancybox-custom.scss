@@ -1,0 +1,46 @@
+    /**
+* #.# Fancybox 3 Branding Styles
+*
+* Overrides default styling
+*/
+
+.fancybox-container {
+    z-index: 999999;
+    .fancybox-bg {
+        background: #29292e;
+    }
+    .fancybox-navigation button {
+        &:hover {
+            &::before {
+                background: rgba($orange, 1);
+            }
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: rgba($orange, 0.85);
+        }
+    } 
+    .fancybox-toolbar {
+        background: $blue;
+        .fancybox-button {
+            padding: 0;
+        }
+        svg {
+            width: 1.5em!important;
+            height: 2em!important;
+            margin: auto;
+        }
+    }
+}
+.fancybox-button--arrow_right,
+.fancybox-button--arrow_left {
+    svg {
+        width: 1.5em!important;
+        height: 2em!important;
+    }
+}

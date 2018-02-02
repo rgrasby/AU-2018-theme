@@ -1,0 +1,92 @@
+#main-content #main .contact-options ul {
+    padding: 0;
+    @extend .clearfix;
+}
+
+#main-content #main .contact-options ul li {
+    padding: .25em 0 .25em 0;
+    &::before{
+        display: none; 
+    }
+}
+
+#main-content .contact-options ul li p {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#main-content .contact-options .search-form {
+    margin-top: 0;
+}
+
+#itss {
+    display: none;
+}
+
+#main-content .contact-options ul li.phone p {
+    margin-bottom: 0em;
+}
+
+#main-content .system{
+    margin-top: 1em;
+}
+
+#main-content .inline {
+    margin-right: 0.6em;
+    width: auto;
+    display: inline;
+}
+
+#main-content .status {
+    padding: 0.6em;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background: #f3f3f3;
+    margin: -0.2em 0 0.4em 0;
+    font-size: 0.9em;
+    line-height: 1em;
+    width: auto;
+    display: inline-block;
+}
+
+#main-content .phone .status {
+    margin-top: 0.4em;
+    clear: left;
+}
+
+#main-content .status-indicator {
+    content: "";
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin-right: 0.4em;
+}
+
+.status-indicator.optimal {
+    background-color: #5da423;
+}
+
+.status-indicator.warning {
+    background-color: #bf1e1e;
+}
+
+.status-indicator.caution {
+    background-color: #FFCC00;
+}
+
+.status-indicator.potential {
+    background-color: #FF9900;
+}
+
+.status-indicator.upcoming {
+    background-color: #0000FF;
+}
+
+.cl {
+    clear: both;
+}
+
+.contact-options p {
+    clear: both;
+}

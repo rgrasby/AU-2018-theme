@@ -1,0 +1,15 @@
+//////// Alpha Browsing and Pagination /////////
+
+
+#pagination {float: left;}
+#pagination ol {float: left; margin: 0; padding: 0;}
+#main-content #pagination ol li {float: left; clear: none; list-style-type: none; padding: 0px; margin: 2px; }
+#pagination ol li a {float: left; padding: 4px 0; background: $nav-level-3; display: block; width: 28px; text-decoration: none; text-align: center;}
+#pagination ol li a:hover, #pagination ol li.i a:hover  {background: $nav-level-1;}
+
+#pagination ol li#next a, #pagination ol li#previous a, #pagination ol li#next a:hover, #pagination ol li#previous a:hover{ background: none;}
+#pagination ol li.i a{ background: #335571; color: #FFF; }
+#pagination ol li.i a:hover{background: #335571; }
+
+
+//////// END Alpha Browsing and Pagination ///////

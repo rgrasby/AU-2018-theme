@@ -1,0 +1,138 @@
+/**
+* #.# Media Queries
+*
+* Breakpoints for responsive views. Modified from Bootstrap
+*/
+
+$screen-xxs-min:              25em;
+
+// Extra small screen / phone
+$screen-xs:                  30em;
+$screen-xs-min:              $screen-xs;
+
+// Small screen / tablet
+$screen-sm:                  44em;
+$screen-sm-min:              $screen-sm;
+
+// Medium screen / desktop
+$screen-md:                  59em;
+$screen-md-min:              $screen-md;
+
+$screen-md2-min:             67.5em;
+
+$screen-lg:                  70em;
+$screen-lg-min:              $screen-lg;
+
+$screen-xl-min:              80em;
+
+// XXL Large screen / wide desktop
+$screen-xxl-min:             92em;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - .1);
+$screen-sm-max:              ($screen-md-min - .1);
+$screen-md-max:              ($screen-lg-min - .1);
+
+/**
+* #.# Variables
+*
+* Global variables (colors, padding…)
+*/
+
+$brand-success:         #158460;
+$brand-info:            #006BA6;
+$brand-warning:         #f0ad4e;
+$brand-danger:          #AC3E3B;
+
+//courses and programs tag colors
+$color1: #39ADD1;   //Light Blue
+$color2: #9E4D83;   //Pink
+$color3: #53BBB4;   //Teal
+$color4: #5CB860;   //Bright Green
+$color5: #3079AB;   //Blueish
+$color6: #E15258;   //Red
+$color7: #E59A13;   //Orange
+$color8: #C38CD4;   //Bright Pink
+$color9: #2C9676;   //light green
+$color10: #7D669E;  //Purple
+$color11: #637A91;  //grayish
+$color12: #20898C;  //hunter green
+$color13: #E3B000;  //yellow
+$color14: #7EADC2;  //gray
+
+//Faculty of Humanities and Social Sciences
+$fhss-color1: #981D97;
+$fhss-color2: #B256B1; 
+$fhss-color3: #4C0F4C; 
+$fhss-color4: #721672; 
+$fhss-color5: #8b498b; 
+
+//Faculty of Health Discipline
+$fhd-color1: #F2BB22;
+$fhd-color2: #D1A018; 
+$fhd-color3: #EDAF00; 
+
+//Faculty of Business
+$fb-color1: #7A94A2;
+$fb-color2: #4A6371; 
+$fb-color3: #265772; 
+
+//Faculty of Graduate Studies
+$fgs-color1: #AF272F;
+$fgs-color2: #7A151B; 
+$fgs-color3: #CC363F; 
+
+//Faculty of Science and Technology
+$fst-color1: #7d8011;
+$fst-color2: #545700; 
+$fst-color3: #7D8201; 
+
+$tag-color-teal: #53BBB4;
+$tag-color-blue: #096e8e;
+$tag-color-orange: #c05601;
+
+$blue-shade1: #20538C;
+$blue-shade2: #1483B1;
+$blue-shade3: #2198C2;
+
+$facebook: #3b5998;
+$twitter: #4099ff;
+$linkedin: #0177B5;
+    
+// NEW COLOURS
+$orange : #eb6a2c;
+$orange-dark : darken($orange, 10%);
+
+$gray-light: #EDEFF5;
+$gray-lighter: lighten($gray-light, 3%);
+$gray-medium : darken($gray-light, 5%);
+$gray-dark : darken($gray-light, 10%);
+$gray-darker : darken($gray-light, 15%);
+
+$content-margin-lg: 4em;
+$content-margin-sm: 2em;
+
+$text-color: #39414e;
+$border-color: $gray-medium;
+
+// NEW VARIABLES FOR HEADER //
+$help-tab-width-lg: 150px;
+$help-tab-width-sm: 100px;
+
+$header-height-lg: 110px;
+$header-height-md: 90px;
+$header-height-sm: 70px;
+$header-height-xs: 60px;
+
+$utility-height-lg: 40px;
+$utility-height-sm: 50px;
+
+$hamburger-width: 28px;
+$hamburger-height: 22px;
+$hamburger-layer-height: 3px;
+$hamburger-layer-border-radius: 4px;
+
+$orange: #EB6A2C;
+$blue: #1B365D;
+$blue-secondary: #17457A;
+$blue-tertiary: #006BA6;

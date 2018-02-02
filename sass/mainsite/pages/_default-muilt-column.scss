@@ -1,0 +1,109 @@
+#main-content{    
+    /**
+    * #.# Jump navigation
+    *
+    * Not the sitcky navigation that is found in landing pages
+    */
+    #section-jump-nav{
+        padding: 1em 0 0;
+        ul{
+            padding: 0;
+            margin: 0;
+            @extend .clearfix;
+            li{
+                background: none; 
+                text-align: center;
+                width: 50%;
+                padding: 0;
+                clear: none;
+                float: left;
+                @media (min-width: $screen-xs-min) {
+                    width: 33.3333333%;      
+                } 
+                @media (min-width: $screen-lg-min) {
+                    width: 25%;    
+                }
+                &::before{
+                    display: none;
+                }
+                a{
+                    list-style: none;   
+                    display: block;
+                    text-decoration: none;
+                    padding: 1.3em 1em;
+                    font-weight: 600;
+                    font-size: .85em;
+                    line-height: 1.3em;
+                    position: relative;
+                    height: 100%;
+                    @media (min-width: $screen-xs-min) {
+                        font-size: .95em;     
+                    }
+                }
+                svg{
+                    width: 70px;
+                    height: 70px;
+                    display: block;
+                    margin: 0 auto .625em;
+                    @media (min-width: $screen-lg-min) {
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
+            }
+        }
+    }
+    #main{
+        ul{
+            @include custom-lists(10px, "\f054", 7px); 
+        }       
+        .custom-list {
+            @include custom-lists(8px, "\f111");
+        }
+        .custom-list.chevron, .custom-list.links{
+            @include custom-lists(10px, "\f054", 7px); 
+        }
+        ol{
+            @include custom-count() ;    
+        }
+    }
+}
+
+.content-container{
+    .qa-item{
+        margin-bottom: 2em;
+    }
+}
+
+/**
+* #.# "Did you know" blurb
+*/
+[class*="content-blurb-"]{
+    position: relative;
+    padding: 1.25em 0 1.56em 2.8125em;
+    margin: 2.5em 0;
+    font-size: .8em;
+    @media (min-width: $screen-md-min) {
+        font-size: 1em;   
+    }
+    &::before{
+        content: '';
+        width: 8px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: $blue;
+    }
+    h4{
+        margin: 0 0 10px;
+        font-size: 1.6em;
+        strong{
+            font-weight: inherit;
+        }
+    }
+    p{
+        margin: 0;
+        font-size: 1.4em!important;
+    }
+}

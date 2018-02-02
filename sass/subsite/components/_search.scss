@@ -1,0 +1,21 @@
+//subsite search
+.subsite{
+    #site-search{
+        #scope{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            padding: 0.5em 0 0;
+            position: relative;
+            z-index: 9;
+            input{
+                width: 25px;
+            }
+        } 
+    }
+    #au-search{
+        button{
+            border-bottom-right-radius: 0;    
+        }
+    }
+}

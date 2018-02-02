@@ -1,0 +1,17 @@
+{
+  "name": "athabascau",
+  "version": "1.0.0",
+  "description": "Institutional website theme for AU",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AU Web Services",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.4.2",
+    "gulp-sass": "^3.1.0"
+  }
+}
