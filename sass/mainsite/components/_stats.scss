@@ -1,0 +1,102 @@
+/**
+* #.# Stats
+*
+* Large stats numbers that are usually animated in on scroll. Currently seen on homepage a some multicolumn pages
+*/
+ul#home-stats, ul#content-stats{
+    list-style: none;
+    padding: 0;
+    margin: 2.8em 0;
+    display: none;
+    text-align: center;
+    @media (min-width: $screen-sm-min) {
+        display: block;   
+    }
+    li{  
+        float: left;
+        padding: 0 1.875em;
+        clear: none!important;
+        background: none;
+        @media (min-width: $screen-sm-min) {
+            width: 33.33333333%;         
+        }
+        @media (min-width: $screen-lg-min) {
+
+        }
+        &::before{
+            display: none;
+        }
+        > span{
+            &:first-of-type{
+                display: block;
+                color: $orange;
+                font-weight: 600;
+            }
+        }
+        strong{
+            display: inline-block;
+            font-size: 3.5em;
+            color: $blue;
+            line-height: 1em; 
+            position: relative;
+            font-weight: bold;
+            @media (min-width: $screen-md-min) {
+                font-size: 4em;
+            }
+            @media (min-width: $screen-lg-min) {
+                font-size: 5em;    
+            } 
+        }
+        p{
+            font-size: .9em;
+            margin: 0.7em 0 0;
+            position: relative;
+            color: lighten($text-color, 10%);
+            /*&::before{ 
+                content: '';
+                width: 60px;
+                height: 4px;
+                background: $orange;
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: -15px;
+                margin-left: -30px;
+            }*/
+        }
+    }
+}
+
+/**
+* #.# Homepage stats
+*
+* Styles specific to the stats on the homepage
+*/
+ul#home-stats{
+    @media (min-width: $screen-md-min) {
+        padding: 0 3.75em;    
+    }
+    li{
+        @media (min-width: $screen-md-min) {
+            padding: 0 4.375em;      
+        }
+    }
+}
+ 
+/**
+* #.# Content stats
+*
+* Styles specific to the stats on multicolumn layout pages
+*/
+ul#content-stats{
+    font-size: .8em;
+    @media (min-width: $screen-lg-min) {
+        font-size: 1em;   
+    }
+    li{
+        padding: 0 1em;    
+        @media (min-width: $screen-lg-min) {
+            padding: 0 1.875em;
+        }
+    } 
+}

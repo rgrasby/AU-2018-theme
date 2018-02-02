@@ -1,0 +1,103 @@
+#main-content{
+    .oh-banner{
+        margin: 2em 0 3em;
+        .oh-banner-top{
+            position: relative;
+            background: #0f4466;
+            padding: 2.5em 1.25em;
+            @media (min-width: $screen-md-min) {
+                flex-flow: row;    
+                align-items: center;
+                display: flex;
+                align-content: center;
+            }
+            .oh-logo{
+                width: 100%;
+                padding: 1.25em;
+                margin: auto;
+                width: 250px;
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .oh-content{
+                padding: 1.25em;
+                font-size: 1.1em;
+                font-weight: 300;
+                flex: 1;
+                p{
+                    color: white;
+                    &:first-of-type{
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+    #section-jump-nav{
+        &.oh-jump{
+            padding: 0;
+            border: 1px solid $border-color;
+            border-top: 4px solid $orange;
+            ul{
+                margin: 0;
+                li{
+                    width: 50%;
+                    @media (min-width: $screen-md-min) {
+                        width: 25%;    
+                    }
+                    svg{
+                        margin: 0 auto 1em;
+                    }
+                    a{
+                        padding: 1em;
+                        @media (min-width: $screen-md-min) {
+                            padding: 1.6em 1em 2em;
+                            &:before{
+                                content: '';
+                                height: 60%;
+                                width: 1px;
+                                position: absolute;
+                                right: 0;
+                                top: 20%;
+                                background: $border-color;
+                            }
+                        }
+                        span{
+                            font-weight: bold;
+                            font-size: 1.1em;
+                        }
+                    }
+                    &:last-child{
+                        a{
+                            &:before{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }    
+        }
+    }
+    .oh-option{
+        + hr{
+            margin: 3em 0 2.8em;
+        }
+        p{
+            margin: .3em 0;
+        }
+    }
+}  
+
+.video-thumb-wrap{
+    max-width: 400px;
+    a{
+        display: block;
+        margin-top: 2.25em;
+        transition: all 0.3s ease;
+        &:hover{
+            opacity: .8;
+        }
+    }
+}

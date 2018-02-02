@@ -1,0 +1,83 @@
+/**
+* #.# Mixins and Variables
+*
+* SASS variables, mixins, and functions
+*/
+@import "mainsite/utilities/variables.scss";
+@import "mainsite/utilities/mixins.scss";
+
+
+/**
+* #.# Vendors 
+*
+* External libraries and frameworks
+*/
+@import "mainsite/vendor/owl-carousel";
+@import "mainsite/vendor/owl-theme-default";
+@import "mainsite/vendor/susy"; 
+@import "mainsite/vendor/normalize";
+
+/**
+* #.# Boilerplate
+*
+* Standard styles for commonly used HTML elements.
+*/
+@import "mainsite/base/base";
+@import "mainsite/base/helpers";
+@import "mainsite/base/typography";
+
+/**
+* #.# Layout
+*
+* Main parts of the site (header, footer, navigation, sidebar…)
+*/
+@import "mainsite/layout/grid"; 
+@import "mainsite/layout/footer";
+@import "mainsite/layout/header";
+@import "mainsite/layout/utility";
+@import "mainsite/layout/footer";
+@import "mainsite/layout/content";  
+ 
+
+/**
+* #.# Components
+*
+* Specific modules/elements like (buttons, forms, menus…)
+*/
+@import "mainsite/components/forms";
+@import "mainsite/components/buttons";
+@import "mainsite/components/breadcrumb";
+@import "mainsite/components/icons"; 
+@import "mainsite/components/animate";
+@import "mainsite/components/tags";
+@import "mainsite/components/cta";
+@import "mainsite/components/tabs-to-accordion";
+@import "mainsite/components/msg-boxes";
+@import "mainsite/components/stats";
+@import "mainsite/components/testimonials";
+@import "mainsite/components/tables";
+@import "mainsite/components/panels";
+@import "mainsite/components/owl-carousel-custom";
+@import "mainsite/components/fancybox-custom";
+
+//Course and Program Listings
+@import "mainsite/pages/course-program-listings/listings.scss"; /* listing cards */
+@import "mainsite/pages/course-program-listings/filters.scss"; /* sidebar filters */
+@import "mainsite/components/favorites.scss"; /* listing favorites popup */
+   
+/**
+* #.# Pages
+*
+* Unique styles for specifc page (home page, landing pages…)
+*/
+@import "mainsite/pages/default-landing"; /* Default styles shared with multiple landing pages */
+@import "mainsite/pages/program-landing"; /* Program Landing Pages */
+@import "mainsite/pages/main-homepage"; /* Homepage */ 
+@import "mainsite/pages/open-house"; /* Open House */ 
+@import "mainsite/pages/discover-au"; /* Discover AU */ 
+@import "mainsite/pages/admissions"; /* Admissions */
+@import "mainsite/pages/default-muilt-column.scss"; /* Default multicolumn layout */ 
+@import "mainsite/pages/main-syllabus"; /* Course Syllabus */ 
+@import "mainsite/pages/ask-au";
+@import "mainsite/pages/social"; 
+@import "mainsite/pages/main-contact";

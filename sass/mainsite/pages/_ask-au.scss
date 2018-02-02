@@ -1,0 +1,54 @@
+.search-form.ask-au {
+    #askau-input {
+        height: 44px;
+    }
+    .button {
+        width: 80px;
+        height: 44px;
+        margin-top: -45px;
+        background: $orange;
+        color: #ffffff;
+        border-radius: 0;
+    }
+    .button:hover,
+    .button:active,
+    .button:focus {
+        background: $orange-dark;
+        border: none;
+    }
+}
+
+#askau-responses {
+    float: left;
+    .multiple div {
+        float: left;
+    }
+    .multiple a {
+        float: left;
+        clear: both;
+        width: 100%;
+    }
+    .multiple div a {
+        float: none;
+    }
+    .multiple .hideAnswer {
+        display: none;
+    }
+    #irPrint {
+        float: right;
+        width: auto;
+    }
+    #irPrint img {
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+}
+
+.askau-top10 ol {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.askau-top10 hr {
+    display: none;
+}

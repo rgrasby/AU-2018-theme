@@ -1,0 +1,1048 @@
+$sidebaroffset-lg: 325px;
+
+.highlight {
+    background-color: yellow;
+}
+
+#courses-additional-info {
+    display: none;
+    div {
+        display: none;
+    }
+}
+
+.cp-loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 3em 0;
+    background: $gray-light;
+    color: $blue;
+    z-index: 10;
+    p{
+        animation: fade-in-out 1s ease-in-out infinite alternate;
+    }
+    span {
+        animation: blink 1.4s infinite both;
+        opacity: 0;
+        &:nth-child(2) {
+            animation-delay: .2s;
+        }
+        &:nth-child(3) {
+            animation-delay: .4s;
+        }
+    }
+}
+
+button:focus {
+    outline: none!important;
+}
+
+.course-index_courses,
+.programs-index_programs {
+    //Hides mobile menu.
+    .mean-bar {
+        display: none!important;
+    }
+}
+
+/**
+* #.# Testimonial banner
+*
+*/
+.cp-banner {
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+    padding: 125px 0;
+    display: none;
+    z-index: 1;
+    @media (min-width: $screen-md-min) {
+        display: block;
+    }
+    &.top {
+        background-position: top;
+    }
+    .page {
+        z-index: 9;
+        position: relative;
+    }
+    p,
+    em {
+        color: white;
+        text-shadow: 0px 1px 1px #000;
+    }
+    p {
+        font-size: 1.3em;
+        margin: 0;
+        @media (min-width: $screen-md-min) {
+            max-width: 70%;
+            margin: auto;
+        }
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .45);
+        width: 100%;
+    }
+    em {
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+
+/* Wraps around filters and listings */
+
+#listings-main-content {
+    position: relative;
+    .page {
+        max-width: 70em;
+    }
+}
+
+.cp-listing-container {
+    padding: 50px 0 60px 0;
+    transition: all 0.3s ease;
+    background: $gray-light;
+    @media (min-width: $screen-md-min) {
+        padding: 60px 0;
+    }
+    &.filters-open {
+        @media (min-width: $screen-lg-min) {
+            padding: 60px 0 60px $sidebaroffset-lg;
+        }
+    }
+}
+
+
+/**
+* #.# Programs & Courses Listings top nav
+*
+* navigation to switch between online program and online courses
+*/
+
+#cp-type {
+    padding-left: 0;
+    float: right;
+    width: 100%;
+    background: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    height: 50px;
+    position: relative;
+    z-index: 10000;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    @media (min-width: $screen-lg-min) {
+        z-index: 999;
+        height: 60px;
+    }
+    &.sticky {
+        position: fixed;
+        top: $header-height-xs;
+        left: 0;
+        right: 0;
+        @media (min-width: $screen-xs-min) {
+            top: $header-height-sm;
+        }
+        @media (min-width: $screen-sm-min) {
+            top: $header-height-md;
+        }
+    }
+    &.filters-open {
+        @media (min-width: $screen-lg-min) {
+            padding-left: $sidebaroffset-lg;
+        }
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+        display: block;
+        text-align: center;
+        li {
+            display: inline-block;
+            margin-left: -4px;
+            a {
+                display: block;
+                position: relative;
+                padding: 0 10px;
+                text-decoration: none;
+                margin: 0 5px;
+                font-size: .9em;
+                text-align: center;
+                line-height: 50px;
+                @media (min-width: $screen-xs-min) {
+                    padding: 0 10px;
+                    margin: 0 20px;
+                    text-align: left;
+                }
+                @media (min-width: $screen-lg-min) {
+                    line-height: 60px;
+                    font-size: 1em;
+                }
+                span {
+                    display: none;
+                    @media (min-width: $screen-sm-min) {
+                        display: inline;
+                    }
+                }
+                .icon {
+                    width: 25px;
+                    height: 25px;
+                    margin-right: 10px;
+                    vertical-align: middle;
+                    margin: -2px 5px 0 0;
+                    display: none;
+                    @media (min-width: $screen-xs-min) {
+                        display: inline-block;
+                    }
+                    @media (min-width: $screen-lg-min) {
+                        width: 35px;
+                        height: 35px;
+                    }
+                }
+                &:before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 3px;
+                    width: 100%;
+                    background: $orange;
+                    opacity: 0;
+                }
+                &:active,
+                &:focus,
+                &:hover {
+                    outline: 0;
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+                &.active {
+                    &:before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Programs & Courses Listings
+*
+* Default styles for course & program cards
+*/
+
+.fail-message {
+    display: none;
+    width: 100%;
+    padding: 40px 0;
+    text-align: center;
+    .program-reset {
+        cursor: pointer;
+        color: $blue;
+        text-decoration: underline;
+        &:hover {
+            color: $orange;
+        }
+    }
+}
+
+.success-message {
+    display: none;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 1em;
+    text-align: left;
+    @media (min-width: $screen-md-min) {
+        font-size: 1em;
+        text-align: center;
+    }
+    h2 {
+        margin: 0 0 10px;
+        font-size: 1.2em;
+        line-height: 1.5em;
+        @media (min-width: $screen-md-min) {
+            margin: 0 0 30px;
+            font-size: 1.4em;
+        }
+    }
+}
+
+.cp-listing-top {
+    h1 {
+        display: none;
+    }
+    #desc-undergraduate,
+    #desc-graduate {
+        display: none;
+        font-size: 1em;
+        line-height: 1.6em;
+        color: $text-color;
+        span {
+            display: none;
+            @media (min-width: $screen-sm-min) {
+                display: inline;
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Revert to a flex box layout in all browser except ie9
+*
+*/
+
+html:not(.lt-ie10) {
+    #cp-results {
+        height: auto!important;
+    }
+}
+
+#cp-listing {
+    #cp-results {
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-start;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding: 0 0 20px;
+        min-height: 60px;
+        position: relative;
+        &:after {
+            visibility: hidden;
+            display: block;
+            content: "";
+            clear: both;
+            height: 0;
+        }
+        .msg {
+            margin: .625em .625em 2.5em;
+        }
+        .mask {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            z-index: 99;
+            text-align: center;
+            display: none;
+        }
+        hr {
+            width: 100%; 
+            margin: 0 10px 0;
+            padding: 0;
+            border-bottom: 1px solid $border-color;
+        }
+        /* Subject accordion */
+        .accordion-trigger,
+        .accordion-content {
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 0;
+            box-shadow: none;
+            background: none;
+        }
+        .accordion-content {
+            position: relative;
+            background: $gray-light;
+            display: flex;
+            flex-flow: row wrap;
+            align-content: flex-start;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 10px;
+                right: 10px;
+                height: 1px;
+                bottom: 0;
+                background: $border-color;
+            }
+        }
+        .accordion-trigger {
+            padding: 0;
+            border-left: 0;
+            border-right: 0;
+            border-top: 0;
+            font-size: 1em;
+            border-bottom: 1px solid $border-color;
+            background: $gray-light;
+            font-weight: 400;
+            display: none;
+            color: $blue;
+            @media (min-width: $screen-sm-min) {
+                font-size: 1.2em;
+            }
+            &.hasResults {
+                display: block!important;
+            }
+            &.noResults {
+                display: none!important;
+            }
+            .course-count {
+                position: absolute;
+                font-size: .6em;
+                line-height: 1em;
+                top: 50%;
+                margin-top: -8px;
+                background: $orange;
+                color: white;
+                padding: 3px 8px;
+                border-radius: 3px;
+                right: 15px;
+                @media (min-width: $screen-sm-min) {
+                    font-size: .7em;
+                    padding: 5px 10px;
+                    margin-top: -12px;
+                }
+                strong {
+                    font-weight: 400;
+                }
+                span {
+                    display: none;
+                    @media (min-width: $screen-sm-min) {
+                        display: inline;
+                    }
+                }
+            }
+            button {
+                border: 0;
+                padding: 15px 50px 15px 35px;
+                background: transparent;
+                display: block;
+                width: 100%;
+                text-align: left;
+                position: relative;
+                @media (min-width: $screen-sm-min) {
+                    padding: 15px 120px 15px 35px;
+                }
+                &.active {
+                    background: $blue;
+                    color: white;
+                    margin-top: -1px;
+                    marign-bottom: 0;
+                    box-shadow: none;
+                    i {
+                        color: white;
+                        &.fa-chevron-right {
+                            display: none;
+                        }
+                        &.fa-chevron-down {
+                            display: inline-block;
+                        }
+                    }
+                }
+                &:focus,
+                &:active {
+                    background: $blue;
+                    color: white;
+                }
+                i {
+                    font-size: .8em;
+                    margin-right: 5px;
+                    position: absolute;
+                    left: 15px;
+                    top: 50%;
+                    margin-top: -6px;
+                    color: $orange;
+                    &.fa-chevron-right {
+                        display: inline-block;
+                    }
+                    &.fa-chevron-down {
+                        display: none;
+                        margin-top: -7px;
+                        left: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/**
+* #.# View switcher
+*
+*/
+
+.view-switcher-wrap {
+    padding: 0 5px 15px;
+    width: 100%;
+    @media (min-width: $screen-md-min) {
+        text-align: right;
+    }
+    .view-switcher {
+        background: none;
+        border: 0;
+        padding: 0;
+        margin: 0 10px;
+        position: relative;
+        font-size: .95em;
+        color: $gray-dark;
+        &:hover,
+        &:active,
+        &:focus {
+            background: none;
+            color: $orange;
+        }
+        &.active {
+            color: $blue;
+            &:hover,
+            &:active,
+            &:focus {
+                color: $blue;
+            }
+        }
+    }
+    .sep {
+        display: inline-block;
+        width: 1px;
+        margin-bottom: -1px;
+        height: 13px;
+        background: darken($border-color, 5%);
+    }
+}
+
+
+/**
+* #.# Add to favorites Button
+*
+*/
+
+.add-to-favorites {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    width: 45px;
+    height: 25px;
+    display: inline-block;
+    position: absolute;
+    z-index: 9;
+    svg {
+        fill: $orange;
+    }
+    .icon {
+        position: relative;
+        top: 5px;
+    }
+    .au-star-empty {
+        display: inline-block;
+    }
+    .au-star-filled {
+        display: none;
+    }
+    &:focus,
+    &:active,
+    &:hover {
+        outline: 0;
+        svg {
+            fill: $blue;
+        }
+    }
+    &.favorited {
+        .au-star-empty {
+            display: none;
+        }
+        .au-star-filled {
+            display: inline-block;
+        }
+    }
+}
+
+
+/**
+* #.# Default styles for card and list views
+*
+*/
+
+.card {
+    background: white;
+    position: relative;
+    h3 {
+        font-weight: 400;
+        line-height: 1.5em;
+        color: $blue;
+        position: relative;
+        display: block;
+        padding-right: 10px;
+        margin: 0;
+        a {
+            text-decoration: none;
+            display: block;
+            i {
+                color: white;
+                font-size: .65rem;
+                margin-left: 4px;
+                background: white;
+                padding: 2px 5px 3px;
+                &:after {
+                    content: 'Visited';
+                    @include sans;
+                    display: inline-block;
+                    padding-left: 3px;
+                }
+            }
+            &:focus {
+                text-decoration: none;
+                outline: 0;
+            }
+            &:hover {
+                color: $blue;
+            }
+            &:visited {
+                i {
+                    color: $text-color;
+                }
+            }
+        }
+    }
+    .cp-actions {
+        .view {
+            text-align: center;
+        }
+    }
+    .cp-link-group {
+        margin: 0;
+        list-style: none;
+        li {
+            padding: 0;
+            line-height: 1em;
+        }
+    }
+    .credits {
+        display: block;
+        margin-top: .5em;
+        font-size: 1rem;
+        line-height: 1em;
+        color: $text-color;
+    }
+}
+
+
+/**
+* #.# Card view
+*
+* Styles for courses & programs when in "card" view
+*/
+
+.grid {
+    .card {
+        padding: 20px 20px 63px;
+        width: 100%;
+        margin: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.20);
+        &.accordion-content {
+            padding: 10px 0;
+            margin: 15px 0;
+        }
+        h3 {
+            i {
+                position: absolute;
+                top: -14px;
+                right: -16px;
+            }
+        }
+        .btn-primary {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #E8ECEF;
+            border-top: 1px solid darken(#E8ECEF, 5%);
+            color: #6d737a;
+            font-size: .9em;
+            border-radius: 0;
+            padding: 8px 0 6px;
+        }
+        .cp-link-group {
+            float: right;
+            li {
+                display: inline-block;
+                a {
+                    margin-top: 4px;
+                }
+                &.sep {
+                    margin-top: -6px;
+                    padding: 0 2px;
+                    vertical-align: middle;
+                    font-size: .8em;
+                    color: darken($gray-light, 35%);
+                }
+            }
+        }
+        .cp-actions {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: $gray-light;
+            padding: 0.625em 0.94em 0.625em 0;
+            .view {
+                float: right;
+                color: $orange;
+                text-decoration: none;
+                font-size: .9em;
+                font-weight: 600;
+                position: relative;
+                top: -1px;
+                &:hover,
+                &:focus,
+                &:active {
+                    color: $blue;
+                    outline: 0;
+                }
+                &:visited {
+                    color: darken($orange, 15%);
+                }
+            }
+        }
+        .add-to-favorites {
+            bottom: 10px;
+            left: 0;
+        }
+    }
+}
+
+//grid styles for courses only
+#cp-listing {
+    &.cp-courses {
+        .grid {
+            .card {
+                width: calc(100% - 20px);
+                @media (min-width: $screen-xs-min) {
+                    width: calc(50% - 20px);
+                }
+                @media (min-width: $screen-sm-min) {
+                    width: calc(33.3333% - 20px);
+                    height: auto;
+                }
+                @media (min-width: $screen-xl-min) {
+                    width: calc(25% - 20px);
+                    height: auto;
+                }
+                @media only screen and (max-width: 1140px) and (min-width: 944px) {
+                    width: calc(50% - 20px);
+                }
+                .cp-area-tags {
+                    margin: 0.75em 0 0;
+                    padding: .625em 0 0;
+                    border-top: 1px solid $border-color;
+                }
+            }
+        }
+    }
+}
+
+//grid styles for programs only
+#cp-listing {
+    &.cp-programs {
+        .grid {
+            .view-switcher-wrap {
+                padding: 0 5px 5px;
+            }
+            .card {
+                width: calc(100% - 20px);
+                padding-left: 25px;
+                padding-right: 25px;
+                @media (min-width: $screen-xs-min) {
+                    width: calc(50% - 20px);
+                }
+                @media (min-width: $screen-md-min) {
+                    width: calc(33.33333% - 20px);
+                }
+                @media (min-width: $screen-lg-min) {
+                    width: calc(50% - 20px);
+                }
+                @media (min-width: $screen-xl-min) {
+                    width: calc(33.333333% - 20px);
+                }
+                .cp-area-tags {
+                    padding: 0;
+                }
+                .desc {
+                    font-size: .9em;
+                    border-top: 1px solid $border-color;
+                    margin-top: 1em;
+                    padding-top: 1em;
+                }
+                .credits {
+                    margin-top: 1em;
+                }
+            }
+        }
+    }
+}
+
+
+/**
+* #.# List view
+*
+* Styles for courses & programs when in "list" view
+*/
+
+.list {
+    .card {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-start;
+        border: 1px solid $border-color;
+        border-top: 0;
+        margin: 0 10px;
+        &.accordion-content {
+            padding: 0;
+            margin: -1px 0 0!important;
+            border: 0;
+        }
+        &.accordion-trigger {
+            border-left: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+        }
+        h3 {
+            padding: 0 20px 0 35px;
+            @media (min-width: $screen-sm-min) {
+                margin: 0;
+            }
+            i {
+                position: absolute;
+                top: -14px;
+                right: -16px;
+                @media (min-width: $screen-sm-min) {
+                    top: 0;
+                    right: 0;
+                    position: relative;
+                    padding: 0;
+                }
+            }
+        }
+        p {
+            width: 15%;
+            margin: 0;
+            padding: 0 15px;
+            font-size: .9em;
+        }
+        .cp-actions {
+            text-align: left;
+            margin: 15px 0 0;
+            @media (min-width: $screen-sm-min) {
+                text-align: right;
+                margin: 0;
+            }
+            .cp-link-group {
+                list-style: none;
+                float: none;
+                padding: 0;
+                li {
+                    display: inline-block;
+                    margin-bottom: 5px;
+                }
+            }
+            .view {
+                display: inline-block;
+                background: $gray-light;
+                border: 1px solid $border-color;
+                font-size: .8em;
+                padding: 5px 15px;
+                color: $orange;
+                text-decoration: none;
+                font-weight: 600;
+                margin-bottom: 5px;
+                &:hover,
+                &:focus,
+                &:active {
+                    color: $blue;
+                }
+                &:visited {
+                    color: darken($orange, 15%);
+                }
+            }
+        }
+        .add-to-favorites {
+            top: 18px;
+            left: 3px;
+        }
+        h3,
+        p,
+        .cp-actions,
+        .cp-area-tags {
+            @media (max-width: $screen-xs-max) {
+                width: 100%!important;
+                padding-left: 30px!important;
+            }
+        }
+    }
+}
+
+//list view styles on courses page
+#cp-listing {
+    &.cp-courses {
+        .list {
+            .card {
+                .cp-area-tags {
+                    margin: 10px 0 0;
+                    padding: 0 15px;
+                    @media (min-width: $screen-sm-min) {
+                        margin: 0;
+                    }
+                }
+            }
+            .accordion-content {
+                h3 {
+                    width: 45%;
+                }
+                .cp-area-tags {
+                    width: 25%;
+                }
+                .cp-actions {
+                    width: 15%;
+                }
+                .grid,
+                .list {
+                    hr {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    //list view styles on programs page
+    &.cp-programs {
+        .grid {
+            hr {
+                display: none;
+            }
+        }
+        .list {
+            .card {
+                //undergrad list view styles
+                h3 {
+                    width: 30%;
+                }
+                .desc {
+                    width: 50%;
+                    margin-top: 0.7em;   
+                    @media (min-width: $screen-sm-min) {
+                        margin-top: 0;                        
+                    }
+                }
+                .cp-actions {
+                    width: 20%;
+                }
+                .cp-area-tags {
+                    @media (max-width: $screen-xs-max) {
+                        padding-left: 0!important;
+                    }
+                }
+            }
+            hr {
+                display: block;
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Default styling on both card and list view
+* there is sligh variation of style between course and programs. This is what the style below does
+*/
+
+#cp-listing {
+    //Courses page only
+    &.cp-courses {
+        @media (min-width: $screen-sm-min) {
+            min-height: 1300px;
+        }
+        .card {
+            h3 {
+                font-size: 1em;
+            }
+        }
+    }
+    //Program page only
+    &.cp-programs {
+        @media (min-width: $screen-sm-min) {
+            min-height: 1200px;
+        }
+        .card {
+            .cp-area-tags {
+                span {
+                    font-size: 0.9em;
+                }
+            }
+            h3 {
+                font-size: 1.2em;
+                line-height: 1em;
+                &.no-specialization {
+                    .cp-area-tags {
+                        span {
+                            color: $blue;
+                            font-size: 1em;
+                        }
+                    }
+                }
+            }
+            .specialization {
+                display: block;
+                line-height: 1.3em;
+                margin-top: 0.05em;
+            }
+        }
+    }
+}
+
+.help {
+    border: 0.2em solid #9db7c6;
+    background: #e8ecef;
+    padding: 20px;
+}
+
+#cp-listing {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 1s;
+    header {
+        float: none!important;
+        margin: 0 0 1.5em;
+        @media (min-width: $screen-sm-min) {
+            margin: 0 0 2em;
+        }
+        h1 {
+            margin-top: 0;
+            color: $orange;
+            font-size: 2.3em;
+            margin: 0;
+            line-height: 1.1em;
+            @media (min-width: $screen-sm-min) {
+                font-size: 2.6em;
+            }
+            span {
+                span {
+                    display: none;
+                    @media (min-width: $screen-xs-min) {
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+}

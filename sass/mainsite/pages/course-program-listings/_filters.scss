@@ -1,0 +1,1000 @@
+/**
+* #.# Mixins for checkmark colors
+*
+*/
+
+@mixin filterChecks ($color) {
+    &:hover,
+    &:active,
+    &:focus {
+        span {
+            &:before {
+                border: 2px solid $color;
+                background: $color;
+            }
+        }
+    }
+    span {
+        &:before {
+            border: 2px solid $color;
+        }
+    }
+    &.is-checked {
+        span {
+            &:before {
+                background: $color;
+            }
+        }
+    }
+}
+
+.badge{
+    position: absolute;
+    top: 6px;
+    right: 0;
+    font-size: .7em;
+    font-weight: 400;
+    display: inline-block;
+    background: $gray-light;
+    line-height: 1em;
+    border-radius: 5px;
+    width: 23px;
+    padding: 3px 4px;
+    text-align: center;
+}
+/** 
+* #.# Programs & Courses Filters Toggle
+*
+* Default state of filter section. Shows filter button and search field
+*/
+
+#filter-sidebar {
+    background: white;
+    z-index: 9;
+    left: 0;
+    border: 1px solid $border-color;
+    border-top: 0;
+    margin-top: -1px;
+    display: none;
+    top: 0;
+    height: auto;
+    @media (min-width: $screen-lg-min) {
+        position: absolute;
+        z-index: 999;
+        width: 325px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        transform: translateX(-100%);
+        border: 0;
+        margin-top: 0;
+        display: block;
+    }
+    &.filters-open {
+        @media (min-width: $screen-lg-min) {
+            transform: translateX(0);
+        }
+        #filter-toggle {
+            display: none;
+            transform: translateX(0);
+            @media (min-width: $screen-lg-min) {
+                display: inline-block;
+            }
+            .fa-times {
+                display: inline-block;
+            }
+            .fa-sliders {
+                display: none;
+            }
+            .fa-arrow-left {
+                display: none;
+            }
+            &:hover,
+            &:active,
+            &:focus {
+                .fa-times {
+                    display: none;
+                }
+                .fa-sliders {
+                    display: none;
+                }
+                .fa-arrow-left {
+                    display: inline-block;
+                    transform: rotate(0);
+                    top: -2px;
+                }
+            }
+        }
+    }
+    >.filter-inner {
+        visibility: visible;
+        height: calc(100% - 50px);
+        position: relative;
+        overflow: auto;
+        background: white;
+        @media (min-width: $screen-lg-min) {
+            height: auto;
+        }
+        &.filters-open {
+            visibility: hidden;
+        }
+    }
+    #filter-toggle {
+        transform: translateX(100%);
+        right: 0;
+        top: 0;
+        background: darken($orange, 7%);
+        color: white;
+        border: 0;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        float: left;
+        position: absolute;
+        z-index: 9;
+        font-size: 1.2em;
+        display: none;
+        @media (min-width: $screen-md-min) {
+            display: inline-block;
+        }
+        .fa {
+            position: relative;
+            top: -2px;
+        }
+        .fa-times {
+            display: none;
+        }
+        .fa-sliders {
+            display: inline-block;
+        }
+        .fa-arrow-left {
+            display: none;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            .fa-times {
+                display: none;
+            }
+            .fa-sliders {
+                display: none;
+            }
+            .fa-arrow-left {
+                display: inline-block;
+                transform: rotate(-180deg);
+                top: 0;
+            }
+        }
+    }
+    .filter-utility {
+        padding: 10px 20px;
+        margin: 0;
+        border-bottom: 1px solid $border-color;
+        button {
+            display: inline-block;
+            background: none;
+            border: 0;
+            float: right;
+            font-size: 1em;
+            position: relative;
+            margin: 0 0 0 12px;
+            padding: 0;
+            color: $blue;
+            display: inline-block;
+            font-size: .9em;
+            &:hover,
+            &:focus,
+            &:active {
+                color: $orange;
+            }
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+    hr {
+        border: 0;
+        padding: 0;
+        margin: 20px 0;
+        background: $border-color;
+        height: 1px;
+        &.white {
+            background: white;
+            &:first-of-type {
+                margin: 10px 0;
+            }
+        }
+    }
+    .btn{
+        border-radius: 0;
+    }
+    .scrollable {
+        overflow-x: hidden;
+        overflow: auto;
+        @media (min-width: $screen-md-min) {
+            height: 100vh;
+        }
+        .scroll-element.scroll-y {
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        &:hover {
+            .scroll-element.scroll-y {
+                opacity: 1;
+            }
+        }
+    }
+    &.sticky {
+        .scrollable {
+            @media (min-width: $screen-md-min) {
+                height: calc(100vh - 95px);
+            }
+        }
+    }
+    .scroll-element.scroll-x {
+        display: none !important;
+    }
+    .filter-tabs {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border: 1px solid $border-color;
+        border-bottom: 0;
+        li {
+            width: 50%;
+            float: left;
+            text-align: center;
+            padding: 0;
+            background: none;
+            clear: none;
+            a {
+                display: block;
+                padding: 15px 5px;
+                text-decoration: none;
+                font-size: .9em;
+                background: $gray-light;
+                position: relative;
+            }
+            &.active {
+                a {
+                    background: $blue;
+                    color: white;
+                    margin-top: -1px;
+                    &:before {
+                        content: '';
+                        height: 2px;
+                        background: $blue;
+                        width: 100%;
+                        position: absolute;
+                        bottom: -2px;
+                        display: block;
+                        left: 0;
+                        z-index: 9;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.skiptoresults {
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: scale(0.1);
+    display: block;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    width: 100%;
+    &:focus {
+        height: auto;
+        overflow: visible;
+        outline: 0;
+        transform: scale(1);
+    }
+}
+
+.filter-help {
+    border: 1px solid $border-color;
+    padding: 20px;
+    position: relative;
+    margin: 0 25px 15px 25px;
+    font-size: .9em;
+    display: none;
+    svg.icon {
+        position: absolute;
+        left: 20px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: 21px;
+    }
+    p {
+        line-height: 1.6em;
+        font-size: .9em;
+        margin: 0;
+    }
+}
+
+#controls {
+    margin: 20px 0 0;
+    @media (min-width: $screen-lg-min) {
+        margin: 35px 0;
+    }
+    [class^="icon-"] {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        font-size: 1.3em;
+    }
+    .btn-refine {
+        border: 0;
+        background: darken($orange, 7%);
+        color: white;
+        box-shadow: none;
+        float: left;
+        font-size: .9em;
+        height: 100%;
+        line-height: 100%;
+        padding: 0 20px;
+        border-radius: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+        display: block;
+        @media (min-width: $screen-md-min) {
+            display: none;
+        }
+        .fa-sliders {
+            display: inline-block;
+        }
+        .fa-times {
+            display: none;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+            background: darken($orange, 7%);
+            box-shadow: none;
+            outline: 0;
+        }
+        &.active {
+            .fa-sliders {
+                display: none;
+            }
+            .fa-times {
+                display: inline-block;
+            }
+        }
+        strong {
+            display: block;
+            font-weight: normal;
+            font-size: .8em;
+            margin-top: 3px;
+        }
+        i {
+            font-size: 1.3em;
+        }
+    }
+    .search-wrap {
+        position: relative;
+        background: white;
+        padding: 15px 20px 25px;
+        @media (min-width: $screen-md-min) {
+            padding: 0;    
+        }
+        label{
+            display: block;
+            margin: 0 0 15px;
+            text-align: center;
+            @media (min-width: $screen-md-min) {  
+                display: none; 
+            }
+        }
+        input { 
+            width: 100%;
+            border: 0;
+            padding: 15px 20px 15px 40px;
+            font-size: .9em;
+            border: 0;
+            border-left: 0;
+            color: $text-color;
+            font-weight: 300;
+            border: 1px solid $border-color;
+            &::placeholder{
+                color: white;
+                @media (min-width: $screen-md-min) {
+                    color: $gray-dark;    
+                }
+            }
+            @media (min-width: $screen-md-min) {
+                font-size: 1.1em;
+                padding: 25px 40px 25px 25px;
+            }
+            &:focus,
+            &:active {
+                outline: none;
+                border: 1px solid $blue;
+            }
+        }
+        .fa {
+            margin-top: 16px;
+            position: absolute;
+            right: auto;
+            left: 35px;
+            color: darken($gray-light, 20%);
+            font-size: 1em;
+            top: 50%;
+            @media (min-width: $screen-md-min) {
+                font-size: 1.4em;
+                margin-top: -12px;
+                right: 15px;
+                left: auto;
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Refine and Search result mobile
+*
+* In mobile we make the search and filters show as a popup
+*/
+#filter-sidebar {
+    @media (max-width: $screen-md-max) {
+        position: fixed!important;
+        width: 320px;
+        display: none;
+        z-index: 99999;
+        top: 50%!important;
+        bottom: auto!important;
+        left: 50%;
+        margin-left: -160px;
+    }
+    /* Tint behind panels when opened */
+    &:before {
+        @media (max-width: $screen-md-max) {
+            content: '';
+            position: fixed;
+            z-index: 0;
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            left: 0;
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    }
+    &.visible {
+        @media (max-width: $screen-md-max) {
+            display: block;
+        }
+        &:before {
+            @media (max-width: $screen-md-max) {
+                display: block;
+            }
+        }
+    }
+}
+
+#filter-sidebar { 
+    @media (max-width: $screen-md-max) {
+        height: 325px;
+        margin-top: -190px;
+    }
+}
+
+/* Button for closing panels and scrolling to results */
+.btn-show{
+    display: block;
+    width: 100%;
+    text-align: right;
+    color: white;
+    border: 0;
+    padding: 15px;
+}
+
+.panel-title {
+    padding: 0 20px;
+    margin: 0;
+    position: relative;
+    font-size: 1em;
+    height: 50px;
+    line-height: 50px;
+    background: $orange;
+    color: white;
+    @media (min-width: $screen-lg-min) {
+        height: 60px;
+        line-height: 60px;
+        padding: 0 25px;
+        color: white;
+    }
+    .mobile-panel-close{
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 16px 18px;
+        font-size: 1.1em;
+        color: white;
+        cursor: pointer;
+        z-index: 9;
+        background: darken($orange, 7%);
+    }
+}
+
+/**
+* #.# Search and Refine toggle buttons
+*
+* These button show in the sticky nav on mobile
+*/
+.btn-refine, .btn-search{
+    position: absolute;
+    top: 0;
+    background: none;
+    padding: 0 20px;
+    border: 0;
+    font-size: 1em;
+    line-height: 50px;
+    color: $blue;
+    border-radius: 0;
+    i{
+        top: -3px;
+        margin: 0;
+    } 
+    @media (min-width: $screen-lg-min) {
+        display: none;
+    }
+}
+
+.btn-refine{
+    left: 0;
+    border-right: 1px solid $border-color;
+}
+
+.btn-search{
+    right: 0;
+    border-left: 1px solid $border-color;
+}
+
+.btn-show.btn-gray{
+    display: block;
+    border: 0;
+    border-top: 1px solid $border-color;
+    &:hover, ,&:active, &:focus{
+        background: $gray-light;
+        color: $blue;
+        border: 0;
+        border-top: 1px solid $border-color;
+    }
+    @media (min-width: $screen-lg-min) {
+        display: none;   
+    }    
+}
+
+/**
+* #.# Course and program Search Filters
+*
+* Default styling for both courses and programs. For styles specific to programs and/or course go further down.
+*/
+
+#cp-filters {
+    background: white;
+    &.undergrad {
+        .button-group {
+            .graduate {
+                display: none!important;
+            }
+        }
+    }
+    &.grad {
+        .button-group {
+            .undergraduate {
+                display: none!important;
+            }
+        }
+    }
+}
+
+.filter-wrap {
+    border-top: 0;
+    position: relative;
+    h2,
+    h3,
+    h4 {
+        margin: 0 0 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: $gray-darker;
+        font-size: 1em;
+        text-transform: uppercase;
+    }
+    ul {
+        padding: 0;
+        li {
+            cursor: pointer;
+            list-style: none;
+        }
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 0;
+        background: none;
+        border: 0;
+        text-align: left;
+        cursor: pointer;
+        line-height: 1.7em;
+        clear: none;
+        color: $blue;
+        float: none;
+        margin: 0;
+        &:hover,
+        &:active,
+        &:focus {
+            background: none;
+            border: 0;
+            color: $orange;
+        }
+        small {
+            font-size: .8em;
+        }
+    }
+    [class^="filter-col-"] {
+        font-size: .9em;
+        padding: 0 25px;
+        button {
+            padding: 2px 35px 2px 0;
+            font-size: 1em;
+        }
+        .scroll-wrapper {
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: -15px;
+                width: 100%;
+                height: 20px;
+                z-index: 9;
+            }
+        }
+        .scrollable {
+            padding-right: 20px;
+            overflow: auto;
+            max-height: 100%;
+            @media (min-width: $screen-lg-min) {
+                max-height: 195px;                
+            }
+            .scroll-element.scroll-y {
+                opacity: 1!important;
+            }
+            .scroll-x {
+                display: none;
+            }
+        }
+        .force-hidden {
+            display: none!important; 
+        }
+    }
+    .filter-col-icons {
+        button,
+        a {
+            display: block;
+            color: $blue;
+            padding: 5px 15px;
+            margin: 0!important;
+            border-bottom: 1px solid $border-color;
+            position: relative;
+            &.is-checked {
+                background: $gray-light;
+                font-weight: 600;
+                &:before {
+                    content: '';
+                    height: 100%;
+                    height: calc(100% + 2px);
+                    width: 4px;
+                    position: absolute;
+                    background: $blue;
+                    top: -1px;
+                    left: -1px;
+                }
+            }
+            &:focus,
+            &:active,
+            &:hover {
+                background: $gray-light;
+            }
+            strong {
+                font-weight: 400;
+                position: relative;
+                top: 2px;
+            }
+            &:last-child {
+                border-bottom: 0;
+            }
+            .icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 2px;
+                vertical-align: middle;
+            }
+        }
+        a {
+            text-decoration: none;
+        }
+        .icon-list {
+            border: 1px solid $border-color;
+        }
+        +hr {
+            margin-top: 30px!important;
+        }
+    }
+    .filter-col-toggle {
+        display: block;
+        button {
+            display: inline-block;
+            width: auto;
+            background: #E8ECEF;
+            padding: 5px 15px;
+            display: inline-block;
+            font-size: .9em;
+            margin-right: 2px;
+            &.is-checked,
+            &:hover,
+            &:focus,
+            &:active {
+                background: $blue;
+                color: white;
+            }
+        }
+        .button-group {
+            &#button-group-start {
+                button {
+                    width: 45px;
+                    padding: 5px 0;
+                    text-align: center;
+                }
+            }
+            button {
+                span {
+                    padding-left: 0;
+                    &:before,
+                    &:after {
+                        display: none!important;
+                    }
+                }
+            }
+        }
+    }
+    .button-group {
+        .all-btn {
+            display: block!important;
+        }
+        button {
+            position: relative;
+            margin-bottom: 5px;
+            &:focus {
+                outline: 0;
+            }
+            &:hover {
+                span {
+                    &:before {
+                        border: 2px solid $blue;
+                        background: $blue;
+                    }
+                }
+            }
+            > span {
+                display: block;
+                padding-left: 24px;
+                &:before {
+                    content: '';
+                    width: 12px;
+                    height: 12px;
+                    margin-top: 4px;
+                    display: inline-block;
+                    position: absolute;
+                    border: 2px solid gray;
+                    border-radius: 50%;
+                    left: 0;
+                }
+            }
+            &.is-checked {
+                font-weight: 600;
+                span {
+                    &:before {
+                        border: 2px solid $blue;
+                        background: $blue;
+                    }
+                    &:after {
+                        display: inline-block;
+                    }
+                }
+            }
+            &:hover,
+            &:active,
+            &:focus {
+                span {
+                    &:before {
+                        border: 2px solid $blue;
+                        background: $blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Course Search Filters ONLY  
+*
+* Specific styling used on the course filters only
+*/
+
+#cp-filters {
+    &.cp-filters-courses {
+        .filter-wrap {
+            .button-group {
+                button {
+                    /* Arts*/
+                    &[data-filter=".area1001"],
+                    &[data-filter=".area6"] {
+                        @include filterChecks ($fhss-color1)
+                    }
+                    /* Applied Studies*/
+                    &[data-filter=".area1"] {
+                        @include filterChecks ($fhss-color2)
+                    }
+                    /* Business and Admin*/
+                    &[data-filter=".area2"],
+                    &[data-filter=".area7"] {
+                        @include filterChecks ($fb-color1)
+                    }
+                    /* Humanities*/
+                    &[data-filter=".area3"] {
+                        @include filterChecks ($fhss-color3)
+                    }
+                    /* Non-business and Admin*/
+                    &[data-filter=".area1000"] {
+                        @include filterChecks ($fgs-color1)
+                    }
+                    /* Science */
+                    &[data-filter=".area4"] {
+                        @include filterChecks ($fst-color1)
+                    }
+                    /* Social Science*/
+                    &[data-filter=".area5"] {
+                        @include filterChecks ($fhss-color4)
+                    }
+                    /* Counselling */
+                    &[data-filter=".area8"] {
+                        @include filterChecks ($fhd-color1)
+                    }
+                    /* Distance Education */
+                    &[data-filter=".area9"] {
+                        @include filterChecks ($fst-color2)
+                    }
+                    /* Health */
+                    &[data-filter=".area10"] {
+                        @include filterChecks ($fhd-color2)
+                    }
+                    /* Information Systems */
+                    &[data-filter=".area11"] {
+                        @include filterChecks ($fst-color3)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/**
+* #.# Program Search Filters ONLY
+*
+* Specific styling used on the program filters only
+*/
+
+#cp-filters {
+    &.cp-filters-programs {
+        .filter-wrap {
+            .button-group {
+                button {
+                    /* Undergraduate - Bachelor of Arts */
+                    &[data-filter=".credBachelorofArts"] {
+                        @include filterChecks ($fhss-color1)
+                    }
+                    /* Undergraduate - Bachelor of Commerce */
+                    &[data-filter=".credBachelorofCommerce"] {
+                        @include filterChecks ($fb-color1)
+                    }
+                    /* Undergraduate - Bachelor of General Studies */
+                    &[data-filter=".credBachelorofGeneralStudies"] {
+                        @include filterChecks ($fhss-color2)
+                    }
+                    /* Undergraduate - Bachelor of Health Administrations */
+                    &[data-filter=".credBachelorofHealthAdministration"] {
+                        @include filterChecks ($fhss-color3)
+                    }
+                    /* Undergraduate - Bachelor of Human Resources and Labour Relations */
+                    &[data-filter=".credBachelorofHumanResourcesandLabourRelations"] {
+                        @include filterChecks ($fhss-color4)
+                    }
+                    /* Undergraduate - Bachelor of Management */
+                    &[data-filter=".credBachelorofManagement"] {
+                        @include filterChecks ($fb-color2)
+                    }
+                    /* Undergraduate - Bachelor of Nursing */
+                    &[data-filter=".cred-post-lpn-bachelor-of-nursing"],  &[data-filter=".cred-post-rn-bachelor-of-nursing"] {
+                        @include filterChecks ($fhd-color1)
+                    }
+                    /* Undergraduate - Bachelor of Professional Arts */
+                    &[data-filter=".credBachelorofProfessionalArts"] {
+                        @include filterChecks ($fhss-color5)
+                    }
+                    /* Undergraduate - Bachelor of Science */
+                    &[data-filter=".credBachelorofScience"] {
+                        @include filterChecks ($fst-color1)
+                    }
+                    /* Undergraduate - Certificate of Completion */
+                    &[data-filter=".credCertificateofCompletion"] {
+                        @include filterChecks ($tag-color-teal)
+                    }
+                    /* Undergraduate - University Certificate */
+                    &[data-filter=".credUniversityCertificate"] {
+                        @include filterChecks ($tag-color-blue)
+                    }
+                    /* Undergraduate - Diploma */
+                    &[data-filter=".credUniversityDiploma"] {
+                        @include filterChecks ($tag-color-orange)
+                    }
+                    /* Graduate - Doctor */
+                    &[data-filter=".credDoctor"] {
+                        @include filterChecks ($color1);         
+                    }
+                    /* Graduate - Master */
+                    &[data-filter=".credMaster"] {
+                        @include filterChecks ($color2);           
+                    }        
+                    /* Graduate - Post-Baccalaureate Certificate */
+                    &[data-filter=".credPost-BaccalaureateCertificate"] {
+                        @include filterChecks ($color3);         
+                    }      
+                    /* Graduate - Post-Baccalaureate Diploma */
+                    &[data-filter=".credPost-BaccalaureateDiploma"] {
+                        @include filterChecks ($color4);             
+                    }
+                    /* Graduate - Post-Masters Certificate */
+                    &[data-filter=".credPost-MastersCertificate"] {
+                        @include filterChecks ($color5);               
+                    }   
+                    /* Graduate - Post-Masters Diploma */
+                    &[data-filter=".credPost-MastersDiploma"] {
+                        @include filterChecks ($color6);              
+                    }  
+                }
+            }
+        }
+    }
+}
+
+
+/**  
+* #.# Loader animation for filter button toggle
+*/
+
+.filter-loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .8);
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}

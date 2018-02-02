@@ -1,0 +1,97 @@
+#utility {
+    display: flex;
+    font-size: 0.75em;
+    text-align: center;
+    align-items: center;
+    background: $blue-secondary;
+    height: $utility-height-sm;
+    color: white;
+    position: relative;
+    z-index: 99996;
+    border-bottom: 1px solid #6291c5;
+    padding: 0 2rem;
+    @media (min-width: $screen-sm-min) {
+        height: $utility-height-lg;
+        padding: 0 2rem;
+    }
+    @media (min-width: $screen-md-min) {
+        text-align: center;
+    }
+    @media (min-width: $screen-lg-min) {
+        font-size: 0.8em;
+        text-align: left;
+    } 
+    @media (min-width: $screen-xxl-min) {
+        padding: 0 2.5rem;
+    }    
+    p {
+        margin: 0;
+    }
+    > div {
+        width: 100%;
+        @media (min-width: $screen-lg-min) {
+            width: 50%;
+        }
+    }
+    #utility-msg {
+        .icon {
+            width: 10px;
+            height: 10px;
+            vertical-align: middle;
+            fill: $orange;
+            margin-left: 5px;
+        }
+        a {
+            font-weight: 600;
+            text-decoration: underline;
+            color: white;
+            color: white;
+            margin-left: 0.3em;
+            &:hover,
+            &:focus,
+            &:active {
+                color: lighten( $orange, 3% );
+            }
+        }
+    }
+    #util-nav {
+        display: none;
+        @media (min-width: $screen-lg-min) {
+            display: block;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: right;
+            .util-item {
+                display: inline-block;
+                position: relative;
+                a {
+                    text-decoration: none;
+                    font-weight: 400;
+                    display: block;
+                    margin-left: 2em;
+                    color: white;
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#au-primary-nav {
+    .util-item {
+        a {
+            border-bottom: 0;
+            padding: 0.5rem 1rem;
+            @media screen and ( max-height: 600px ){
+                padding: 0.4rem 1rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,195 @@
+/**
+* #.# Base styles for banner CTA's
+*
+* Usually located at the button of the base and has a solid color
+*/
+
+.cta{
+    margin-top: 1.5em;
+    max-width: 100%;
+    @media (min-width: $screen-sm-min) {
+        margin-top: 3.5em;     
+    }
+    a{
+        display: block;
+        text-decoration: none;  
+        &:hover{
+            text-decoration: none;   
+        }
+    }
+}
+
+/**
+* #.# AU Open House
+*/
+#openhouse-cta{
+    padding: .7em;
+    background: $blue;
+    .cta-inner{
+        border: 4px solid $orange;
+        padding: 2em 1em;
+        @extend .clearfix;
+        text-align: center;
+        font-size: .9em;
+        @media (min-width: $screen-sm-min) {
+            font-size: 1em;
+            padding: 2em;
+        }
+        @media (min-width: $screen-md-min) {
+            text-align: left;
+        }
+        .item{
+            float: none;
+            @media (min-width: $screen-md-min) {
+                float: left;  
+            }
+            img{
+                max-width: 100px;
+            }
+            &:nth-of-type(2){
+                @media (min-width: $screen-md-min) {
+                    width: calc(100% - 275px);
+                }
+            }
+            p, img, .btn {
+                @media (min-width: $screen-md-min) {
+                    @include vertical-align;  
+                }
+            }
+            p{
+                padding: 1em;
+                font-size: 1.3em;
+                margin: 0;
+                @media (min-width: $screen-md-min) {
+                    padding: 0 1.5em;
+                }
+                @media (min-width: $screen-lg-min) {
+                    font-size: 1.4em;    
+                }
+            }
+            .btn{
+                min-width: 175px;
+                padding-left: 0;
+                padding-right: 0;
+                display: inline-block;
+            }
+        }
+        p{
+            color: white;
+        }
+    }
+}
+
+/**
+* #.# Two column cta. Example can be seen on admissions/international-student-guidelines
+*/
+.cta-help{
+    text-align: center;
+    margin: 3em 0 0;
+    .cta-header{
+        background: $blue;
+        color: white;
+        padding: 2em 1em 2.4em;
+        h2, h3{
+            color: white;
+            margin: 0;
+        }
+        p{
+            margin: 0.3em 0 0;
+            font-size: 1.1em;
+        }
+    }
+    .cta-left, .cta-right{
+        width: 100%;
+        float: left;
+        padding: 0 1em;
+        @media (min-width: $screen-xs-min) {
+            width: 50%;
+            font-size: 0.8em;
+        }
+        @media (min-width: $screen-sm-min) {
+            width: 100%;
+            font-size: 1em;
+        }
+        @media (min-width: $screen-md-min) {
+            font-size: 0.9em;
+            width: 50%;
+        }
+        @media (min-width: $screen-lg-min) {
+            font-size: 1em;    
+        }
+    }
+    .cta-left{
+        border-bottom: 1px solid $border-color;
+        margin-bottom: 2em;
+        padding-bottom: 2em;
+        @media (min-width: $screen-xs-min) {
+            border: 0;
+            border-right: 1px solid $border-color;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        @media (min-width: $screen-sm-min) {
+            border: 0;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 2em;
+            padding-bottom: 2em;
+        }
+        @media (min-width: $screen-md-min) {
+            border: 0;
+            border-right: 1px solid $border-color;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+    }
+    .cta-inner{
+        padding: 2.5em 2em;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        @media (min-width: $screen-xs-min) {
+            padding: 3.5em 2em;    
+        }
+        a{
+
+            text-decoration: none;
+        }
+        img{
+            max-width: 125px;
+            margin: 20px 0;
+        }
+        svg{
+            width: 115px;
+            height: 115px;
+            display: block;
+            margin: auto;
+        }
+        h4{
+            margin: 0 0 1em;
+        }
+        p{
+            margin: 0 0 1em;
+            font-size: 1.2em;
+            font-weight: 400;
+            line-height: 1.4em;
+            color: $blue;
+            margin: 0.8em 0 0;
+            @media (min-width: $screen-lg-min) {
+                padding: 0 1em;
+            }
+            span{
+                display: block;
+            }
+        }
+    }
+    .cta-footer{
+        background-color: $gray-light;
+        border: 1px solid $border-color;
+        border-top: 0;
+        font-size: 0.9em;
+        p{
+            padding: 0.7em;
+            margin: 0;
+        }
+    }
+}

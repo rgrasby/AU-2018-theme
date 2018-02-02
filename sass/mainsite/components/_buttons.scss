@@ -1,0 +1,336 @@
+///////////////////
+/// ui elements //
+/////////////////
+body {
+    &.cd-is-visible {
+        .cd-top {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}
+
+.cd-top {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background: $blue;
+    position: fixed;
+    z-index: 99999;
+    bottom: 15px;
+    right: 10px;
+    border: 0;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(#000, .05);
+    overflow: hidden;
+    white-space: nowrap;
+    background: lighten($blue, 10%);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s 0s, visibility 0s .3s;
+    &.cd-is-visible,
+    &.cd-fade-out,
+    .no-touch &:hover {
+        transition: opacity .3s 0s, visibility 0s 0s;
+    }
+    &.cd-fade-out {
+        opacity: .5;
+    }
+    .no-touch &:hover {
+        background-color: #fff;
+        opacity: 1;
+    }
+}
+
+.cd-top i {
+    position: relative;
+    top: -2px;
+}
+
+//////////////////////////////////////////////
+////          buttons                   //////
+//////////////////////////////////////////////
+button:focus {
+    outline: 0;
+}
+
+.btn {
+    padding: .8em 1.875em;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 3px;
+    &.btn-full{
+        display: block;
+        @include full-width;
+    }
+    i {
+        vertical-align: middle;
+        margin-right: 5px;
+        position: relative;
+        top: -.045em;
+    }
+    &.btn-sm {
+        font-size: .9em;
+    }
+    &.btn-md {
+        font-size: 1.05em;
+    }
+    &.btn-lg {
+        font-size: 1.2em;
+    }
+    &.btn-orange {
+        border: 0;
+        background: $orange;
+        color: white;
+        text-decoration: none!important;
+        font-weight: 400;
+        border: 2px solid $orange;
+        margin-top: 1em;
+        &:hover,
+        &:focus,
+        &:active {
+            background: darken($orange, 8%);
+            border: 2px solid darken($orange, 8%);
+            i {
+                &:first-of-type {
+                    display: none;
+                }
+                &:last-of-type {
+                    display: inline-block;
+                }
+            }
+        }
+        i {
+            width: 1em;
+            &:first-of-type {
+                display: inline-block;
+            }
+            &:last-of-type {
+                display: none;
+                margin-top: -.2em;
+            }
+        }
+    }
+    &.btn-ghost {
+        border: 2px solid white;
+        background: none;
+        color: white;
+        &:hover,
+        &:focus,
+        &:active {
+            background: darken($orange, 8%);
+            border: 2px solid darken($orange, 8%);
+        }
+    }
+    &.btn-gray {
+        background-color: $border-color;
+        border: 1px solid $gray-medium;
+        color: $orange;
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: $orange;
+            color: #ffffff;
+            border: 1px solid $orange;
+        }
+    }
+    &[class*="btn-circle-icon"] {
+        text-decoration: none;
+        margin: 1.5em 0;
+        padding: 0 0 0 2.8em;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $blue;
+        border-bottom: 2px solid transparent;
+        text-align: left;
+        background: none;
+        display: block;
+        &.btn-white {
+            color: white;
+            &:hover,
+            &:focus,
+            &:active {
+                color: white;
+            }
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: underline;
+            color: $orange;
+            &::after {
+                content: '\f061'!important;
+            }
+        }
+        &::after,
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            height: 30px;
+            width: 30px;
+            top: 50%;
+            margin-top: -15px;
+        }
+        //orange circle
+        &::before {
+            border-radius: 50%;
+            background: $orange;
+        }
+        //icons
+        &::after {
+            font-family: FontAwesome;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            line-height: 31px;
+            margin-left: .03em;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            font-weight: normal;
+        }
+        &.external {
+            &::after {
+                content: '\f08e';
+            }
+        }
+        &.internal {
+            &::after {
+                content: '\f0c1';
+            }
+        }
+        &.anchor {
+            &:hover,
+            &:focus,
+            &:active {
+                &::after {
+                    content: '\f063'!important;
+                    line-height: 46px;
+                }
+            }
+            &::after {
+                content: '\f063';
+            }
+        }
+        &.icon-top {
+            &::after,
+            &::before {
+                top: 20px;
+                margin-top: 0;
+            }
+        }
+    }
+    &.btn-circle-icon-lg {
+        font-size: 1.1em;
+        padding-left: 3.3em;
+        @media (min-width: $screen-sm-min) {
+            font-size: 1.2em;
+            padding-left: 3em;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            text-decoration: underline;
+            color: $orange;
+            &::after {
+                line-height: 44px;
+            }
+        }
+        &::after,
+        &::before {
+            margin-top: -22px;
+            width: 44px;
+            height: 44px;
+        }
+        &::after {
+            font-size: 18px;
+            line-height: 46px;
+        }
+    }
+    &.btn-img-bg {
+        background-size: cover;
+        background-position: center;
+        height: 225px;
+        position: relative;
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-end;
+        text-align: left;
+        font-weight: 400;
+        &:before {
+            content: '';
+            transition: all 0.2s ease;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        &:hover,
+        &:focus,
+        &:active {
+            &:before {
+                background: rgba(0, 0, 0, 0.6);
+            }
+        }
+        span {
+            position: relative;
+            z-index: 9;
+        }
+        strong {
+            display: block;
+            font-size: 1.6em;
+            font-weight: 600;
+        }
+    }
+}
+
+a {
+    &:hover,
+    &:focus,
+    &:active {
+        .btn {
+            &.btn-circle-icon-lg {
+                text-decoration: underline;
+                color: $orange;
+                &::after {
+                    content: '\f061'!important;
+                    @media (min-width: $screen-sm-min) {
+                        line-height: 44px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btn-group {
+    padding: 1em 0;
+    a {
+        &[class*="btn-circle-icon"] {
+            &:last-of-type {
+                margin-bottom: 0!important;
+            }
+        }
+    }
+}
+
+.foip {
+    font-size: 0.7em;
+    font-style: italic;
+    margin-top: 1em;
+    border-top: 2px solid #CCCCCC;
+    float: left;
+    clear: both;
+    margin-top: 2em;
+    padding-top: 1em;
+}

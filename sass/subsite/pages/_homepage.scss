@@ -1,0 +1,414 @@
+/**
+* #.# Homepage Slide in menu
+*
+*/
+.homepage{
+    #main-content{
+        max-width: 70em;
+    }
+    &.hidden-nav{
+        #main-navigation-container{
+            transition: 0.3s ease-in;
+            transform: translate(-100%);
+             .nav-panel-label{
+                &.default{
+                    display: inline-block;
+                }
+            }
+            &.visible{
+                transform: translate(0);  
+            }
+        }        
+        #breadcrumb{
+            transition: 0.3s ease-in;
+            @media (min-width: $screen-sm-min) {
+                padding-left: 0;
+            }
+            &.push-over{
+                margin-left: 0;
+            }
+        }
+        #main-content{
+            max-width: 70em;
+        }
+        #open-main-nav{
+            border: 0;
+            background: $orange;
+            color: white;
+            display: none;
+            height: 100%;
+            padding: 0 1em;
+            margin-right: 1.5em;
+            &:focus, &:hover{
+                background: darken($orange, 8%);
+            }
+            @media (min-width: $screen-sm-min) {
+                display: flex;   
+            }
+        }
+        .content-container{
+            padding-left: 0;
+            &.main-nav-showing{
+                padding-left: 300px;
+            }
+        }
+    }
+}
+
+#breadcrumb{
+    .hamburger{
+        display: block;
+        padding: 0;
+        .nav-panel-label{
+            margin-left: 0.2em;
+            &.default{
+                display: inline-block;
+            }
+            &.close{
+                display: none;
+            }
+        }
+    }
+    &.active{
+        .hamburger-inner {
+            transform: rotate(45deg);
+            transition-delay: 0.12s;
+            transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            &::before {
+                top: 0;
+                opacity: 0;
+                transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+            }
+            &:after {
+                bottom: 0;
+                transform: rotate(-90deg);
+                transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+        }
+        .nav-panel-label{
+            &.default{
+                display: none;
+            }
+            &.close{
+                display: inline-block;
+            }
+        }    
+    }
+}
+
+/**
+* #.# Homepage subsites
+*
+* Styles used in the homepage subsites. Includes banner, feature boxes etc.
+*/
+
+.mobile-device{
+    .homepage{
+        #subsite-hero{
+            background-attachment: scroll;
+        }
+    }    
+}
+.homepage {
+    //hero image
+    #subsite-hero{   
+        margin-top: -1px;
+        background-size: cover;
+        background-position: top right;
+        min-height: 500px;
+        height: calc(100vh - 300px);
+        overflow: hidden;
+        position: relative;
+        background-attachment: scroll;
+        display: flex;
+        align-items: flex-end;
+        @media (min-width: $screen-md-min) {
+            align-items: center;  
+            background-attachment: fixed;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            //gradient from bottom
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(0,0,0,0.99) 99%,rgba(0,0,0,1) 100%);  
+            @media (min-width: $screen-md-min) {
+                //gradient from left
+                background: linear-gradient(to right, rgba(0,0,0,0.9) 0%,rgba(125,185,232,0) 100%); 
+            }
+        }
+        .subsite-hero-content{
+            position: relative;
+            padding: 2em;
+            z-index: 9;
+            max-width: 100%;
+            margin-top: -1.5em;
+            @media (min-width: $screen-md-min) {
+                max-width: 700px;  
+                padding-left: 4em;
+            }
+            h1{
+                color: white;
+                text-transform: uppercase;
+                font-weight: 800;
+                position: relative;
+                margin-bottom: 0.6em;
+                &::after{
+                    content: '';
+                    height: 4px;
+                    width: 120px;
+                    position: absolute;
+                    background: $orange;
+                    bottom: -0.3em;
+                    left: 0;
+                }
+                span{
+                    display: block;
+                    text-transform: none;
+                    font-size: 0.6em;
+                    font-weight: 300;
+                    line-height: 1.5em;
+                }
+            }  
+            p{
+                color: white;
+                line-height: 1.6em;
+                font-size: 1.1em;
+            }
+        }
+    }
+    #main-content{
+        #main{
+            padding: 0;
+        }
+    }
+    #main {
+        @media (min-width: $screen-md-min) {
+            @include span(8);
+        }
+    }
+    #secondary {
+        @media (min-width: $screen-md-min) {
+            @include span(4 last);
+        }
+    }
+    #updated {
+        float: left;
+    }
+    .owl-carousel{
+        .overlay {
+            a{
+                position: relative;
+            }   
+        }
+    }
+}
+
+#secondary {
+    font-size: 0.9em;
+    color: $blue;
+    h2 {
+        color: $blue;
+        @include sans;
+        font-size: 1.3em;
+        margin-bottom: 0.5em;
+    }
+    hr {
+        border: 0;
+        margin: 0;
+        display: none;
+    }
+    p,
+    ul {
+        margin-top: 0;
+    }
+    ul {
+        li {
+            list-style-type: disc;
+            background: none;
+            padding-left: 0;
+            line-height: 1.4em;
+            font-weight: bold;
+            font-size: .95em;
+            margin-bottom: 1em;
+        }
+    }
+    p {
+        font-size: .85em
+    }
+    h4 {
+        margin: 0 0 0.4em;
+        padding-bottom: 0;
+        font-weight: bold;
+        font-size: 0.9em;
+        a {
+            text-decoration: none;
+        }
+    }
+    .box {
+        background: lighten($gray-light, 2%);
+        padding: 0.8em;
+        margin-bottom: 2em;
+        .button {
+            position: relative;
+            text-align: left;
+            padding: 0.8em 1.5em;
+            color: white;
+            font-weight: 600;
+            border: 0;
+            margin-bottom: 0.6em;
+            &:hover {
+                border: 0;
+            }
+            &::before {
+                content: '';
+                font-family: FontAwesome;
+                font-weight: 400;
+                display: inline-block;
+                margin-right: 0.5em;
+                font-size: 1.4em;
+                width: 20px;
+            }
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        .facebook, .twitter{
+            display: block;
+        }
+        /* Social Buttons */
+        .facebook {
+            background: #3B5998;
+            &:hover {
+                background: darken(#3B5998, 5%);
+            }
+            &::before {
+                content: '\f09a';
+            }
+        }
+        .twitter {
+            background: #0084b4;
+            &:hover {
+                background: darken(#0084b4, 5%);
+            }
+            &::before {
+                content: '\f099';
+            }
+        }
+        /* News feed */
+        .news-item {
+            padding-bottom: 1em;
+            margin-bottom: 1em;
+            border-bottom: 1px solid $border-color;
+            &:first-of-type{
+                h4{
+                    margin-top: 0.6em;
+                }
+            }
+            &:last-of-type{
+                border-bottom: 0;
+                margin-bottom: 0;
+                padding-bottom: 0.5em;
+            }
+        }
+    }
+}
+
+
+/* Coloured feature boxes. Most subsites have 3 feature boxes but some have 4 */
+
+.feature {
+    @include full-width;
+    margin: 0 0 1em;
+    overflow: auto;
+    h2 {
+        font-size: 0.95em;
+        border: none;
+        margin: 0;
+        width: 100%;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 800;
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+    &:nth-child(1){
+        background: $blue-secondary;    
+    }
+    &:nth-child(2){
+        background: $blue-shade1;    
+    }
+    &:nth-child(3){
+        background: $blue-shade2;    
+    }
+    &:nth-child(4){
+        background: $blue-shade3;    
+    }
+    .feature-content {
+        border: 1px solid $border-color;
+        background: lighten($gray-light, 2%);
+        max-height: 250px;
+        overflow: auto;
+        width: 100%;
+        padding: 1.5em;
+        font-size: 0.95em;
+        @media (max-width: $screen-sm-max) {
+            height: auto!important;
+        }
+    }
+    img {
+        display: none;
+    }
+    header {
+        height: auto;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        padding: 1em;
+        @media (min-width: $screen-md-min) {
+            height: 6em;    
+        }
+    }
+    ul{
+        @include custom-lists(10px, "\f054", 7px); 
+        padding-left: 0;
+    }
+}
+
+.features-2 {
+    .feature {
+        @include span(6);
+    }
+}
+
+.features-3 {
+    .feature {
+        @media (min-width: $screen-md-min) {
+            @include span(4);
+        }
+    }
+}
+
+.features-4 {
+    .feature {
+        @media (min-width: $screen-md-min) {
+            @include span(3);
+        }
+    }
+}
+
+.features-2,
+.features-3,
+.features-4 {
+    margin-top: 1em;
+    .feature {
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+}

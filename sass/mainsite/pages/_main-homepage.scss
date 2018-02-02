@@ -1,0 +1,834 @@
+/** 
+* #.# Hero image
+* 
+* "Time for" campaign. Background and content randomly change on page refresh
+*/
+ 
+.mobile-device{
+    #homepage-hero-v2{
+        background-attachment: scroll;    
+    }   
+}
+ 
+#homepage-hero-v2{
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    //mobile fallback background image
+    @media (max-width: $screen-sm-min) {
+        background-image: url('../images/time-for-bg-4.jpg')!important;
+    }
+    @media (min-width: $screen-md-min) { 
+        padding: 0;
+        min-height: 550px; 
+        height: calc(100vh - 300px);
+        background-attachment: fixed;
+    }
+    &.hero-align-left{
+        text-align: center;  
+        @media (min-width: $screen-sm-min) {
+            text-align: left;
+        }
+        .homepage-hero-time{
+            @media (min-width: 1340px) {
+                margin-left: -48px;
+            }
+        }
+    }
+    &.hero-align-center{
+        text-align: center;
+    }
+    /* Woman on computer and Man sitting beside cliff */
+    &.hero-image-2, &.hero-image-3{ 
+        @media (min-width: $screen-md-min) {
+            background-position: 80% center;  
+        }
+    }
+    .page{
+        height: 100%;
+    }
+} 
+
+
+.homepage-hero-time{
+    position: relative;
+    padding: 60px 0;    
+    font-size: .9em;
+    @media (min-width: $screen-sm-min) {   
+        font-size: 1em;
+    }
+    @media (min-width: $screen-md-min) {
+        padding: 0;    
+        top: 46%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        font-size: 1.3em;
+    }
+    @media (min-width: $screen-lg-min) {
+        font-size: 1.65em;    
+    }
+    strong{
+        margin: 0;
+        display: inline-block;
+        background: $orange;
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px 13px;
+        line-height: 1em;
+        overflow: hidden;
+        font-size: 1.4em;    
+        &:first-of-type{
+            margin-bottom: 10px;
+        }
+        @media (min-width: $screen-lg-min) {
+            font-size: 1.9em;    
+            padding: 11px 20px 17px;
+        } 
+        span{
+            background: $blue;
+            padding: 20px;
+            margin-left: -20px;
+            margin-right: 7px;
+            line-height: 1em;
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                top: 50%;
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                border-left: 10px solid $blue;
+                margin-top: -8px;
+                right: -4px;
+            }
+        }
+    }
+}
+
+.homepage-hero-content{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    background: $blue;
+    background: rgba(46,44,79,0.65);
+    padding: 15px 0 20px; 
+    font-size: .9em;
+    @media (min-width: $screen-sm-min) {
+        height: 110px;       
+        padding: 15px 20px 20px; 
+        text-align: left;
+    } 
+    @media (min-width: $screen-md-min) {
+        position: absolute;
+        bottom: 0;
+        padding: 25px 0 30px; 
+        font-size: 1em;
+    } 
+    .page{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        @media (min-width: $screen-sm-min) {
+            padding: 0;
+        }
+        @media (min-width: $screen-md-min) {
+            width: 80%;    
+        }
+        @media (min-width: $screen-lg-min) {
+            width: 780px;    
+        }
+    }
+    h1, p{
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        color: white;
+        @media (min-width: $screen-sm-min) {
+            position: absolute;    
+        }
+        span{
+            display: block;
+            @media (min-width: $screen-sm-min) {
+                position: relative;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        }
+    }
+    h1{
+        margin: 0 0 5px;
+        left: 0;
+        font-size: 1.4em;
+        line-height: 1.2em;
+        @media (min-width: $screen-sm-min) {
+            margin: 0;
+            width: 260px;    
+            text-align: right;
+            span{
+                &::before{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0; 
+                    right: 0;
+                    background: white;
+                    width: 1px;
+                    margin-right: -23px;
+                }
+            }
+        }
+        em{
+            font-style: normal;
+            display: block;
+            @media (min-width: $screen-xs-min) {
+                display: inline;
+            }
+            @media (min-width: $screen-sm-min) {
+                display: block;   
+            }
+        }
+    }
+    p{ 
+        @media (min-width: $screen-sm-min) {
+            padding: 0 0 0 305px;    
+            font-size: 1.1em;
+        }
+    }
+}
+
+
+/**
+* #.# Discover AU
+*
+* Call to action for perspective students to learn what AU is all about
+*/
+#discover-au{
+    padding: 60px 0 0;
+    position: relative;
+    .discover-au-content{
+        margin: auto;
+        position: relative;
+        z-index: 99;
+    }
+    .discover-au-bg{
+        display: block;
+        position: relative; 
+        background-image: url(../images/discover-au-mountain-bg.jpg);
+        background-size: cover;
+        padding-bottom: 50%;
+        @media (min-width: $screen-sm-min) {
+            padding-bottom: 40%;
+        }
+        @media (min-width: $screen-lg-min) {
+            margin-top: -150px;    
+        }
+    }
+    .shield-seperator{
+        background: $blue; 
+        background-clip: content-box;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        display: block;
+        position: absolute;
+        left: 50%;
+        bottom: -55px;
+        margin-left: -50px;
+        text-align: center;
+        border: 6px solid white;
+        &:not(.no-animation){
+            opacity: 0;
+        }
+        @media (min-width: $screen-sm-min) {
+            width: 120px;
+            height: 120px;
+            margin-left: -60px;  
+            bottom: -65px;
+        }
+        svg{
+            width: 50px;
+            height: 50px;
+            margin-top: 22px;
+            @media (min-width: $screen-sm-min) {
+                width: 60px;
+                height: 60px;
+                margin-top: 28px;
+            }
+        }
+    }
+    @media (min-width: $screen-md-min) {
+        padding: 100px 0 0;      
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+} // end discover AU
+
+
+/**
+* #.# Primary calls to action
+*
+* Most important site links for perspective students
+*/
+#cta-primary{
+    padding: 75px 0 50px;  
+    position: relative;
+    @media (min-width: $screen-lg-min) {
+        padding: 75px 0 85px; 
+    }
+    .section-heading{
+        font-size: 1.2em;
+        @media (max-width: $screen-xs-min) {
+            margin-bottom: 20px;   
+        }
+    }
+    .columns-3{
+        padding-top: 35px;
+        text-align: center;
+        a{
+            text-align: center;
+            text-decoration: none;
+            padding: 45px 20px 40px;
+            display: block;
+            border: 1px solid lighten($border-color, 5%);
+            background: white;
+            position: relative;
+            transition: all 0.1s ease-in;
+            @media (min-width: $screen-xl-min) {
+                padding: 45px 25px 40px;    
+            }
+            .start{
+                display: block;
+                position: absolute;
+                top: -12px;
+                left: 0;
+                text-align: center;
+                width: 100%;
+                span{
+                    display: inline-block;
+                    padding: 0 0 0 6px;
+                    position: relative;
+                    height: 25px;
+                    &:after{ 
+                        content: '';
+                        height: 1px;
+                        background: white;
+                        position: absolute;
+                        left: 0;
+                        width: 100%;
+                        top: 11px;
+                    }
+                    h3{
+                        position: relative;
+                        z-index: 9;
+                        font-size: 1em;
+                        font-weight: 400;
+                        margin: 0;
+                        color: $gray-darker;
+                        sup{
+                            margin-left: -1px;
+                        }
+                    }
+                }
+            }
+            h2{
+                font-size: 1.5em;
+                line-height: 1.3em;
+                margin-top: 20px;
+                span{
+                    display: block;
+                    font-size: .7em;
+                    line-height: 1.3em;
+                }
+            }
+            p{
+                color: $text-color;
+                font-size: .95em;
+            }
+            &:hover, &:focus{
+                transform:  scale(1.02);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+                p{
+                    color: $text-color;
+                }
+            }
+        }
+        .btn-link{
+            padding: 15px 0 0;
+            font-size: .9em;
+            text-align: center;
+        }
+        .small-print{
+            font-size: .8em;
+            font-style: italic;
+            padding: 10px 10px 40px;
+            color: lighten($text-color, 10%);
+            @media (min-width: $screen-sm-min) {
+                padding: 10px 10px 0;    
+            }
+        }
+    }
+    .icon{
+        width: 105px;
+        height: 105px;
+    }
+} 
+
+/**
+* #.# Secondary calls to action
+*
+* Less important site links
+*/
+
+#cta-secondary{
+    text-align: center;
+    + .page{
+        hr{
+            margin: 20px 0;
+            opacity: 0;
+            @media (min-width: $screen-md-min) {    
+                opacity: 1;  
+                margin: 80px 0;
+            }
+        }
+    }
+    .section-heading{
+        font-size: 1.2em;
+    }
+    .cta-secondary-wrap{
+        position: relative;
+    }
+    .cta-secondary-left, .cta-secondary-right{
+        font-size: 1em;
+        @media (max-width: $screen-xs-max) {  
+            height: auto!important;
+        }
+        @media (min-width: $screen-xs-min){
+            width: 50%;
+            float: left;             
+        }
+        @media (min-width: $screen-sm-min){
+            font-size: 1.1em;
+        }
+        @media (min-width: $screen-lg-min){
+            font-size: 1.2em;
+        }
+    }
+    .cta-secondary-left{
+        padding-right: 0;
+        @media (min-width: $screen-sm-min) {  
+            text-align: right;
+            padding-right: 145px;  
+        }
+        @media (min-width: $screen-md-min) {  
+            padding-right: 175px;    
+        }
+        @media (min-width: $screen-lg-min) {  
+            padding-right: 255px;    
+        }
+    }
+    .cta-secondary-right{
+        padding-left: 0;
+        @media (min-width: $screen-sm-min) {  
+            text-align: left;
+            padding-left: 145px;  
+        }
+        @media (min-width: $screen-md-min) {  
+            padding-left: 175px;    
+        }
+        @media (min-width: $screen-lg-min) {  
+            padding-left: 255px;    
+        }
+    }
+    .cta-secondary-inner{
+        @media (min-width: $screen-sm-min){
+            @include vertical-align;   
+        }
+    }
+    .cta-secondary-item{
+        margin-bottom: 20px;
+        @media (min-width: $screen-sm-min){
+            margin-bottom: 40px;
+        }
+        h3{
+            margin-top: 0;
+        }
+    }
+    .cta-secondary-shield{
+        display: none;
+        width: 300px;
+        left: 50%;
+        margin: auto;
+        position: absolute;
+        @media (min-width: $screen-sm-min) { 
+            display: block;
+            margin-left: -141px;
+        }
+        @media (min-width: $screen-md-min) {  
+            width: 350px;   
+            margin-left: -171px;
+        }
+        @media (min-width: $screen-lg-min) {  
+            width: 490px;   
+            margin-left: -241px;
+        }
+        img{
+            @include vertical-align;   
+        }
+    }
+    h3{
+        font-weight: 400;
+        a{
+            color: $blue;
+            text-decoration: none;
+            &:focus, &:active, &:hover{
+                color: $orange;
+                text-decoration: underline;
+            }
+        }
+    }
+    @include reset-list();
+    ul{
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0;
+        li{
+            margin-bottom: 5px;
+            font-size: .9em;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            a{
+                color: #636363;
+                text-decoration: none;
+                &:focus, &:active, &:hover{
+                    color: $orange;
+                    text-decoration: underline;
+                }
+            }
+        } 
+    }
+    
+    //apply and register CTA
+    #cta-secondary-apply-trigger{
+        margin: 2em 0 0;   
+        #cta-secondary-apply{
+            overflow: hidden;
+            border: 1px solid $border-color;
+            width: 100%; 
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            height: 0;
+            margin: 0 auto;
+            @media (min-width: $screen-md-min) {
+                width: 60%;     
+            }
+            &.open{
+                opacity: 1;
+                visibility: visible;
+                height: auto;
+                margin: 2.5em auto 1.25em;
+            }
+            @include reset-list();
+            ul{
+                margin: 0;  
+                li{
+                    margin: 0;
+                    @media (min-width: $screen-xs-min) {
+                        width: 50%;
+                        float: left;
+                    }
+                    &:first-of-type{
+                        border-bottom: 1px solid $border-color;
+                        @media (min-width: $screen-xs-min) {
+                            border-bottom: 0;
+                            border-right: 1px solid $border-color;
+                        }
+                    }
+                    a{
+                        text-decoration: none;
+                        display: block;
+                        padding: 1.875em; 
+                        &:hover, &:focus, &:active{
+                            h3{
+                                text-decoration: underline;
+                            }
+                        }
+                        h3{
+                            margin: 0.5em 0 0;
+                            font-size: 1.4em;
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+            .icon{
+                width: 85px;
+                height: 85px;
+            }
+        }  
+    }
+}
+
+/**
+* #.# Student testimonial
+*/
+#testimonials {
+    @include full-width;
+    color: #FFFFFF;
+    padding: 80px 0 0;  
+    margin-bottom: 20px;
+    position: relative;
+    background: $blue-shade3;
+    @media (min-width: $screen-sm-min) {
+        margin-bottom: 60px;  
+    }
+    @media (min-width: $screen-md-min){
+        padding: 0;   
+    }
+    &::before{
+        display: block;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        position: absolute;
+        background: $blue-tertiary;
+        @media (min-width: $screen-md-min){
+            content: '';            
+        }
+    }
+        
+    .page {
+        position: relative;
+        z-index: 9;
+    }
+    .one-half-md{
+        @media (min-width: $screen-md-min){
+            padding: 80px 0;
+        }
+        p{
+            margin: 0;
+            font-size: 1.1em;
+        }
+    }
+    #what-students-say {
+        .page{
+            @include vertical-align;
+        }
+        h3 {
+            color: #FFFFFF;
+            margin: 0;
+            font-weight: normal;
+            text-align: left;
+            font-size: 1.6em;
+            @media (min-width: $screen-md-min){
+                font-size: 2em;
+                margin-top: -10px;
+                text-align: center;
+            }
+            @media (min-width: $screen-lg-min){
+                font-size: 2.8em;    
+            }
+        }
+    }
+    .column{
+        position: relative;
+    }
+    .attribution{
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+.top-notch{
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+}
+.top-notch{
+    width: 0px;
+    height: 0px;
+    border-bottom: 20px solid white;
+    border-left: 20px solid white;
+    transform: rotate(135deg);
+    top: -10px;                             
+}
+.bottom-notch{
+    background:  url("../images/home-bottom-cutout.png") no-repeat center;
+    margin-top: 70px;
+    height: 20px;
+    width: 100%;
+    position: relative;
+    @media (min-width: $screen-md-min) {  
+        margin-top: 20px;    
+    }
+}
+
+/**
+* #.# Featured news spot
+*
+* shows a nice feature and calls out story in a bigger column
+*/
+#news-feature {
+    @media (min-width: $screen-md-min) {  
+        padding-right: 10px;   
+    }
+    a{
+        text-decoration: none;
+        display: block;
+    }
+    h3 {
+        font-weight: normal;
+        padding: 0;
+        margin-top: 0.5em; 
+    }
+    p {
+        font-family: Georgia, serif;
+        color: $gray-darker;
+        font-size: 1.1em;
+        line-height: 1.5em;
+        margin-top: 0.5em;
+    }
+    .feature {
+        height: auto;
+        overflow: hidden;
+        width: 100%;
+        float: none;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    } 
+}
+
+/**
+* #.# News list and twitter updates
+*
+* news list is pulled from wordpress site and updates are a twitter widget
+*/
+
+#home-news{
+    margin-bottom: 60px;
+    .one-half-md {
+        &#news-feature{
+            margin-bottom: 40px;
+            @media (min-width: $screen-md-min) {    
+                margin-bottom: 0;
+            }
+            h3{
+                font-size: 1.6em;
+            }
+        }
+        #news-list{
+            margin-bottom: 40px;
+            @media (min-width: $screen-xs-min) {    
+                margin-bottom: 0;
+            }       
+        }
+    }
+}
+#news-list h3,
+#announcements h3 {
+    margin-top: 0;
+    line-height: 1em;
+    margin-bottom: 1em;
+    font-weight: lighter;
+    font-size: 1.8em;
+    color: $orange;
+}
+#announcements{
+    padding-left: 0;
+    @media (min-width: $screen-xs-min) {   
+        padding-left: 10px;    
+    }
+    iframe{
+        border: 1px solid rgba(15,70,100,.12)!important;
+    }
+}
+#news-list {
+    padding-right: 10px;
+    .news-article {
+        margin-bottom: 1em;
+        position: relative;
+        padding-left: 70px;
+        @extend .clearfix;
+        a{
+            text-decoration: none;
+            .date {
+                width: auto;
+                color: #ffffff;
+                border-radius: 30px;
+                height: 50px;
+                width: 50px;
+                text-align: center;
+                padding-top: 2px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .month {
+                clear: both;
+                text-transform: uppercase;
+                display: block;
+                font-size: 0.8em;
+                font-weight: 300;
+                margin-top: -0.4em;
+            }
+            .day {
+                clear: both;
+                display: block;
+                font-size: 1.15em;
+                margin-top: 0.1em;
+            }
+            h4 {
+                margin-top: 0;
+                font-weight: 600;
+                border-bottom: 1px solid $gray-medium;
+                margin-bottom: 0.4em;
+                padding-bottom: 0.4em;
+            }
+            p {
+                margin-top: 0;
+                font-size: 0.85em;
+                color: $gray-darker;
+            }
+            .more {
+                display: inline-block;
+                margin-left: 2px;
+            }
+            &:hover, &:focus, &:active{
+                h4{
+                    color: $orange;
+                }
+                p{
+                    color: $gray-darker;
+                }
+                .more{
+                    color: $orange;
+                }
+            }
+        }
+        &.article-1 .date {
+            background: $blue-tertiary;
+        }
+        &.article-2 .date {
+            background: $blue-tertiary;
+        }
+        &.article-3 .date {
+            background: #66b8d5;
+        }
+    }
+}

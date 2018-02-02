@@ -1,0 +1,273 @@
+/**
+* #.# Program Credential and Course area colors.
+*
+* This can be seen in the course/program listings and program landing pages
+*/
+      
+#main, #cp-main{
+    .cp-area-tags, #cp-area-tags{
+        display: block;
+        padding: 0;
+        li, > span{
+            padding: 1px 0;
+            font-size: .8em;
+            position: relative;
+            display: block!important;
+            margin-bottom: 5px;
+            color: $gray-darker;
+            line-height: 1.3em;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+            &::before{
+                width: 15px;
+                height: 15px;
+                left: 0;
+                border-radius: 50%;
+                content: '';
+                display: inline-block;
+                position: relative;
+                margin-right: 8px;
+                background: black;
+                vertical-align: middle;
+                top: -0.1em;
+                font-size: 1em;
+            }
+            /**
+            * #.# Program Tags Only
+            *
+            * Colors for program tags
+            */
+
+            /* Undergraduate - Bachelor of Arts */
+            &.tag-BachelorofArts{
+                &::before{
+                    background: $fhss-color1;
+                }
+            }
+            /* Undergraduate - Bachelor of Commerce */
+            &.tag-BachelorofCommerce{
+                &::before{
+                    background: $fb-color1;
+                }
+            }
+            /* Undergraduate - Bachelor of General Studies */
+            &.tag-BachelorofGeneralStudies{
+                &::before{
+                    background: $fhss-color2;
+                }
+            }
+            /* Undergraduate - Bachelor of Health Administrations */
+            &.tag-BachelorofHealthAdministration{
+                &::before{
+                    background: $fhss-color3;
+                }
+            } 
+            /* Undergraduate - Bachelor of Human Resources and Labour Relations */
+            &.tag-BachelorofHumanResourcesandLabourRelations{
+                &::before{
+                    background: $fhss-color4;
+                }
+            }
+            /* Undergraduate - Bachelor of Management */
+            &.tag-BachelorofManagement{
+                &::before{
+                    background: $fb-color2;
+                }
+            }
+            /* Undergraduate - Bachelor of Nursing */
+            &.tag-BachelorofNursing, &.tag-Post-LPNBachelorofNursing, &.tag-Post-RNBachelorofNursing{
+                &::before{
+                    background: $fhd-color1;
+                }
+            }
+            /* Undergraduate - Bachelor of Professional Arts */
+            &.tag-BachelorofProfessionalArts{
+                &::before{
+                    background: $fhss-color5;
+                }
+            }
+            /* Undergraduate - Bachelor of Science */
+            &.tag-BachelorofScience{
+                &::before{
+                    background: $fst-color1;
+                }
+            }
+            /* Undergraduate - Certificate of Completion */
+            &.tag-CertificateofCompletion{
+                &::before{
+                    background: $tag-color-teal;
+                }
+            }
+            /* Undergraduate - University Certificate */
+            &.tag-UniversityCertificate{
+                &::before{
+                    background: $tag-color-blue;
+                }
+            }
+            /* Undergraduate - Diploma */
+            &.tag-UniversityDiploma{
+                &::before{
+                    background: $tag-color-orange;
+                }
+            }    
+
+            /* Graduate - Arts */            
+            &.tag-area1{
+                &::before{
+                    background: $fhss-color1;
+                }
+            }
+            /* Graduate - Business */
+            &.tag-area2{
+                &::before{
+                    background: $fb-color1; 
+                }
+            }
+            /* Graduate - Counselling */
+            &.tag-area3{
+                &::before{
+                    background: $fhd-color1;
+                }
+            }
+            /* Graduate - Distance Education */
+            &.tag-area4{
+                &::before{
+                    background: $fst-color1;
+                }
+            }
+            /* Graduate - Health */
+            &.tag-area5{
+                &::before{
+                    background: $fhd-color2;
+                }
+            }
+            /* Graduate - Science and Technology */
+            &.tag-area6{
+                &::before{
+                    background: $fst-color1;
+                }
+            }
+
+            /**
+            * #.# New Graduate Tags
+            *
+            * For Program landing pages
+            */
+            &.tag-Doctor{
+                &::before{
+                    background: $color1;
+                }           
+            }
+            &.tag-Master{
+                &::before{
+                    background: $color2;
+                }           
+            }        
+            &.tag-Post-BaccalaureateCertificate{
+                &::before{
+                    background: $color3;
+                }           
+            }      
+            &.tag-Post-BaccalaureateDiploma{
+                &::before{ 
+                    background: $color4;
+                }              
+            }
+            &.tag-Post-MastersCertificate{
+                &::before{
+                    background: $color5;
+                }              
+            }   
+            &.tag-Post-MastersDiploma{
+                &::before{
+                    background: $color6;
+                }              
+            }      
+            /**
+            * #.# Courses Tags Only
+            *
+            * Colors for course tags
+            */
+
+            /* Applied Studies */
+            &.tag-area1{
+                &::before{
+                    background: $fhss-color2;
+                }
+            }
+            /* Arts */
+            &.tag-area1001, &.tag-area6{
+                &::before{
+                    background: $fhss-color1;
+                }
+            }
+            /* Business and Admin*/
+            &.tag-area2, &.tag-area7{
+                &::before{
+                    background: $fb-color1;
+                }
+            }
+            /* Humanities */
+            &.tag-area3{
+                &::before{
+                    background: $fhss-color3;
+                }
+            }
+            /* Non-Business and Admin */
+            &.tag-area1000{
+                &::before{
+                    background: $fgs-color1; 
+                }
+            }
+            /* Science */
+            &.tag-area4{
+                &::before{
+                    background: $fst-color1;
+                }
+            }
+            /* Social Sciences */
+            &.tag-area5{
+                &::before{
+                    background: $fhss-color4;
+                }
+            }
+            /* Counselling */
+            &.tag-area8{
+                &::before{
+                    background: $fhd-color1;
+                }
+            }
+            /* Distance Education */
+            &.tag-area9 {
+                &::before{
+                    background: $fst-color2;
+                }
+            }
+            /* Health */
+            &.tag-area10 {
+                &::before{
+                    background: $fhd-color2;
+                }
+            }
+            /* Information Systems */
+            &.tag-area11{
+                &::before{
+                    background: $fst-color3;
+                }
+            }
+            /* Architecture */
+            &.tag-area19{
+                &::before{
+                    background: $tag-color-teal;
+                }
+            } 
+            /* No area of study */
+            &.tag-area20{
+                &::before{
+                    background: $tag-color-blue;
+                }
+            }
+        }
+    }
+}

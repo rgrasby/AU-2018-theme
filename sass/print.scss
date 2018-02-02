@@ -1,0 +1,273 @@
+@import "mainsite/utilities/variables.scss";
+
+@media print {
+    
+    /**
+    * #.# Base print styles
+    *
+    */        
+    #filter-sidebar,
+    #cp-type,
+    #mobile-global,
+    #global-search-nav,
+    .footer,
+    .utility,
+    .cp-banner,
+    .cp-fav-container,
+    .controls,
+    .success-message,
+    .cd-top,
+    #global-megamenu,,
+    .fail-message{
+        display: none!important;
+    }
+    page{
+        padding: 0!important;
+    }
+    
+    .container-md-span10, .container-lg-span10{
+        width: 100%!important;
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+    #main{
+        a:not(.fixed-nav-offset){
+            &::before{
+                display: none!important;
+            }
+            &::after { 
+                content:" [" attr(href) "] "!important; 
+                display: inline-block!important;
+            }
+        } 
+        a[href^="tel:"]{
+            &::after { 
+                display: none!important;
+            }           
+        }
+    }
+    
+    /**
+    * #.# Course and program listings
+    *
+    */    
+    .cp-listing-container {
+        padding: 20px;
+    }
+    #cp-results{
+        .card {
+            border: 1px solid $border-color;;
+            padding: 10px 20px;
+            box-shadow: none;
+        }
+        .accordion-content, .accordion-trigger{   
+            border: 0!important;
+            margin: 0;
+        } 
+        .accordion-trigger{
+            padding: 15px 10px!important;
+            font-size: 1.5em;
+            button{
+                background: none!important;
+                color: $gray-darker!important;
+                padding: 0!important;
+                i{
+                    display: none!important;
+                }
+            }
+            .course-count{
+                display: none;
+            }
+        } 
+        .accordion-content{
+            margin-left: -15px;
+        }
+    }
+    #global-utility img.logo{
+        float: none;
+    }
+    #courses-additional-info, #programs-additional-info{
+        padding: 12px 20px 20px;
+        border: 1px solid $border-color;
+        &:before{
+            display: none;
+        }
+    }
+    .cp-area-tags{
+        li{
+            padding: 1px 0; 
+            &:before{
+                display: none;
+            }
+        }
+    }
+    .cp-actions{
+        display: none;
+    }
+    
+    /**
+    * #.# Section heading
+    *
+    * Often seen paired with an icon on landing pages
+    */
+    .section-heading{
+        text-align: left!important;
+        svg{
+            display: none!important;
+        }
+    }
+    
+    
+    /**
+    * #.# Tabs to accordions
+    *
+    */
+    #main{
+        #tab-wrapper{
+            display: block!important;
+            height: auto!important;
+            border: 0;
+            overflow: hidden;
+            margin-top: 1.5em;
+            &::before{
+                display: none!important;
+            }
+            .tabs{
+                display: none;
+            }
+            .tab_container{
+                float: none!important;
+                width: 100%!important;
+                .tab_content{
+                    padding: 10px 0;
+                    height: auto!important;
+                    display: block!important;
+                }               
+            }
+            .tab_drawer_heading{
+                display: none!important;
+            }
+        }        
+    }
+    #reveal-trigger-2{
+        display: none;
+    }
+    
+    
+    /**
+    * #.# Base Landing page styles
+    *
+    */
+    .landing{
+        section{
+            padding: 0!important;
+            margin: 0!important;
+        }
+    }
+    .hero-content{ 
+        height: auto!important;
+        min-height: 0!important;
+        margin-top: 2em!important;
+        max-width: 100%!important;
+        opacity: 1!important;
+        text-align: left!important;
+        .hero-inner{
+            position: relative!important;
+            top: 0!important;
+            transform: translateY(0)!important;
+            .cp-area-tags li, h1{
+                color: $text-color!important;    
+                text-shadow: none!important;
+            }
+            .cp-area-tags{
+                li{
+                    &::before{
+                        display: none!important;
+                    }                   
+                }
+            }
+            .hero-btn-group{
+                display: none;
+            }    
+        }
+    }
+    .sticky-shiv, #sub-nav{
+        display: none;    
+    }
+    
+    
+    /**
+    * #.# Program Landing page styles
+    *
+    */
+    #program-landing-hero{
+        background-image: none!important;
+        &::before{
+            display: none;
+        }
+        #landing-favorites{
+            display: none;   
+        }   
+    }
+    #cp-landing-intro {
+        #cp-landing-meta, .lead{
+            text-align: left;
+        }
+    }
+    .program-testimonial, #stats-wrap{
+        display: none;    
+    }
+    #enquire, #related{
+        + section{
+            display: none!important;
+        }
+    }
+    #tab-wrapper{
+        display: block!important;
+    }
+    #glance{
+        + section{
+            .qa-wrap{
+                margin: 0;
+                .qa-row{
+                    .qa-item{
+                        width: 100%!important;
+                        border: 0;
+                        padding: 0;
+                        div{
+                            max-height: none!important;
+                            height: auto!important;
+                        }    
+                    }
+                }
+            }
+        }
+    }
+    #resources{
+        + section{
+            padding: 0;
+            background: none;
+            #resource-block{
+                padding: 0;
+                border-top: 0;
+                .resource-links{
+                    > div{
+                        float: none;
+                        padding: 0;
+                        width: 100%;
+                        margin-bottom: 2em;
+                        text-align: left;
+                    }
+                    .contact-resources{
+                        strong{
+                            display: none;
+                        }
+                        .program-social{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
