@@ -35,8 +35,7 @@
 @import "mainsite/layout/footer";
 @import "mainsite/layout/header";
 @import "mainsite/layout/utility";
-@import "mainsite/layout/footer";
-@import "mainsite/layout/content";  
+@import "mainsite/layout/footer"; 
  
 
 /**
@@ -57,8 +56,9 @@
 @import "mainsite/components/testimonials";
 @import "mainsite/components/tables";
 @import "mainsite/components/panels";
+@import "mainsite/components/panels";
 @import "mainsite/components/owl-carousel-custom";
-@import "mainsite/components/fancybox-custom";
+@import "mainsite/components/calloutbox";
 
 //Course and Program Listings
 @import "mainsite/pages/course-program-listings/listings.scss"; /* listing cards */
@@ -76,7 +76,7 @@
 @import "mainsite/pages/open-house"; /* Open House */ 
 @import "mainsite/pages/discover-au"; /* Discover AU */ 
 @import "mainsite/pages/admissions"; /* Admissions */
-@import "mainsite/pages/default-muilt-column.scss"; /* Default multicolumn layout */ 
+@import "mainsite/pages/default.scss"; /* Default Content. Simple pages */ 
 @import "mainsite/pages/main-syllabus"; /* Course Syllabus */ 
 @import "mainsite/pages/ask-au";
 @import "mainsite/pages/social"; 

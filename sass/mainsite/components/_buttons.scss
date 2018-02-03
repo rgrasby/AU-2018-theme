@@ -294,6 +294,57 @@ button:focus {
     }
 }
 
+/* Button Links - Orange border on left with arrow to the right */
+.button-links{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li{
+        margin-bottom: 0.5em;
+        &:before{
+            display: none;
+        }
+        a{
+            display: block;
+            position: relative;
+            border: 1px solid $border-color;
+            padding: 0.8em 2em;
+            text-decoration: none;
+            span{
+                position: relative;
+                z-index: 9;
+            }
+            &:hover{
+                &:before{
+                    width: 100%;
+                }
+                &:after{
+                    color: white;
+                }
+                color: white;
+            }
+            &:before{
+                transition: all .2s ease-in;
+                content: '';
+                width: 5px;
+                height: 100%;
+                background: $orange;
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            &:after{
+                font-family: FontAwesome;
+                content:"\f105";
+                position: absolute;
+                right: 1.5em;
+                color: $gray-medium;
+            }
+        }
+    }
+}
+
 a {
     &:hover,
     &:focus,

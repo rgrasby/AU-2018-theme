@@ -33,6 +33,22 @@ $susy: (
     @include vertical-align();
 }
 
+.container-md-span6 {
+    @media (min-width: $screen-md-min) {
+        @include span(6 of 12);
+        @include push(4 of 12);
+        float: none;
+    }
+}
+
+.container-md-span8 {
+    @media (min-width: $screen-md-min) {
+        @include span(8 of 12);
+        @include push(2 of 12);
+        float: none;
+    }
+}
+
 .container-md-span8 {
     @media (min-width: $screen-md-min) {
         @include span(8 of 12);

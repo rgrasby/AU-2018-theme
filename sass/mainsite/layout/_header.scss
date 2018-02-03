@@ -129,6 +129,7 @@
     @media (min-width: $screen-sm-min) {
         padding: 0 2rem;  
         height: $header-height-md;
+		z-index: 999999;
     }
     @media (min-width: $screen-xxl-min) {
         height: $header-height-lg;

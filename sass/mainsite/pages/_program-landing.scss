@@ -50,9 +50,18 @@
         }
         &.sticky{
             #sub-nav-primary {
-                justify-content: flex-start;
+                justify-content: center;
+				@media (min-width: $screen-lg-min) {
+					justify-content: flex-start;	
+				}
             }        
         }
+		#sub-nav-right {
+			display: none;
+			@media (min-width: $screen-lg-min) {
+				display: flex;	
+			}
+		}
     }
 }
 
@@ -163,12 +172,6 @@
     margin-right: .3125em;
     font-weight: 400;
     font-size: 0.9em;
-    span {
-        display: none;
-        @media (min-width: $screen-xxs-min) {
-            display: inline;
-        }
-    }
     &:hover,
     &:focus,
     &:active {
