@@ -1,6 +1,15 @@
-///////////////////
-/// ui elements //
-/////////////////
+/**
+* #.# Buttons
+*
+* All buttons styles are found here, From link style buttons, gray-buttons, ghost buttons and orange.
+*/
+
+/* Reset default borwser behaviour of adding a dotted out line to buttons */
+button:focus {
+    outline: 0;
+}
+
+
 body {
     &.cd-is-visible {
         .cd-top {
@@ -10,6 +19,7 @@ body {
     }
 }
 
+/* Back to top button */
 .cd-top {
     display: inline-block;
     height: 40px;
@@ -41,22 +51,14 @@ body {
         background-color: #fff;
         opacity: 1;
     }
-}
-
-.cd-top i {
-    position: relative;
-    top: -2px;
-}
-
-//////////////////////////////////////////////
-////          buttons                   //////
-//////////////////////////////////////////////
-button:focus {
-    outline: 0;
+    i{
+        position: relative;
+        top: -2px;        
+    }
 }
 
 .btn {
-    padding: .8em 1.875em;
+    padding: .9em 1.875em;
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -81,6 +83,7 @@ button:focus {
     }
     &.btn-lg {
         font-size: 1.2em;
+        padding: .8em 2.5em;
     }
     &.btn-orange {
         border: 0;
@@ -188,7 +191,8 @@ button:focus {
             font-size: 14px;
             text-align: center;
             line-height: 31px;
-            margin-left: .03em;
+            margin-left: 1px;
+
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
@@ -292,7 +296,10 @@ button:focus {
             font-weight: 600;
         }
     }
-}
+    &.btn-inline{
+        display: inline-block;
+    }
+} 
 
 a {
     &:hover,
@@ -309,6 +316,19 @@ a {
                     }
                 }
             }
+        }
+    }
+}
+
+.readmore{
+    text-decoration: none!important;
+    font-weight: 600;
+    .fa{
+        padding-left: 2px;
+    }
+    &.open{
+        .fa{
+            transform: rotate(90deg);
         }
     }
 }

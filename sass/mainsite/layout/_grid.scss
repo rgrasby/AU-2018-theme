@@ -1,6 +1,5 @@
 $susy: (
     columns: 12,
-    container: 60em,
     gutters: 1,
     global-box-sizing: border-box,
 );
@@ -11,26 +10,53 @@ $susy: (
 * Used through out template
 */
 
+#site-wrap{
+    overflow-x: hidden;
+} 
+
 .row {
     margin: 1.5em 0;
     @extend .clearfix;
 }
 
-// GRID - start narrow
-.page {
-    max-width: 75em;
+//default width
+.container, #main-content{
+    max-width: 65em;
     margin: auto;
-    padding: 0 2em;
-    @extend .clearfix;
-} 
-
-#main-content {
-    @include container;
-    padding: 3em 2em 4em;
 }
 
-.vertical-align{
-    @include vertical-align();
+.container-wide{
+    max-width: 75em;
+    margin: auto;
+}
+
+//used where a container is needed like a landing page
+.container, .container-wide{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+//used in default content pages
+#main-content{
+    padding: 2em 1em 3em;
+    @media (min-width: $screen-sm-min) {
+        padding: 3em 2em 4em;    
+    }
+}
+
+.landing{
+    padding: 2em 0 3em;
+    @media (min-width: $screen-sm-min) {
+        padding: 3em 0 4em;    
+    }    
+}
+
+//program and course listings. Lets increase the width a bit from our standard container
+#cp-listing{
+    max-width: 75em;
+    padding-left: 2em;
+    padding-right: 2em;    
+    margin: auto;
 }
 
 .container-md-span8 {
@@ -88,6 +114,7 @@ $susy: (
     }
 }
 
+//can be seen on the admission page. A content block is slighlty overlay on top of image
 .overlap-row{
     position: relative;
     &.content-right{
@@ -143,6 +170,7 @@ $susy: (
 
 }
 
+//used with background images that have a large amount of whitespace to the left or right. Can be seen on Discover AU
 .z-row-bg-left,
 .z-row-bg-right {
     max-width: 1920px;
@@ -254,6 +282,7 @@ $susy: (
     }
 }
 
+//used with an image or graphic. 
 .z-row-img-left,
 .z-row-img-right,
 .z-row-graphic-left,

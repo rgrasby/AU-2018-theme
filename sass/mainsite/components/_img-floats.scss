@@ -1,0 +1,78 @@
+/* For pictures with captions */
+figure{
+    max-width: 100%;
+    display: block;
+    @media (min-width: $screen-xs-min) {
+        max-width: 375px;    
+    }
+    img{
+        width: 100%;
+    }
+    &.img-left{
+        margin: 1.5em 0;  
+        float: none;
+        width: 100%;
+        @media (min-width: $screen-md-min) {
+            margin: 1.5em 1.5em 1.5em 0; 
+            float: left;
+        }
+        @media (min-width: $screen-lg-min) {
+            max-width: left;
+        }
+    }
+    &.img-right{
+        margin: 1.5em 0;  
+        float: none;
+        width: 100%;
+        @media (min-width: $screen-md-min) {
+            margin: 1.5em 0 1.5em 1.5em; 
+            float: right;
+        }
+        @media (min-width: $screen-lg-min) {
+            max-width: 350px;
+        }
+    } 
+    figcaption{
+        text-align: center;
+        font-size: smaller;
+        font-style: italic;
+        position: relative;
+        top: 0.5em;
+    }
+}
+
+/* For pictures with no captions */
+.img-left, .img-right{
+    max-width: 100%;
+    float: none;
+    display: block;
+    margin: 1em 0;
+    @media (min-width: $screen-xs-min) {
+        max-width: 375px;  
+    }
+}
+
+.img-left{ 
+    max-width: 100%;
+    @media (min-width: $screen-md-min) {
+        margin: 1.5em 1.5em 1.5em 0;  
+        max-width: 350px;
+        float: left;
+    }
+    @media (min-width: $screen-lg-min) {
+        float: left;
+    }
+}
+
+.img-right{
+    max-width: 100%;
+    @media (min-width: $screen-md-min) {
+        margin: 1.5em 0 1.5em 1.5em; 
+        float: right;
+        max-width: 350px;
+    }
+    @media (min-width: $screen-lg-min) {
+        margin: 1.5em 0 1.5em 1.5em; 
+        float: right;
+    }
+}

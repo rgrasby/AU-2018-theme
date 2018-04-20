@@ -1,0 +1,22 @@
+/**
+* #.# Frequently Asked Questions
+*/
+.qa-item {
+    h3 {
+        font-size: 1.3em;
+    }
+    > h3, > div {
+        position: relative;
+        padding-left: 35px;
+        .qa-letter {
+            font-size: 20px;
+            color: $orange;
+            position: absolute;
+            left: 0;
+            top: -2px; 
+            font-weight: 700;
+            display: inline-block;
+            width: 25px;
+        }
+    }
+}

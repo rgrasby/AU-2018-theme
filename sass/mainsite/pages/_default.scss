@@ -1,4 +1,10 @@
 #main-content{    
+    
+    #updated{
+        font-size: 0.8em;
+        font-style: italic;
+    }
+
     /**
     * #.# Jump navigation
     *
@@ -69,15 +75,8 @@
     }
 }
 
-.content-container{
-    .qa-item{
-        margin-bottom: 2em;
-    }
-}
 
-/**
-* #.# "Did you know" blurb
-*/
+/* Did you know" blurb */
 [class*="content-blurb-"]{
     position: relative;
     padding: 1.25em 0 1.56em 2.8125em;

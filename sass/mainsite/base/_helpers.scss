@@ -23,6 +23,10 @@
     clear: both;
 }
 
+.hidden{
+    display: none;
+}
+
 .fixed-nav-offset {
     margin-top: -160px;
     padding-top: 160px;
@@ -63,6 +67,11 @@ img {
 /**
 * #.# Spacing Helpers
 */
+
+.zero-all{
+    margin: 0!important;
+    padding: 0!important;
+}
 
 .zero-top {
     margin-top: 0!important;

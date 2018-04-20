@@ -284,6 +284,10 @@ button:focus {
 }
 
 .cp-listing-top {
+    margin-top: 2em;
+    @media (min-width: $screen-sm-min) {
+        margin-top:4em;
+    } 
     h1 {
         display: none;
     }
@@ -302,18 +306,10 @@ button:focus {
     }
 }
 
-
 /**
-* #.# Revert to a flex box layout in all browser except ie9
+* #.# Revert flex box layout instead of absolute positioning
 *
 */
-
-html:not(.lt-ie10) {
-    #cp-results {
-        height: auto!important;
-    }
-}
-
 #cp-listing {
     #cp-results {
         display: flex;
@@ -485,6 +481,9 @@ html:not(.lt-ie10) {
 .view-switcher-wrap {
     padding: 0 5px 15px;
     width: 100%;
+    +hr{
+        display: none;
+    }
     @media (min-width: $screen-md-min) {
         text-align: right;
     }
@@ -495,7 +494,7 @@ html:not(.lt-ie10) {
         margin: 0 10px;
         position: relative;
         font-size: .95em;
-        color: $gray-dark;
+        color: lighten($text-color, 30%);
         &:hover,
         &:active,
         &:focus {
@@ -504,6 +503,7 @@ html:not(.lt-ie10) {
         }
         &.active {
             color: $blue;
+            font-weight: 600;
             &:hover,
             &:active,
             &:focus {
@@ -519,7 +519,6 @@ html:not(.lt-ie10) {
         background: darken($border-color, 5%);
     }
 }
-
 
 /**
 * #.# Add to favorites Button

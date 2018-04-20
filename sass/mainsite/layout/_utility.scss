@@ -8,7 +8,7 @@
     color: white;
     position: relative;
     z-index: 99996;
-    border-bottom: 1px solid #6291c5;
+    border-bottom: 1px solid #3c5f92;
     padding: 0 2rem;
     @media (min-width: $screen-sm-min) {
         height: $utility-height-lg;
@@ -46,7 +46,7 @@
             text-decoration: underline;
             color: white;
             color: white;
-            margin-left: 0.3em;
+            margin-left: 0.2em;
             &:hover,
             &:focus,
             &:active {
@@ -70,9 +70,12 @@
                 a {
                     text-decoration: none;
                     font-weight: 400;
-                    display: block;
-                    margin-left: 2em;
+                    display: block; 
+                    margin-left: 1em;
                     color: white;
+                    @media (min-width: $screen-xl-min) {
+                        padding-left: 1.2em;
+                    }
                     &:hover,
                     &:active,
                     &:focus {
@@ -87,8 +90,9 @@
 #au-primary-nav {
     .util-item {
         a {
+            font-size: 0.8em;
             border-bottom: 0;
-            padding: 0.5rem 1rem;
+            padding: 0.3rem 1rem;
             @media screen and ( max-height: 600px ){
                 padding: 0.4rem 1rem;
             }

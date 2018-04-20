@@ -1,0 +1,49 @@
+#main{  
+    ul{
+        @include custom-lists(7px, "\f111", 4px); 
+        ul{
+            margin-bottom: 0;
+        }
+        li{
+            margin: 0.3em 0 0;
+            ul{
+                @include custom-lists(10px, "\f10c", 4px); 
+                li{
+                    ul{
+                        @include custom-lists(8px, "\f10c", 5px);   
+                    }
+                }
+            }
+        }
+    }
+    ul.link-list, .custom-list.chevron, .custom-list.links {
+        @include custom-lists(12px, "\f054", 4px);
+    }
+    ol{  
+        li{
+            padding-left: 0.4em;
+            ol{
+                margin: 0.3em 0 0;
+                padding-left: 2em;
+                li {
+                    list-style-type: lower-alpha;
+                    padding: .2em 0;
+                    counter-increment: none;
+                    &:before{
+                        content: '';
+                    }
+                    ol{
+                        li{
+                            list-style-type: lower-roman;
+                            padding: .2em  0;
+                            counter-increment: none; 
+                            &:before{
+                                content: '';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

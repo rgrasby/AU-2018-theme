@@ -14,10 +14,11 @@
             color: white;
             font-size: 0.7em;
             &::before {
-                width: 30px;
-                height: 30px;
-                border: 1px solid rgba(255, 255, 255, .4);
-                margin-right: 0;
+                //width: 30px;
+                //height: 30px;
+                //border: 1px solid rgba(255, 255, 255, .4);
+                //margin-right: 0;
+                display: none;
             }
         }
     }
@@ -33,7 +34,7 @@
             }
         }
         .hero-inner{
-            h1{
+            h1{ 
                 color: white;
                 .cp-earea-tags{
                     color: white;
@@ -44,6 +45,7 @@
 }
 
 #program-landing{
+    padding: 0;
     #sub-nav {
         #sub-nav-primary {
             justify-content: center;
@@ -177,7 +179,7 @@
 }
 
 #reveal-trigger-2 {
-    padding: 2em 0 2.5em;
+    padding: 1em 0 1.5em;
     margin: 0;
     position: relative;
     font-size: 1.5em;
@@ -185,7 +187,7 @@
         opacity: 0;
     }
     @media (min-width: $screen-sm-min) {
-        padding: 2em 0 2.1em;
+        padding: 1em 0 1.1em;
         font-size: 2em;
     }
     @media (min-width: $screen-lg-min) {
@@ -300,8 +302,6 @@
                 margin-left: -.5em;
                 margin-right: -.5em;
                 .qa-item {
-                    //border: 1px solid $border-color;
-                    //padding: 1.25em;
                     margin: 1em .5em;
                     width: 100%;
                     @media (min-width: $screen-sm-min) {
@@ -413,7 +413,7 @@
 
 .stats-source {
     text-align: center;
-    color: lighten($gray-dark, 10%);
+    color: lighen($text-color, 15%);
     font-size: .80em;
     margin-top: 10px;
 }
@@ -475,7 +475,8 @@
             border: 0;
             max-width: 850px;
             margin: auto;
-            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.75);
             .lead-gen-form-wrap{
                 padding-left: 0;   
             }
@@ -701,6 +702,7 @@
 }
 
 #related-carousel {
+    padding: 0 2em;
     &:hover {
         .owl-nav [class*=owl-] {
             opacity: 1;
@@ -746,6 +748,13 @@
                 .rel-content {
                     opacity: 0;
                 }
+            }
+        }
+        .btn{
+            text-align: left;
+            padding: 1em 0;
+            &:hover{
+                color: $orange;
             }
         }
         h3{

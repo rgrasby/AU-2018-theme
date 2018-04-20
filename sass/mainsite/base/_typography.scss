@@ -1,5 +1,4 @@
 // Define our font
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700);
 p,
 ul,
 ol,
@@ -84,7 +83,13 @@ address {
     line-height: 1.55em;
 }
 
-
+.callout-box{
+    +a{
+        +h2{
+            margin-top: 0;
+        }
+    }
+}
 /**
 * #.# Landing page section heading
 */

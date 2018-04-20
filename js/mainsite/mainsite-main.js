@@ -1,50 +1,22 @@
-jQuery(document).ready(function($){
+//Self-Executing Anonymous Functions to keep our global variables from interfering with any other JS
+$(function () {
 
-
+    //global variables
     var $mainHeader = $('#main-header'),
         $utility = $('#utility'),
         $utilityHeight = $utility.outerHeight(),
         $headerHeight = $mainHeader.outerHeight(),
         $combinedHeight = $utilityHeight + $headerHeight;
                 
-    /*
-    Styleable scrollbars
-    =====================================================================*/
-    $('.scrollable').scrollbar({
-        "ignoreOverlay" : true,
-    });
-    
-   /*
-    Fancybox 3 Options
-    =====================================================================*/    
-    $("[data-fancybox]").fancybox({
-        buttons: [
-            'slideShow',
-            'fullScreen',
-            'thumbs',
-            'zoom',
-            'close'
-        ],
-    });
-    
-    /* 
-    Google inspired form input focus
-    =====================================================================*/
-    $('.material-form .input-group input, .material-form .input-group textarea, .au-form .input-group input, .au-form .input-group textarea').focusout(function(){
-        if(!$(this).val()) {
-            $(this).removeClass('has-value');
-        } else {
-            $(this).addClass('has-value');
-        }
-    });
 
-    /* Carousel
+    /* Owl Carousel
     =====================================================================*/
     var $carousel = $('.owl-carousel');
     
     $carousel.owlCarousel({
         loop: false,
-        nav: true,
+        nav: false,
+        dots: true,
         margin: 20,
         navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
         responsive :{
@@ -56,16 +28,10 @@ jQuery(document).ready(function($){
                 items: 2,
             },
             1250:{
-                items: 3,
+                items: 4,
             },
         }
     })
-    
-    /*
-    Match height of elements
-    =====================================================================*/
-    $('.equal, #section-jump-nav li').matchHeight();
-    $('.equal2').matchHeight('false');
     
     /*
     Animated stats
@@ -95,33 +61,6 @@ jQuery(document).ready(function($){
         }
     })();  
     
-    /*
-    Smooth scroll to anchor
-    =====================================================================*/
-    var smoothScroll = (function () {
-        
-        var $smoothLinks = $('.smooth-link, #section-jump-nav li a')
-            
-        $smoothLinks.on('click', smoothScrollIt);
-        
-        function smoothScrollIt() {
-        
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                if (target.length) {
-                    $('html, body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    //update URL hash
-                    window.location.hash = $(this).attr('href');
-                    return false;
-                }
-            }
-        }
-        
-    }());
-    
     /* 
     Hidden apply and register panel on homepage
     =====================================================================*/
@@ -142,16 +81,19 @@ jQuery(document).ready(function($){
         }
     }());
     
-    /* 
+    
+ /* 
     Tabs that change to accordions in mobile
     =====================================================================*/
-    var tabstoAccordion = (function () {
-        
+    var tabstoAccordion= (function () {
+        //declare variables
         var $tabWrapper = $("[id*='tab-wrapper']"),
             $tabContent = $('.tab_content'),
             $tabs = $('.tabs a'),
             $tabTrigger = $('.tab-trigger'),
-            $tabDrawer = $('.tab_drawer_heading')
+            $tabDrawer = $('.tab_drawer_heading'),
+            $tabContentChild = $('.tab_content_inner'),
+            $tabDrawerChild = $('.tab_drawer_heading_inner');
         
         $tabContent.hide();
     
@@ -160,16 +102,50 @@ jQuery(document).ready(function($){
         $tabWrapper.filter('.accordion-collapsed').each(function(i) {
             $(this).find('.tab_content:first').hide();
         });
-                                                          
+               
+        //bind events
         $tabs.on('click', tabToggle);
         $tabDrawer.on('click', accordionToggle);
-
+        $tabDrawerChild.on('click', accordionToggleMultilevel);
+        
+        function accordionToggleMultilevel(){
+            
+            var d_activeChildTab = $(this).attr('rel'); 
+            
+            $tabDrawerChild.removeClass('active');
+                                       
+            //update URL hash with active accordion toggle
+            window.location.hash = '#' + d_activeChildTab;
+            
+            //default closed state
+            $tabContentChild.slideUp('fast').attr('aria-hidden', true);
+            $tabContentChild.removeClass('active').find('button').attr('aria-expanded', false);
+            
+            //toggle accordions open and closed
+            if($('#'+d_activeChildTab).is(":visible")) {
+                $('#'+d_activeChildTab).slideUp('fast').attr('aria-hidden', true);
+                $(this).removeClass('active').find('button').attr('aria-expanded', false);
+            } else {
+                $('#'+d_activeChildTab).slideDown('fast').attr('aria-hidden', false);
+                $(this).addClass('active').find('button').attr('aria-expanded', true);    
+            }
+      
+            //smooth scroll to top of accordion after short delay
+            setTimeout(function(){
+                $('html, body').animate({
+                        scrollTop: $(".tab_drawer_heading_inner[rel ='"+d_activeChildTab+"']").offset().top - 100
+                }, 500);
+            }, 200);
+            
+        }
+        
         function tabToggle(e) {
             if(e){
                 e.preventDefault();
-            }
-            $tabContent.hide();
+            }    
             var activeTab = $(this).attr('href'); 
+            
+            $tabContent.hide();
             
             $(activeTab).fadeIn();		
 
@@ -179,7 +155,7 @@ jQuery(document).ready(function($){
             
             if (!$(this).hasClass("tab-trigger")) {
                 $('html, body').animate({
-                    scrollTop:  $(activeTab).offset().top - ($combinedHeight + 30)
+                    scrollTop:  $(activeTab).offset().top - 80
                 }, 500);
             }
             
@@ -200,7 +176,7 @@ jQuery(document).ready(function($){
             window.location.hash = '#' + d_activeTab;
             
             //default closed state
-            $tabContent.slideUp('fast').find('button').attr('aria-hidden', true);
+            $tabContent.slideUp('fast').attr('aria-hidden', true);
             $tabDrawer.removeClass('active').find('button').attr('aria-expanded', false);
             
             //toggle accordions open and closed
@@ -215,13 +191,13 @@ jQuery(document).ready(function($){
             //smooth scroll to top of accordion after short delay
             setTimeout(function(){
                 $('html, body').animate({
-                        scrollTop: $(".tab_drawer_heading[rel ='"+d_activeTab+"']").offset().top - $combinedHeight
+                        scrollTop: $(".tab_drawer_heading[rel ='"+d_activeTab+"']").offset().top - 100
                 }, 500);
             }, 200);
         }
         
     }());
-
+    
     /* 
     Open accordion or jump to page section if URL hash is present
     =====================================================================*/
@@ -237,7 +213,7 @@ jQuery(document).ready(function($){
             
             //check if icon jump navigation links are present. These are always at the top of content pages and accompanied by an icon.
             //If the URL hash matches one of the jump links, set variable to TRUE
-            $('#section-jump-nav ul li').find('a').each(function(index) {
+            $('#section-jump-nav ul li, #section-jump li').find('a').each(function(index) {
                 var hasAnchor = $(this).attr('href');
                 if (location.hash === hasAnchor){
                     jumpNavPresent = true;
@@ -253,8 +229,8 @@ jQuery(document).ready(function($){
                 //this is a accordion URL hash
                 } else if ($('.tab_drawer_heading').length) {
                     if(!$('#program-landing').length){
-                        $(".tab_drawer_heading[rel^='"+anchorText+"']").addClass('active');  
-                        $('#' + anchorText).slideDown();
+                        $(".tab_drawer_heading[rel^='"+anchorText+"']").addClass('active').find('button').attr('aria-expanded', true);  
+                        $('#' + anchorText).slideDown().attr('aria-hidden', false);  ;
                         $('html, body').animate({
                             scrollTop: $(".tab_drawer_heading[rel='"+anchorText+"']").offset().top - 200
                         }, 500); 
@@ -263,6 +239,97 @@ jQuery(document).ready(function($){
             }
         }
     })();
+    
+    /* 
+    Add a class to the stats based on count
+    =====================================================================*/
+    var getStatCount = (function () {
+        function statCountClass() {
+            $countStats = $('.stats li').length;
+            $('#stats-wrap ul').addClass('stats-'+$countStats);
+        }
+        statCountClass(); 
+    }());
+    
+    /* 
+    Fade Hero content on scroll
+    =====================================================================*/
+    var fadeStart = 100,
+        fadeUntil = 700,
+        $fading = $('.hero-content');
+
+    $(window).bind('scroll', function(){
+        var offset = $(document).scrollTop(),
+            opacity = 0;
+        if( offset<=fadeStart ){
+            opacity = 1;
+        }else if( offset<=fadeUntil ){
+            opacity = 1 - offset/fadeUntil;
+        }
+        $fading.css('opacity',opacity);
+    });
+         
+    /* 
+    Full Progams Details Panel
+    =====================================================================*/
+    var contentReveal = (function () {
+        var $contentRevealTrigger1 = $("#reveal-trigger-1, #hero-reveal-trigger"),
+            $contentRevealTrigger2 = $("#reveal-trigger-2"),
+            $contentRevealDates = $("#content-reveal-dates"),
+            $contentWrapper = $("#tab-wrapper"),
+            url = document.location.toString();
+        
+        //bind events
+        $contentRevealTrigger2.on("click", toggleContent);
+        $contentRevealTrigger1.on("click", openContent);
+        $contentRevealDates.on("click", openContent);     
+        
+        //toogle details panel visibility when user interacts with large trigger button
+        function toggleContent() {
+            $contentRevealTrigger2.toggleClass('is-open');
+            $contentWrapper.slideToggle('fast', function(){            
+                $('html, body').animate({
+                  scrollTop: $contentWrapper.offset().top - 175
+                }, 1000);
+                return false;
+            });
+            //toggle aria attributes
+            $contentWrapper.attr('aria-hidden', function (i, attr) {
+                return attr == 'true' ? 'false' : 'true'
+            });
+            $(this).attr("aria-expanded", function (i, attr) {
+                return attr == 'true' ? 'false' : 'true'
+            });
+        }
+        
+        //open details panel when user clicks on "full program details" button in sticky nav
+        function openContent() {
+            $contentRevealTrigger2.addClass('is-open');
+            $contentWrapper.slideDown('fast', function(){            
+                $('html, body').animate({
+                  scrollTop: $contentWrapper.offset().top - 175
+                }, 1000);
+                return false;
+            });
+            //toggle aria attributes
+            $contentWrapper.attr('aria-hidden', false);
+            $(this).attr('aria-expanded', true);
+        }
+            
+        //open program summary tab with URL (#program-summary)
+        function urlOpen() {
+            if (url.match('#program-summary')) {
+                openContent();
+            }
+        }
+        
+        urlOpen();
+        
+        return {
+            openContent: openContent
+        };
+        
+    }());
     
     /* 
     Form validation
@@ -472,11 +539,6 @@ jQuery(document).ready(function($){
     });
     
     /* 
-    Shadowbox initialization
-    =====================================================================*/
-    //Shadowbox.init();
-    
-    /* 
     Better browser support for SVG sprite system
     scotchPanel menu was causing issues with svg icons in IE
     =====================================================================*/
@@ -490,6 +552,7 @@ jQuery(document).ready(function($){
         mailto = jQuery(this).attr('href');
         $(this).attr('href',mailto.replace(/_\[\at\]\_/gi,"@"));
     });
+    
 });
 
 

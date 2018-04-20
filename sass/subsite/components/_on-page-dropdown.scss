@@ -4,9 +4,9 @@
     border-radius: 3px; 
     background: $gray-light;
     padding: 0.8em 0.8em;
-    margin-bottom: 1.5em;
     width: 100%;
     position: relative;
+    margin-bottom: 0;
     &:hover, &:focus{
         background: darken($gray-light, 5%);
     }
@@ -24,23 +24,22 @@
         position: absolute;
         right: 1em;
         top: 50%;
-        margin-top: -8px;
+        margin-top: -6px;
         transform: rotate(-180deg);
     }
     &.open{
         border: 1px solid $blue-secondary;
-        border-bottom: 1px solid transparent;
+        border-bottom: 0;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
         background: $blue-secondary;
-        color: white;
+        color: white; 
         .fa{
             color: white;
-            opacity: 0.6;
+            opacity: 1;
         }
         .fa-angle-up{
             transform: rotate(-180deg);
-            margin-top: -7px;
         }
     }
     span{
@@ -52,13 +51,17 @@
 
 #anchor-dropdown{
     display: none;
-    padding: 1em 2em;
+    padding: 2em;
     border: 1px solid $border-color;
+    border-top: 0;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    margin-top: -1.5em;
-    background: lighten($gray-lighter, 1%);
+    background: white;
     margin-bottom: 1em;
+    margin-top: -5px;
+    +h1, +h2, +h3{
+        margin-top: 0.5em;
+    }
     ul{
         margin: 0;
     }

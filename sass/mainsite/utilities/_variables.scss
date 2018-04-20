@@ -32,7 +32,7 @@ $screen-xxl-min:             92em;
 $screen-xs-max:              ($screen-sm-min - .1);
 $screen-sm-max:              ($screen-md-min - .1);
 $screen-md-max:              ($screen-lg-min - .1);
-
+$screen-lg-max:              ($screen-lg-min - .1);
 /**
 * #.# Variables
 *
@@ -113,6 +113,7 @@ $content-margin-lg: 4em;
 $content-margin-sm: 2em;
 
 $text-color: #39414e;
+$text-color-light: lighten(#39414e, 20%);
 $border-color: $gray-medium;
 
 // NEW VARIABLES FOR HEADER //
@@ -124,8 +125,12 @@ $header-height-md: 90px;
 $header-height-sm: 70px;
 $header-height-xs: 60px;
 
+$nav-width-md: 296px;
 $utility-height-lg: 40px;
 $utility-height-sm: 50px;
+
+$header-plus-utility-lg: $utility-height-lg + $header-height-lg;
+$header-plus-utility-md: $utility-height-lg + $header-height-md;
 
 $hamburger-width: 28px;
 $hamburger-height: 22px;

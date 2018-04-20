@@ -10,12 +10,16 @@ $(function () {
         $subNav = $('#sub-nav-primary'),
         $subNavShiv = $('.sticky-shiv'),
         $navPanel = $('.nav-panel'),
+        $footerLinks = $('.footer-links'),
         $utilityHeight = $utility.outerHeight(),
         $headerHeight = $mainHeader.outerHeight(),
         $combinedHeight = $utilityHeight + $headerHeight,        
         resizeTimer;
 
-    //check if element is in viewport
+
+    /* 
+    Check if element is in viewport
+    =====================================================================*/
     $.fn.isInViewport = function() {
         var elementTop = $(this).offset().top;
         var elementBottom = elementTop + $(this).outerHeight();
@@ -26,13 +30,9 @@ $(function () {
         return elementBottom > viewportTop && elementTop < viewportBottom;
     };
     
-    
-    $('#site-search input').focusin(function() {
-        $('#scope').show("slide", { direction: "right" }, 400).delay( 300 );  
-    });
-			
-    
-    //check if window resizing is done
+    /* 
+    Check if window resizing is done and call functions when resizing is complete
+    =====================================================================*/
     $(window).on('resize', function(e) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
@@ -48,8 +48,10 @@ $(function () {
             
         }, 250);
     });
-    
-    //check window width (scrollbar included)   
+      
+    /* 
+    Check window width (scrollbar included)   
+    =====================================================================*/
     function checkWindowWidth() {
 		var e = window, 
             a = 'inner';
@@ -64,7 +66,11 @@ $(function () {
 		}
 	}
     
-    //move #au-site-nav depending on breakpoint variable
+    /* 
+    Move #au-site-nav depending on breakpoint variable 
+    Move utility navigation into #au-site-nav on mainsite
+    Move utility navigation to footer on subsites. Needed to make room for contextual navigation
+    ===========================================================================================*/
     function moveNavigation(){
 		var $navigation = $('#au-site-nav'),
             $utility = $('.util-item'),
@@ -73,29 +79,42 @@ $(function () {
         if(!$('body').hasClass('subsite')){
             //we are on the AU main site
             if ( desktop ) {
+                //we are on a larger device
                 $utility.detach();
                 $navigation.detach();
                 $navigation.insertAfter('#au-logo').removeClass('nav-panel');
                 $utility.appendTo('#util-nav nav ul').removeClass('minor');
             } else {
+                //we are on a smaller device
                 $utility.detach();
                 $navigation.detach();
                 $navigation.appendTo('#au-site-nav-panel');
                 $utility.appendTo($primaryNav).addClass('minor');
             }
+        } else {
+            //we are on a subsite
+            if ( desktop ) {
+                //we are on a larger device
+                $utility.detach();
+                $utility.appendTo('#util-nav nav ul').removeClass('minor');
+            } else {
+                //we are on a smaller device
+                $utility.detach();
+                $utility.appendTo($footerLinks)
+            }  
         }
 	}
     //make sure #au-site-nav is in the correct location
     moveNavigation();
     
- 
-    //check each nav item href attribute. If it matches current URL the user is on, add a current class and move navigation to correct level.
-    //this is probably better to do on the server side, but for now this will do
+    /* 
+    Check each nav item href attribute. If it matches current URL the user is on, 
+    add a class of .current and move navigation to correct level.
+    =====================================================================*/
+
     function setNavCurrentState(){
         var url = window.location.protocol + "//" + window.location.host + window.location.pathname,
         desktop = checkWindowWidth();
-
-        console.log(url);
 
         //add current state to nav if url matches
         $('#au-primary-nav a').each(function() {
@@ -118,24 +137,19 @@ $(function () {
 
             }
             if ( desktop ) {
-
                 //on desktop we need to make sure that .cd-secondary-nav is hidden and aria attributes are set correctly
                 $this.attr('aria-expanded', 'false');    
                 $secondaryNav.addClass('is-hidden').attr('aria-hidden', 'true');   
-
             } else {
-
                 $primaryNav.attr('aria-hidden', 'false');    
-
             }
         });    
     }
     
-    //set class on nav itema to current based on page url
     setNavCurrentState();   
     
     /* 
-    Scroll sub navigation horizontaly. 
+    Scroll sticky sub navigation horizontally. 
     Scroll position is determined by which nav item is clicked.
     Sub navigation can be found on landing pages and program pages.
     =====================================================================*/
@@ -195,6 +209,8 @@ $(function () {
     =====================================================================*/
     var landingSticky = (function () {
         if($('#sub-nav').length) {
+            
+            //variables
             var $subNav = $('#sub-nav'),
                 $subNavH = $subNav.outerHeight(),
                 $stickyNavTopUp = $subNav.offset().top,
@@ -203,6 +219,7 @@ $(function () {
                 scrollValue = 0,
                 scrollTimeout = false;
         
+            //make #sub-nav sticky
             function makeSticky(){
                 $subNav.addClass('sticky');
                 setTimeout(function () { 
@@ -211,6 +228,7 @@ $(function () {
                 }, 300);
             }
 
+            //make #sub-nav return to it's normal state
             function unSticky(){
                 $subNav.removeClass('sticky'); 
                 $subNav.removeClass('slideDown');
@@ -238,14 +256,17 @@ $(function () {
     =====================================================================*/
     var stickyMainNav = (function () {
 
+        //variables
         var $stickyMainNavTop = $mainHeader.offset().top;
-            
+           
+        //bind scroll event
         $(window).on('scroll', stickNav);
         
-        //offsets the utility and main header bars. We override this value in css for larger devices
+        //offsets the utility and main header bars for mobile menu. We override this value in css for larger devices
         $navPanel.css('padding-top', $combinedHeight);
 
         function stickNav(){
+            //vertical scrollbar position of viewport
             var $scrollTop = $(window).scrollTop();
             
             //nav is sticky
@@ -261,15 +282,13 @@ $(function () {
                 if($('#sub-nav').length) {
                     landingSticky.stickySubNav($scrollTop);
                 }
-                
             //nav is not sticky
             } else {
                 $('body').removeClass('header-stuck');
                 $mainHeader.removeClass('sticky');
                 $headerShiv.removeClass('header-sticky');
                 $navPanel.css('padding-top', $combinedHeight);
-                $headerHeight = $mainHeader.outerHeight();
-                
+                $headerHeight = $mainHeader.outerHeight();   
             }
         };
         
@@ -280,17 +299,20 @@ $(function () {
     }());
 
     stickyMainNav.stickNav();    
+    
     /*
     Multilevel Responsive Navigation. Used ONLY on main AU site
     =====================================================================*/
     var multiLevelNav = (function () {
         
+        //variables
         var $auSiteNav = $('#au-site-nav'),
-            $hasChildren = $('.has-children').children('a'),
+            $hasChildren = $('#au-site-nav .has-children').children('a'),
             $goBack = $('.go-back'),
             $subNavToggle = $('#au-site-nav > ul > li > a'),
             desktop = checkWindowWidth();
         
+        //bind events
         $hasChildren.on('click', openNextLevel);
         $goBack.on('click', goBack);
         $(document).on('click', closeAll);
@@ -317,7 +339,7 @@ $(function () {
         
         //open submenu if user presses the spacebar
         function openNextLevelSpacebar(event){
-            if (event.which === 32) {
+            if (event.which === 32) {           
                 event.preventDefault();
                 $(document.activeElement).click();
             }
@@ -348,10 +370,12 @@ $(function () {
     =====================================================================*/
     var navPanels = (function () {
         
+        //variables
         var $navPanelToggle = $('.nav-panel-toggle'),
             $navPanel = $('.nav-panel'),
             $body = $('body');
         
+        //bind events
         $navPanelToggle.on('click', openNavPanel);
         $(document).on('click', closeNavPanels);
         $('#au-right-nav').on('keypress', openNavPanelSpacebar);
@@ -416,10 +440,12 @@ $(function () {
     =====================================================================*/
     var headerHelpCentre = (function () {
         
+        //variables
         var $helpTabsWrapper = $('#help-centre'),
             $helpTabContent = $('.help-tab-content'),
             $helpTabs = $('.help-tabs a');
             
+        //bind events
         $helpTabs.on('click', helpTabToggle);
         $helpTabsWrapper.on('keypress', openTabKeyBoard);
         
@@ -460,5 +486,4 @@ $(function () {
 
     }());
 
-    
 }());

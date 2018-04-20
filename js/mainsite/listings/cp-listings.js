@@ -15,7 +15,7 @@ var patternLetter = /[a-z]{1}\-[a-z]{1}/i;
 var patternLength = /\.length[0-9]{1}/i;
 
     
-if (pattern.test(window.location)) {
+if (pattern.test(window.location)) {   
 
     $(document).ready(function () {
         //Grabbing browser url to split it in an array
@@ -285,7 +285,7 @@ if (pattern.test(window.location)) {
                     var footer_top = $("#main-footer").offset().top;
                     var div_top = $filterSidebarAnchor.offset().top;
                     var div_height = $filterSidebar.height();
-
+                    var fromTop = $(window).scrollTop();
                     //make scrollable divs go back to top
                     function backtoTop(){
                         $('.scrollable').scrollTop(0);                   
@@ -294,39 +294,29 @@ if (pattern.test(window.location)) {
                     console.log($headerHeight);
                     //sticky sidebar hit footer
                     if (window_top + div_height > footer_top){
-                        if($filterSidebar.hasClass('filters-open')){
-                            $filterSidebar.css({
-                                position: 'absolute',
-                                bottom: '0',
-                                top: 'auto'
-                            });
-                            return true
-                        }else{
+                        $filterSidebar.removeClass('at-top');
+                        $filterSidebar.removeClass('sticky');
+                        $filterSidebar.addClass('at-bottom');
+                        if(!$filterSidebar.hasClass('filters-open')){
                             $filterSidebar.css({
                                 position: 'fixed',
                                 bottom: '0',
-                                top: $headerHeight
+                                top: 0
                             }); 
                             return false
                         }
                     //sticky sidebar is in middle of content
-                    }else if (window_top > div_top) {
+                    } else if (window_top > div_top) {
                         $filterSidebar.addClass('sticky');
                         $cpTypeNav.addClass('sticky');
-                        $filterSidebar.css({
-                            position: 'fixed',
-                            bottom: 'auto',
-                            top: $headerHeight
-                        });
+                        $filterSidebar.removeClass('at-bottom');
+                        $filterSidebar.removeClass('at-top');
                     //sticky sidebar is at the top
                     } else {
                         $filterSidebar.removeClass('sticky');
                         $cpTypeNav.removeClass('sticky');
-                        $filterSidebar.css({
-                            position: 'absolute',
-                            bottom: 'auto',
-                            top: '0'
-                        });
+                        $filterSidebar.addClass('at-top');
+                        $filterSidebar.removeClass('at-bottom');
                         backtoTop();
                     }
                 }               

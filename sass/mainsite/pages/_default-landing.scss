@@ -4,10 +4,6 @@
 
 #landing-intro{
     position: relative; 
-    margin: 3em 0 0;
-    @media (min-width: $screen-md-min) {
-        margin: 5.5em 0 0;    
-    }
     a{
         text-decoration: none;
     }

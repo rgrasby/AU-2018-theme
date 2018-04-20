@@ -11,6 +11,7 @@
     transition-duration: 0.15s;
     transition-timing-function: linear;
     overflow: visible;
+    outline: 0;
     @media (min-width: $screen-sm-min) {
         margin-top: -5px;
     }
@@ -80,13 +81,6 @@
         overflow-x: hidden;
         overflow-y: auto;
     }
-} 
-
-.minor {
-    font-size: 0.9em;
-    a {
-        font-weight: 400!important;
-    }
 }
 
 /**
@@ -97,14 +91,14 @@
 
 .header-shiv {
     transition: all 0.3s ease-in;
-    height: $header-height-sm;   
+    height: $header-height-sm;
     @media (min-width: $screen-sm-min) {
         height: $header-height-md;
     }
     @media (min-width: $screen-xxl-min) {
         height: $header-height-lg;
     }
-    &.header-sticky{
+    &.header-sticky {
         height: $header-height-xs;
         @media (min-width: $screen-xs-min) {
             height: $header-height-sm
@@ -124,16 +118,16 @@
     height: $header-height-sm;
     position: relative;
     display: flex;
-    transition: all 0.3s ease-in;
+    transition: all 0.1s ease-in;
     padding: 0;
     @media (min-width: $screen-sm-min) {
-        padding: 0 2rem;  
+        padding: 0 2rem;
         height: $header-height-md;
     }
     @media (min-width: $screen-xxl-min) {
         height: $header-height-lg;
         padding: 0 2.5rem;
-    } 
+    }
     &.sticky {
         top: 0;
         position: fixed;
@@ -146,15 +140,15 @@
         }
         @media (min-width: $screen-xxl-min) {
             padding: 0 2rem;
-        } 
+        }
         #au-logo {
             width: 60px;
             height: 100%;
             margin: 0 0 0 -30px;
             @media (min-width: $screen-sm-min) {
-                margin: 0 0 0 -1em;    
+                margin: 0 0 0 -1em;
             }
-            
+
             .full-logo {
                 display: none;
             }
@@ -162,32 +156,51 @@
                 display: block;
                 transform: scale(1);
                 opacity: 1;
-                width: 30px;
-                height: 50px;
-                position: absolute; 
+                width: 32px;
+                height: 46px;
+                position: absolute;
                 @media (min-width: $screen-sm-min) {
                     position: relative;
-                    top: 0.1em;  
                 }
             }
         }
         #my-au-trigger {
             margin-right: 40px;
+            /* Offset logo */
             @media (min-width: $screen-sm-min) {
                 margin-right: 0;
             }
         }
         #help-trigger {
             margin-left: 40px;
+            /* Offset logo */
             @media (min-width: $screen-sm-min) {
                 margin-left: 0;
             }
+            #help-centre{
+                @media (max-width: $screen-xs-max) {
+                    left: 0!important;   
+                }
+                @media (min-width: $screen-sm-min) {
+                    position: absolute;
+                }
+                &.panel-overflow{
+                    @media (min-width: $screen-sm-min) {
+                        top: $header-height-md;
+                    }
+                }
+            }
         }
-        #search-trigger{
-            >a{
-                .fa{
+        #search-trigger {
+            > a {
+                .fa {
                     left: 0!important;
                 }
+            }
+        }
+        .help-tab-container {
+            .help-tab-content {
+                height: calc(100% + 90px;)    
             }
         }
     }
@@ -204,6 +217,7 @@
         margin-left: -50px;
         overflow: hidden;
         height: 100%;
+        z-index: 999;
         @media (min-width: $screen-sm-min) {
             border-right: 0;
             left: 0;
@@ -222,29 +236,26 @@
             fill: $orange;
         }
         .main,
-        {
+            {
             fill: white;
-        }
-        svg {
-            position: relative;
-            top: 2px;
         }
         div {
             width: 100%;
         }
         .full-logo {
             display: block;
-            margin-top: 0.2em;
+            margin-top: 0.5em;
         }
         .shield-logo {
             opacity: 0;
-            width: 30px;
             transform: scale(0.5);
             transition: all 0.3s ease-in;
             position: absolute;
             left: 50%;
             margin: -23px 0 0 -15px;
             top: 50%;
+            width: 32px;
+            height: 46px;
             @media (min-width: $screen-sm-min) {
                 position: relative;
                 left: 0;
@@ -254,9 +265,11 @@
             }
         }
     }
-    #my-au-trigger {
+    #my-au-trigger { 
+        /* offset logo */
         margin-right: 60px;
         @media (min-width: $screen-xs-min) {
+            /* offset logo */
             margin-right: 80px;
         }
         @media (min-width: $screen-sm-min) {
@@ -265,19 +278,50 @@
     }
     #help-trigger {
         margin-left: 60px;
+        /* offset logo */
         @media (min-width: $screen-xs-min) {
             margin-left: 80px;
+            /* offset logo */
+        }
+        @media (max-width: $screen-xs-max) {
+            left: 0!important;   
         }
         @media (min-width: $screen-sm-min) {
-            margin-left: 0; 
+            margin-left: 0;
+        }
+        #help-centre{
+            @media (max-width: $screen-xs-max) {
+                left: 0!important;   
+            }
+            @media (min-width: $screen-sm-min) {
+                position: absolute;
+                right: 0;
+            }
+            &.panel-overflow{
+                @media (min-width: $screen-sm-min) {
+                    .nav-panel-inner{
+                        overflow: auto;
+                        height: 100vh;
+                    }
+                }
+                @media (min-width: $screen-sm-min) {
+                    position: fixed;
+                    top: $header-plus-utility-md;
+                    bottom: 0;
+                    right: auto;
+                }
+                @media (min-width: $screen-xl-min) {
+                    top: $header-plus-utility-lg;
+                }
+            }
         }
     }
-    .btn-orange{
-        @include full-width;
+    .btn-orange {
+        width: 100%;
     }
 }
 
-    
+
 /**
 * #.# myAU, Help, and Search Navigation
 *
@@ -291,13 +335,13 @@
     padding-left: 0;
     flex-shrink: 1;
     margin-right: 0;
+    position: relative;
+    z-index: 10;
     @media (min-width: $screen-lg-min) {
-        width: auto;     
+        width: auto;
+        flex-shrink: 0;
     }
-    @media (min-width: $screen-xl-min) {
-        flex-shrink: 0;   
-    }
-    .myAU-logo{
+    .myAU-logo {
         width: 50px;
         height: 30px;
         display: none;
@@ -306,7 +350,7 @@
         }
         @media (min-width: $screen-xl-min) {
             width: 65px;
-            height: 38px;            
+            height: 38px;
         }
     }
     .nav-panel-actions {
@@ -317,8 +361,10 @@
         padding: 0;
         height: 100%;
         text-align: center;
+        background: $blue;
         @media (min-width: $screen-sm-min) {
-            margin-right: -1.4em;    
+            margin-right: -1.4em;
+            background: transparent;
         }
         @media (min-width: $screen-lg-min) {
             justify-content: flex-end;
@@ -328,7 +374,7 @@
             font-size: 0.6em;
             margin: 3px 0 0;
             @media (min-width: $screen-xs-min) {
-                font-size: 0.7em;    
+                font-size: 0.7em;
             }
             @media (min-width: $screen-sm-min) {
                 font-size: 0.9em;
@@ -339,7 +385,7 @@
                 margin: 0 0 0 10px;
             }
         }
-        >li {
+        > li {
             height: 100%;
             width: 100%;
             flex-shrink: 1;
@@ -349,7 +395,7 @@
             @media (min-width: $screen-sm-min) {
                 width: auto;
             }
-            >a {
+            > a {
                 height: inherit;
                 width: inherit;
                 display: flex;
@@ -376,10 +422,10 @@
                 @media (min-width: $screen-sm-min) {
                     flex-flow: row;
                     align-items: center;
-                    padding: 0 1.35rem;
+                    padding: 0 1.2rem;
                 }
                 @media (min-width: $screen-xl-min) {
-                    padding: 0 1.5rem;    
+                    padding: 0 1.5rem;
                 }
                 .fa {
                     font-size: 1.35rem;
@@ -438,9 +484,9 @@
                 .nav-panel-label {
                     display: none;
                 }
-                >a {
-                    &.active{
-                        .white{
+                > a {
+                    &.active {
+                        .white {
                             fill: $blue;
                         }
                     }
@@ -452,15 +498,19 @@
         }
         #help-trigger {
             /* Show "& Support" in large screens only */
-            span {
+            font-size: 0.9em;
+            @media (min-width: $screen-xl-min) {
+                font-size: 1em;   
+            }
+            .nav-panel-label {
                 span {
                     display: none;
-                    @media (min-width: $screen-xl-min) {
+                    @media (min-width: $screen-md-min) {
                         display: inline;
                     }
                 }
             }
-            >a {
+            > a {
                 .fa {
                     @media (min-width: $screen-sm-min) {
                         position: relative;
@@ -470,14 +520,14 @@
             }
         }
         #search-trigger {
-            >a {
+            > a {
                 @media (min-width: $screen-sm-min) {
                     .nav-panel-label {
                         display: none;
                     }
                 }
                 @media (min-width: $screen-xxl-min) {
-                    .fa{
+                    .fa {
                         position: relative;
                         top: -1px;
                     }
@@ -486,13 +536,18 @@
         }
     }
     #mobile-menu-trigger {
+        .nav-panel-toggle{
+            @media (min-width: $screen-sm-min) {
+                padding: 0 1.35rem;
+            }
+        }
         @media (min-width: $screen-sm-min) {
             margin: 0 auto 0 1em;
         }
         @media (min-width: $screen-lg-min) {
             display: none;
         }
-        .btn-orange{
+        .btn-orange {
             border-radius: none;
         }
         .nav-panel-toggle {
@@ -522,6 +577,78 @@
     }
 }
 
+/**
+* #.# Navigation for medium size devices such as a table
+*
+* Navgation becomes fixed to the left side of the screen.
+*/
+
+@media only screen and (max-width: $screen-md-max) and (min-width: $screen-sm-min) {
+    #main-header {
+        &.sticky {
+            #au-site-nav-panel {
+                padding-top: $header-height-md!important;
+            }
+        }
+        #au-primary-nav,
+        #au-primary-nav ul {
+            background: white;
+            height: 100%;
+            .is-hidden {
+                overflow: auto;
+            }
+        }
+        #au-site-nav-panel {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            z-index: -10;
+            padding-top: $header-height-md + $utility-height-lg!important;
+        }
+        #au-site-nav-panel #au-site-nav{
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+/**
+* #.# Apply button
+*
+* Apply button is shown in tablet and phone menus
+*/
+
+#btn-mobile-menu-apply {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9;
+    display: block;
+    width: 100%;
+    @media (min-width: $screen-sm-min) {
+        width: $nav-width-md;
+    }
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        height: 100%;
+        height: 50px;
+        border-radius: 0;
+        font-size: 0.9em;
+    }
+    @media (min-width: $screen-lg-min) {
+        display: none;
+    }
+    .fa-external-link {
+        display: inline-block;
+        margin-top: 0;
+        position: relative;
+        top: 2px;
+    }
+}
+
+
 .nav-panel {
     visibility: hidden;
     width: 100%;
@@ -531,15 +658,16 @@
     right: 0;
     overflow: hidden;
     top: 0;
+    bottom: 0;
     z-index: -1;
     opacity: 0;
     transition: all 0.3s ease-in;
     background: white;
+    height: 100%;
     @media (min-width: $screen-sm-min) {
         position: absolute;
         width: 500px;
         top: 100%;
-        height: auto;
         left: auto;
         bottom: auto;
         right: 0;
@@ -548,38 +676,40 @@
         padding-top: 0!important;
         /* Override padding JavaScript padding setting for mobile */
     }
+    @media (min-width: $screen-md-min) {
+        height: auto;
+    }
     &#au-site-nav-panel {
         left: 0;
         width: 100%;
-        padding-bottom: 60px;
+        height: calc(100% - 50px);
+        /* offset apply button */
         @media (min-width: $screen-sm-min) {
-            width: 350px;
+            width: $nav-width-md;
         }
         nav {
             position: relative;
             height: 100%;
             width: 100%;
-        }
-        .btn-mobile-menu{
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 9;
-            display: block;
-            @media (min-width: $screen-sm-min) {
-                display: none;
+        } //utility nav for smaller devices
+        .minor {
+            font-size: 0.95em;
+            &:nth-child(6) {
+                position: relative;
+                margin-top: 1em;
+                &:before {
+                    content: '';
+                    height: 1px;
+                    position: absolute;
+                    top: -0.5em;
+                    background: $border-color;
+                    z-index: 9;
+                    left: 1em;
+                    width: calc(100% - 2em);
+                }
             }
-            .fa-external-link{
-                display: inline-block;
-                margin-top: 0;
-            }
-        }
-        //apply now mobile menu call to action
-        .btn-mobile-menu{
-            display: block;
-            border-radius: 0;
-            @media (min-width: $screen-sm-min) {
-                display: none;
+            a {
+                font-weight: 400!important;
             }
         }
     }
@@ -638,6 +768,37 @@
 * Located on left side in desktop.
 */
 
+/* height 100% does not work in Safari with Flexbox. This is a work around */
+
+#main-header {
+    #au-primary-nav {
+        #nav-admissions {
+            .btn-orange {
+                display: none;
+                @media (min-width: $screen-md-min) {
+                    display: block;
+                }
+            }
+        }
+        @media (min-width: $screen-lg-min) {
+            height: $header-height-md;
+        }
+        @media (min-width: $screen-xl-min) {
+            height: $header-height-md;
+        }
+        @media (min-width: $screen-xxl-min) {
+            height: $header-height-lg;
+        }
+    }
+    &.sticky {
+        #au-primary-nav {
+            @media (min-width: $screen-xl-min) {
+                height: $header-height-md;
+            }
+        }
+    }
+}
+
 #au-site-nav {
     text-align: left;
     background: white;
@@ -654,14 +815,15 @@
 
 @media (max-width: $screen-sm-max) {
     #au-primary-nav {
-        >li:not(.minor) {
-            >a {
+        > li:not(.minor) {
+            > a {
                 font-size: 1em;
             }
         }
     }
 }
 
+//default navigation behaviour. This applies to small screen devices
 .au-primary-nav,
 .au-primary-nav ul {
     position: absolute;
@@ -678,8 +840,7 @@
     background: white;
     padding: 1.3em 1em;
     overflow-x: hidden;
-    @media (max-width: $screen-xs-max) {
-        height: 100%!important;
+    @media (max-width: $screen-md-max) {
         &.moves-out {
             >li {
                 height: 0;
@@ -691,7 +852,7 @@
         padding: 1.3em;
     }
     @media (min-width: $screen-sm-min) {
-        ul{
+        ul {
             box-shadow: 0 10px 25px 0 rgba(49, 49, 93, 0.1);
             height: auto;
             overflow: visible;
@@ -725,16 +886,17 @@
             position: relative;
             background: white;
             font-weight: 600;
-            @media (min-width: $screen-sm-min) and ( max-height: 735px ){
+            @media (min-width: $screen-sm-min){
                 padding: 0.45rem 1rem;
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
-            &:hover,{
+            &:hover,
+                {
                 background: $gray-light;
             }
             &:focus,
-            &:active{
-                background: darken($gray-light, 8%);    
+            &:active {
+                background: darken($gray-light, 8%);
             }
             .nav-arrow {
                 transform: rotate(270deg);
@@ -761,11 +923,11 @@
                     }
                 }
             }
-            &.btn-orange{
+            &.btn-orange {
                 margin-top: 1em;
                 padding: 1em 1em 1.1em;
                 font-weight: 600;
-                .fa{
+                .fa {
                     display: inline-block!important;
                     color: white;
                     top: 0;
@@ -792,7 +954,7 @@
                 height: 11px;
                 margin-top: -6px;
             }
-            +li {
+            + li {
                 a {
                     /* Home icon */
                     &:after {
@@ -813,7 +975,7 @@
             border-bottom: 0;
         }
         &.has-children {
-            a {
+            > a {
                 padding-right: 3em;
             }
         }
@@ -831,7 +993,7 @@
         transition: transform .3s, opacity .3s, background-color .3s, box-shadow .3s;
         box-shadow: 0 3px 25px 0 rgba(49, 49, 93, 0);
     }
-    &.moves-out>li>a {
+    &.moves-out > li > a {
         /* push the navigation items to the left - and lower down opacity - when secondary nav slides in */
         transform: translateX(-100%);
         opacity: 0;
@@ -848,37 +1010,7 @@
     }
 }
 
-///height 100% does not work in Safari with Flexbox. This is a work around
-
-#main-header {
-    #au-primary-nav {
-        #nav-admissions{
-            .btn-orange{
-                display: none;
-                @media (min-width: $screen-md-min) {
-                    display: block;
-                }
-            }   
-        }
-        @media (min-width: $screen-lg-min) {
-            height: $header-height-md;    
-        }
-        @media (min-width: $screen-xl-min) {
-            height: $header-height-md;
-        }
-        @media (min-width: $screen-xxl-min) {
-            height: $header-height-lg;
-        }
-    }
-    &.sticky {
-        #au-primary-nav {
-            @media (min-width: $screen-xl-min) {
-                height: $header-height-md;
-            }
-        }
-    }
-}
-
+/* navigation behaviour on large screen devices. We show the first child li items in the #main-header */
 @media (min-width: $screen-lg-min) {
     #au-primary-nav {
         position: relative;
@@ -890,26 +1022,25 @@
         background: none;
         border-bottom: 0;
         transition: all 0.3s ease-in;
-        &.moves-out>li>a {
+        &.moves-out > li > a {
             /* reset mobile style */
             visibility: visible;
             transform: translateX(0);
             opacity: 1;
-        }
-        //top level nav items
-        >li {
+        } //top level nav items
+        > li {
             position: relative;
             height: inherit;
             display: flex;
             &.has-children {
-                >a {
+                > a {
                     padding-right: 0.9em;
                     @media (min-width: $screen-xxl-min) {
                         padding-right: 1.3em;
                     }
                 }
             }
-            >a {
+            > a {
                 height: inherit;
                 display: flex;
                 align-items: center;
@@ -918,7 +1049,7 @@
                 color: white;
                 text-decoration: none;
                 font-weight: 600;
-                font-size: 0.8em;
+                font-size: 0.75em;
                 transition: none;
                 border: 0;
                 @include nav-top-states;
@@ -926,25 +1057,25 @@
                     font-size: 0.9em;
                     padding: 0 1rem;
                 }
-                &.current{
+                &.current {
                     background: none;
-                    &::after{
-                        content:'';
+                    &::after {
+                        content: '';
                         position: absolute;
                         left: 10px;
                         top: auto;
                         bottom: 0;
                         width: calc(100% - 20px);
                         background: $orange;
-                        height: 5px; 
-  
+                        height: 5px;
+
                     }
                 }
                 &.selected {
                     background: white;
                     color: $blue;
-                    &.current{
-                        &::after{
+                    &.current {
+                        &::after {
                             display: none;
                         }
                     }
@@ -977,9 +1108,8 @@
                 opacity: 0;
                 visibility: hidden;
                 transform: translateX(0);
-            }
-            //hide first level "go back" button until mobile
-            >li {
+            } //hide first level "go back" button until mobile
+            > li {
                 &.go-back {
                     display: none;
                     height: 0;
@@ -998,7 +1128,7 @@
 
 .au-primary-nav ul .has-children,
 .go-back {
-    >a {
+    > a {
         .nav-arrow {
             transform: rotate(-90deg);
         }
@@ -1016,6 +1146,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
     padding: 0;
     margin: 0;
     width: $help-tab-width-sm;
@@ -1075,13 +1206,13 @@
                     opacity: 1;
                 }
             }
-            .fa{
+            .fa {
                 color: lighten($text-color, 15%);
                 display: block;
                 font-size: 1.5em;
                 margin: 0 auto 0.2em;
                 @media (min-width: $screen-sm-min) {
-                    font-size: 1.7em; 
+                    font-size: 1.7em;
                     margin: 0 auto 0.5em;
                 }
             }
@@ -1096,7 +1227,6 @@
     padding-left: $help-tab-width-sm;
     position: relative;
     height: 100%;
-    overflow: auto;
     @media (min-width: $screen-xs-min) {
         padding-left: $help-tab-width-lg;
     }
@@ -1106,6 +1236,8 @@
     .help-tab-content {
         display: none;
         padding: 2em;
+        height: 100%;
+        overflow: auto;
         &#contact {
             display: block;
         }
@@ -1113,7 +1245,7 @@
         &#contact {
             p:first-of-type {
                 font-size: 0.85em;
-                margin: 0 0 1em;
+                margin: 0 0 0.7em;
             }
         }
         ul {
@@ -1136,6 +1268,8 @@
                 }
                 &.minor {
                     a {
+                        font-weight: 300;
+                        font-size: 0.9em;
                         margin-top: 0.2em;
                     }
                 }
@@ -1164,19 +1298,23 @@
             }
         }
     }
-    
+
     /* Contact */
     #contact {
-        p{
-            a{
+        p {
+            a {
                 display: block;
             }
         }
         ul {
             border-top: 1px solid $border-color;
             border-bottom: 1px solid $border-color;
-            margin: 1em 0;
-            padding: 0.8em 0;
+            margin: 0.7em 0;
+            padding: 0.7em 0;
+            li{
+                font-size: 0.95em;
+                padding: 0.25em;
+            }
             .fa {
                 margin-right: 0.6em;
                 color: lighten($text-color, 25%);
@@ -1190,7 +1328,7 @@
         .phone-numbers {
             strong {
                 font-weight: 600;
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
             span {
                 display: block;
@@ -1203,28 +1341,28 @@
             .status-indicator {
                 display: inline-block;
                 background: none;
-                .fa{
+                .fa {
                     font-size: 1.1em;
                     display: none;
                     margin-right: 0.2em;
                 }
                 &.optimal {
-                    .fa{
+                    .fa {
                         color: $brand-success;
-                        &.fa-check-circle{
+                        &.fa-check-circle {
                             display: inline-block;
                         }
                     }
                 }
                 &.caution {
-                    .fa{
+                    .fa {
                         color: $brand-warning;
                     }
                 }
-                &.warning { 
-                    .fa{
+                &.warning {
+                    .fa {
                         color: $brand-danger;
-                        &.fa-times-circle{
+                        &.fa-times-circle {
                             display: inline-block;
                         }
                     }
@@ -1252,6 +1390,7 @@
                 padding-right: 0.5em;
                 a {
                     padding: 0;
+                    font-weight: 400;
                     .fa {
                         font-size: 0.9em;
                         top: -1px;
@@ -1269,7 +1408,7 @@
     }
     #directories {
         ul {
-            @include custom-lists(10px, "\f054", 7px);
+            @include custom-lists(9px, "\f054", 5px);
             padding-left: 0;
         }
     }
@@ -1288,7 +1427,6 @@
 /**
 * #.# Search
 *
-* ....
 */
 
 #au-search {
