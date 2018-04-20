@@ -1,0 +1,65 @@
+.cta{
+    background: $blue;
+    padding: 0.7em;
+    border-left: 6px solid $orange;
+    a{
+        text-decoration: none;
+    }
+    .cta-inner{
+        padding: 2em 1em;
+        @extend .clearfix;
+        font-size: .9em;
+        display: flex;
+        flex-flow: column;
+        @media (min-width: $screen-sm-min) {
+            font-size: 1em;
+            padding: 2em;
+        }
+        @media (min-width: $screen-md-min) {
+            
+        }
+        @media (min-width: $screen-lg-min) {
+            text-align: left;
+            flex-flow: row;
+            align-items: center;
+        }
+        .item{
+            h2, h3, h4, h5{
+                font-size: 1.6em;
+                margin: 0;
+                color: white;
+                font-weight: 600;
+                margin-bottom: 0.3em;
+            }
+            &.cta-content{
+                width: 100%;
+                padding-right: 1em;
+            }
+            p{
+                font-size: 1em;
+                margin: 0;
+                font-weight: 300;
+                @media (min-width: $screen-lg-min) {
+                    font-size: 1.1em;    
+                }
+            }
+            .btn{
+                min-width: 175px;
+                padding-left: 0;
+                padding-right: 0;
+                display: inline-block;
+                flex-grow: 1;
+                @media (min-width: $screen-md-min) {
+                    margin: 1em 0 0;    
+                }
+                @media (min-width: $screen-lg-min) {
+                    margin: 0;
+                }
+            }
+        }
+        p{
+            color: white;
+        }
+    }
+}
+

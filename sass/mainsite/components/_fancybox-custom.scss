@@ -1,4 +1,4 @@
-    /**
+/**
 * #.# Fancybox 3 Branding Styles
 *
 * Overrides default styling
@@ -42,5 +42,12 @@
     svg {
         width: 1.5em!important;
         height: 2em!important;
+    }
+}
+
+.modal{
+    max-width: 500px;
+    h1, h2, h3, h4, h5, h6{
+        margin-top: 0;
     }
 }

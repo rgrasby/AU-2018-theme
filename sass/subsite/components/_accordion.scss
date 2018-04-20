@@ -8,7 +8,7 @@
 /**
 
 */
-#accordion, .accordion{
+.accordion, .accordion-open{
     .ui-accordion-header {
         background-color: $gray-lighter;
         border: 1px solid $border-color;
@@ -31,8 +31,12 @@
                 color: white;
             }   
         }
-        &:focus{
+        &:focus, &:active{
             background: $blue-secondary;
+            color: white;
+            &::before{
+                color: white;
+            }
         }
         @media (min-width: $screen-sm-min) {
             font-size: 1.2rem;
@@ -59,7 +63,11 @@
         &.ui-accordion-header-active{
             background: $blue-secondary;
             box-shadow: none;
-            border: 1px solid $blue-secondary;           
+            border: 1px solid $blue-secondary;  
+            &::before{
+                content: '\f13a'; 
+                color: white;
+            }  
         }
     }
     .ui-accordion-content-active{
@@ -67,7 +75,13 @@
         border: 1px solid $border-color;
         margin-bottom: 1em;
         background: white;
-        
+        >ul{
+            >li{
+                &:first-of-type{
+                    margin-top: 0!important;
+                }
+            }
+        }
     }
     @include link-icons(after);
 }
@@ -75,12 +89,16 @@
 /* Change up accordion styling when it's in a callout box */
 #page-resources{
     #accordion, .accordion{
+        @include light-dropshadow;
         .ui-accordion-header {
             border: 0;
             border-bottom: 1px solid $border-color;
             background: white;  
             margin-bottom: 0;
             box-shadow: none;
+            &:last-of-type{
+                border-bottom: 0;
+            }
            &:hover{
                 background: $orange; 
                 box-shadow: none;

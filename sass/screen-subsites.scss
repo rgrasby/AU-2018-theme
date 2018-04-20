@@ -13,12 +13,13 @@
 */
 @import "mainsite/vendor/owl-carousel";
 @import "mainsite/vendor/owl-theme-default";
-@import "mainsite/vendor/susy"; 
+@import "mainsite/vendor/susy";  
 @import "mainsite/vendor/normalize";
 @import "mainsite/vendor/jquery-ui";
 @import "mainsite/vendor/jquery-ui.structure";
 @import "mainsite/vendor/jquery.fancybox";
 @import "subsite/vendor/ableplayer";
+@import "mainsite/vendor/bootstrap-grid/grid"; 
 
 /**
 * #.# Boilerplate
@@ -38,11 +39,15 @@
 @import "mainsite/layout/header";
 @import "mainsite/layout/utility";
 @import "mainsite/layout/footer";
+<<<<<<< HEAD
 @import "subsite/layout/two-column";
+=======
+>>>>>>> master
 
 /* Subsite specific layout styles */
 @import "subsite/layout/header";
 @import "subsite/layout/grid";
+@import "subsite/layout/footer";
 
 /**
 * #.# Pages
@@ -62,15 +67,17 @@
 @import "mainsite/components/buttons";
 @import "mainsite/components/breadcrumb";
 @import "mainsite/components/icons"; 
-@import "mainsite/components/cta";
 @import "mainsite/components/msg-boxes";
 @import "mainsite/components/stats";
 @import "mainsite/components/testimonials";
 @import "mainsite/components/tables";
 @import "mainsite/components/panels";
 @import "mainsite/components/tooltips";
+@import "mainsite/components/callouts";
 @import "mainsite/components/owl-carousel-custom";
 @import "mainsite/components/fancybox-custom";
+@import "mainsite/components/lists";
+@import "mainsite/components/img-floats";
 
 /* Subsite specific layout styles */
 @import "subsite/components/sidebar-menu"; 
@@ -78,4 +85,6 @@
 @import "subsite/components/ableplayer-popup";
 @import "subsite/components/search";
 @import "subsite/components/on-page-dropdown";
-@import "subsite/components/_owl-carousel-custom";
+@import "subsite/components/owl-carousel-custom";
+@import "subsite/components/cta";
+@import "subsite/components/breadcrumb";

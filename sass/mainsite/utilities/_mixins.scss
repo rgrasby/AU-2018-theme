@@ -1,7 +1,7 @@
 /**
 * #.# SASS Mixins
 *
-* Custom SASS mixins not available in Compass
+* Custom SASS mixins
 */
 
 @mixin sans {
@@ -16,10 +16,14 @@
     width: 100%;
 }
 
+@mixin light-dropshadow {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.07);
+}
+
 @mixin page-padding {
     padding-left: 1em;
     padding-right: 1em;
-}
+} 
 
 @mixin page-padding-tablet {
     padding-left: 2em;
@@ -32,71 +36,76 @@
 }
 
 @mixin vertical-align($position: relative, $breakpoint: sm) {
-    @if $breakpoint == "sm" {
-        @media (min-width: $screen-sm-min) {  
+    @if $breakpoint=="sm" {
+        @media (min-width: $screen-sm-min) {
             position: $position;
             top: 50%;
             -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
-            transform: translateY(-50%);            
+            transform: translateY(-50%);
         }
-    } @else if $breakpoint == "md" {
-        @media (min-width: $screen-md-min) {  
+    }
+    @else if $breakpoint=="md" {
+        @media (min-width: $screen-md-min) {
             position: $position;
             top: 50%;
             -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
-            transform: translateY(-50%);                   
-        }        
+            transform: translateY(-50%);
+        }
     }
-
 }
 
-@mixin box-shadow-form{
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-@mixin link-icons($position:after){
+@mixin link-icons($position:after) {
     a:not(.btn) {
-        &::after, &::before{
+        &::after,
+        &::before {
             display: none;
             position: relative;
             top: 0;
             font-family: FontAwesome;
-            text-rendering: optimizeLegibility; 
-            color: $blue;  
+            text-rendering: optimizeLegibility;
+            color: $blue;
             font-size: 14px;
         }
-        @if $position == "after" {
-            &::after{
+        @if $position=="after" {
+            &::after {
                 padding-left: .5em;
                 display: inline-block;
             }
-        } @else if $position == "before" {
-            &::before{
+        }
+        @else if $position=="before" {
+            &::before {
                 padding: 0 .3em 0 .4em;
                 display: inline-block;
-            }            
+            }
         }
-        &[href*="calendar"], &[href*="advising"], &[href*="business"], &[target=_blank] {
-            &::after, &::before{
+        &[href*="calendar"],
+        &[href*="advising"],
+        &[href*="business"],
+        &[target=_blank] {
+            &::after,
+            &::before {
                 content: '\f08e';
             }
         }
-        &[href$=".doc"]{
-            &::after, &::before{
+        &[href$=".doc"] {
+            &::after,
+            &::before {
                 content: '\f1c2';
-            }    
+            }
         }
-        &[href$=".pdf"]{
-            &::after, &::before{
+        &[href$=".pdf"] {
+            &::after,
+            &::before {
                 content: '\f1c1';
-            }    
+            }
         }
-        &[href^="mailto:"]{
-            &::after, &::before{
+        &[href^="mailto:"] {
+            &::after,
+            &::before {
                 content: '\f003';
-            }             
+            }
         }
     }
 }
@@ -110,34 +119,41 @@
         line-height: 1.5em;
         position: relative;
         background: none;
-        &::before{
+        &::before {
             font-family: FontAwesome;
             position: absolute;
-            text-rendering: optimizeLegibility; 
+            text-rendering: optimizeLegibility;
             color: lighten($text-color, 25%);
             left: 0;
             top: $top-position;
             font-size: $font-size;
-            content: $list-icon;       
-        } 
+            content: $list-icon;
+        }
+        ul {
+            li {
+                &::before {
+                    content: "\f10c";
+                }
+            }
+        }
     }
-} 
+}
 
 @mixin custom-count() {
     padding-left: .25em;
     > li {
         list-style: none;
         margin-left: 0;
-        padding: .25em 0 .25em 2.2em;
+        padding: .35em 0 .35em 2.2em;
         line-height: 1.5em;
         position: relative;
         background: none;
         list-style-type: none;
         counter-increment: step-counter;
-        &::before{
+        &::before {
             color: lighten($text-color, 25%);
             position: absolute;
-            content: counter(step-counter)'.';   
+            content: counter(step-counter)'.';
             font-family: Open Sans;
             left: 0;
             font-weight: bold;
@@ -146,31 +162,32 @@
             text-align: right;
         }
     }
-} 
+}
 
-
-@mixin reset-list(){
-    ul, 
-    ol{
+@mixin reset-list() {
+    ul,
+    ol {
         padding: 0;
         margin: 0;
-        li{
+        li {
             padding: 0;
-            &::before, &::after{
-                display: none;    
-            }   
-            a{
-                &::before, &::after{
-                    display: none;    
-                }  
+            &::before,
+            &::after {
+                display: none;
+            }
+            a {
+                &::before,
+                &::after {
+                    display: none;
+                }
             }
         }
-    }    
+    }
 }
 
-
-@mixin nav-top-states{
-    &::before, &::after{
+@mixin nav-top-states {
+    &::before,
+    &::after {
         content: '';
         width: 100%;
         background: $orange;
@@ -182,53 +199,24 @@
         width: 100%;
         transition: 0.2s height ease-in;
     }
-    &:hover, &:focus, &:active{
+    &:hover,
+    &:focus,
+    &:active {
         @media (min-width: $screen-sm-min) {
             background: $blue-secondary;
         }
     }
-    &.current{ 
-        background: $blue-secondary;    
+    &.current {
+        background: $blue-secondary;
     }
-    &.selected, &.active{
-        &::before{
+    &.selected,
+    &.active {
+        &::before {
             height: 3px;
-            background: $orange;    
+            background: $orange;
             @media (min-width: $screen-sm-min) {
                 height: 5px;
             }
-        }       
-    }
-}
-
-@mixin nav-top-states{
-    &::before, &::after{
-        content: '';
-        width: 100%;
-        background: $orange;
-        display: block;
-        left: 0;
-        top: 0;
-        height: 0;
-        position: absolute;
-        width: 100%;
-        transition: 0.2s height ease-in;
-    }
-    &:hover, &:focus, &:active{
-        @media (min-width: $screen-sm-min) {
-            background: $blue-secondary;
         }
-    }
-    &.current{ 
-        background: $blue-secondary;    
-    }
-    &.selected, &.active{
-        &::before{
-            height: 3px;
-            background: $orange;    
-            @media (min-width: $screen-sm-min) {
-                height: 5px;
-            }
-        }       
     }
 }

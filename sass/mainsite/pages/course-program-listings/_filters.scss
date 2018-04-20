@@ -58,8 +58,8 @@
     display: none;
     top: 0;
     height: auto;
+    transition: all 0.1s ease;
     @media (min-width: $screen-lg-min) {
-        position: absolute;
         z-index: 999;
         width: 325px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -67,6 +67,24 @@
         border: 0;
         margin-top: 0;
         display: block;
+        position: absolute!important;
+        top: 0;
+    }
+    &.sticky{
+        top: $header-height-md;
+        position: fixed!important;
+        bottom: 0;
+    }
+    &.at-top {
+        position: absolute!important;
+        @media (min-width: $screen-sm-min) { 
+            top: 0;    
+        }
+    }
+    &.at-bottom{
+        position: absolute;
+        bottom: 0;
+        top: auto;
     }
     &.filters-open {
         @media (min-width: $screen-lg-min) {
@@ -104,15 +122,20 @@
             }
         }
     }
+    /* Scollable area */
+    .scrollable {
+        overflow-x: hidden;
+        overflow: auto;
+        height: 100%;
+        @media (min-width: $screen-lg-min) {
+            height: calc(100% - 105px);
+        }
+    }
     >.filter-inner {
         visibility: visible;
-        height: calc(100% - 50px);
         position: relative;
-        overflow: auto;
         background: white;
-        @media (min-width: $screen-lg-min) {
-            height: auto;
-        }
+        height: 100%;
         &.filters-open {
             visibility: hidden;
         }
@@ -205,32 +228,6 @@
     }
     .btn{
         border-radius: 0;
-    }
-    .scrollable {
-        overflow-x: hidden;
-        overflow: auto;
-        @media (min-width: $screen-md-min) {
-            height: 100vh;
-        }
-        .scroll-element.scroll-y {
-            transition: all 0.5s ease;
-            opacity: 0;
-        }
-        &:hover {
-            .scroll-element.scroll-y {
-                opacity: 1;
-            }
-        }
-    }
-    &.sticky {
-        .scrollable {
-            @media (min-width: $screen-md-min) {
-                height: calc(100vh - 95px);
-            }
-        }
-    }
-    .scroll-element.scroll-x {
-        display: none !important;
     }
     .filter-tabs {
         list-style: none;
@@ -379,8 +376,7 @@
     }
     .search-wrap {
         position: relative;
-        background: white;
-        padding: 15px 20px 25px;
+        margin-bottom: 1em;
         @media (min-width: $screen-md-min) {
             padding: 0;    
         }
@@ -403,10 +399,7 @@
             font-weight: 300;
             border: 1px solid $border-color;
             &::placeholder{
-                color: white;
-                @media (min-width: $screen-md-min) {
-                    color: $gray-dark;    
-                }
+                color: black;
             }
             @media (min-width: $screen-md-min) {
                 font-size: 1.1em;
@@ -419,19 +412,7 @@
             }
         }
         .fa {
-            margin-top: 16px;
-            position: absolute;
-            right: auto;
-            left: 35px;
-            color: darken($gray-light, 20%);
-            font-size: 1em;
-            top: 50%;
-            @media (min-width: $screen-md-min) {
-                font-size: 1.4em;
-                margin-top: -12px;
-                right: 15px;
-                left: auto;
-            }
+            display: none;
         }
     }
 }
@@ -443,7 +424,7 @@
 * In mobile we make the search and filters show as a popup
 */
 #filter-sidebar {
-    @media (max-width: $screen-md-max) {
+    @media (max-width: $screen-lg-max) {
         position: fixed!important;
         width: 320px;
         display: none;
@@ -452,6 +433,9 @@
         bottom: auto!important;
         left: 50%;
         margin-left: -160px;
+        padding-top: 0!important;
+        height: 325px;
+        margin-top: -190px;
     }
     /* Tint behind panels when opened */
     &:before {
@@ -476,13 +460,6 @@
                 display: block;
             }
         }
-    }
-}
-
-#filter-sidebar { 
-    @media (max-width: $screen-md-max) {
-        height: 325px;
-        margin-top: -190px;
     }
 }
 
@@ -606,7 +583,7 @@
         margin: 0 0 15px;
         font-weight: bold;
         text-transform: uppercase;
-        color: $gray-darker;
+        color: $text-color-light;
         font-size: 1em;
         text-transform: uppercase;
     }
@@ -678,6 +655,7 @@
         }
     }
     .filter-col-icons {
+        padding-top: 1em;
         button,
         a {
             display: block;

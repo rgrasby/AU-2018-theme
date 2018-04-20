@@ -21,6 +21,103 @@
     &:first-child {
         border-top: 0;
     }
+    span{
+        font-weight: 400;
+    }
+    button{
+        display: block;
+        background: none;
+        width: 100%;
+        border: 0;
+        text-align: left;
+        padding: 1.2em 1em 1.2em 2.9em;
+        font-weight: normal;
+        line-height: 1.5em;
+        &:focus, &:active, &:hover{
+            color: white;
+            .fa{
+                color: white;
+            }
+        }
+        &:focus, &:active{
+            background: $blue-secondary;
+        }
+        &:hover{
+            background: $orange;
+            i{
+                color: white;
+            }
+        } 
+    }
+    .fa{
+        color: $orange;
+        margin-right: 5px;
+        position: absolute;
+        left: 18px;
+        top: 22px;
+        font-size: 1.3em;
+        @media (min-width: $screen-sm-min) {
+            top: 26px;
+        } 
+        &::before{
+            content: '\f138';    
+        }
+    }
+    &.active{
+        background: $blue-secondary;
+        color: white;
+        border-top: 0;
+        button{
+            &:hover{
+                background: $blue-secondary;
+            }            
+        }
+        .fa{
+            color: white;
+            &::before{
+                content: '\f13a';    
+            }
+        }
+    }
+    svg {
+        fill: $blue;
+        vertical-align: middle;
+        margin-right: 5px;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        top: -2px;
+    }
+}
+ 
+//tabs inside tabs
+.tab_drawer_heading_inner{
+    display: block;
+    width: 100%;
+    border: 0;
+    margin: 0;
+    font-size: 1em;
+    color: $blue;
+    position: relative;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+    &:last-of-type{
+        border-bottom: 1px solid $border-color;
+    }
+    .fa{
+        color: $orange;
+        margin-right: 5px;
+        position: absolute;
+        left: 18px;
+        top: 22px;
+        font-size: 1.3em;
+        @media (min-width: $screen-sm-min) {
+            top: 23px;
+        } 
+        &::before{
+            content: '\f138';    
+        }
+    }
     button{
         display: block;
         background: none;
@@ -46,22 +143,11 @@
                 color: white;
             }
         } 
-        strong{
-            font-weight: 600;
+        &:first-of-type{
+            border-top: 1px solid $border-color;
         }
-    }
-    .fa{
-        color: $orange;
-        margin-right: 5px;
-        position: absolute;
-        left: 18px;
-        top: 22px;
-        font-size: 1.3em;
-        @media (min-width: $screen-sm-min) {
-            top: 26px;
-        } 
-        &::before{
-            content: '\f138';    
+        strong{
+            font-weight: 400;
         }
     }
     &.active{
@@ -80,14 +166,38 @@
             }
         }
     }
-    svg {
-        fill: $blue;
-        vertical-align: middle;
-        margin-right: 5px;
-        width: 20px;
-        height: 20px;
-        position: relative;
-        top: -2px;
+}
+
+.tab_content_inner{
+    padding: 2em;
+    border: 1px solid $border-color;
+    border-top: 0;
+    border-bottom: 0;
+    &:last-of-type{
+        border: 1px solid $border-color;
+    }
+}
+
+.tab_content{
+    .qa-item{
+        margin-bottom: 2em;
+    }
+    ul{
+        @include custom-lists(8px, "\f111"); 
+    }       
+    .custom-list {
+        @include custom-lists(8px, "\f111");
+    }
+    .custom-list.chevron, .custom-list.links{
+        @include custom-lists(10px, "\f054", 7px); 
+    }
+    ol{
+        @include custom-count() ;    
+    }
+    h2, h3, h4{
+        &:first-of-type{
+            margin-top: 0;
+        }
     }
 }
 
@@ -173,15 +283,6 @@
             @media (min-width: $screen-sm-min) {
                 padding: 2em 2.5em;
                 border: 0;
-            }
-            ul, .custom-list{
-                @include custom-lists(8px, "\f111"); 
-            }       
-            .custom-list.chevron{
-                @include custom-lists(12px, "\f054");
-            }
-            ol{
-                @include custom-count();    
             }
             p:first-of-type{
                 margin-top: 0;

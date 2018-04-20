@@ -19,6 +19,10 @@ body {
     overflow-x: hidden;
 }
 
+.vertical-align{
+    @include vertical-align();
+}
+
 a,
 a:link,
 a:visited {
@@ -43,10 +47,6 @@ a:hover {
 .missing{
     background: yellow;
     display: inline!important;
-}
-
-#site-wrap{
-    overflow-x: hidden;
 }
 
 hr{
@@ -80,31 +80,14 @@ hr{
     overflow: hidden!important;
 }
 
-.clear,
-cl {
-    clear: both;
-}
-
-.panel {
-    display: none;
-}
-
 iframe {
     width: 100%;
-}
-
-.loading {
-    background: #E8ECEF url("../images/ajax-loader.gif") 50% 50% no-repeat;
 }
 
 .float {
     width: 50%;
     float: left;
     margin-bottom: 10px;
-}
-
-.float p {
-    margin-right: 10px;
 }
 
 .indent{
@@ -136,6 +119,7 @@ iframe {
         width: 100%;
         height: auto;
     }
+<<<<<<< HEAD
 }
 
 /**
@@ -159,4 +143,6 @@ iframe {
             width: 25px;
         }
     }
+=======
+>>>>>>> master
 }

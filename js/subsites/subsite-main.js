@@ -7,6 +7,7 @@ $(function () {
         $mainNavContainer = $('#main-navigation-container'),
         $mainNavigationInner = $('#main-navigation-inner'),
         $utilityHeight = $utility.outerHeight(),
+        $scrollTop = $(window).scrollTop(),
         $headerHeight = $mainHeader.outerHeight(),
         $navAnchor = $('#nav-anchor'),
         breakpoint = 703,  
@@ -15,18 +16,6 @@ $(function () {
     
     //make sure #sidebar-nav is in the correct location
     moveElements();
-    
-    /*
-    Check if mobile device and aded a class to the body
-    =====================================================================*/
-    (function(){
-        if (typeof(WURFL) != 'undefined'){
-            if (WURFL.is_mobile === true) {
-                //mobile device detected
-                $('body').addClass('mobile-device');  
-            }
-        }
-    })();  
     
     /* 
     Form Validation   
@@ -46,6 +35,26 @@ $(function () {
     });
     
     /*
+    Hero scroll button
+    =====================================================================*/   
+    var heroScroll = (function () {
+
+    //variables
+    var $scrollBtn = $('.scroll-btn');
+
+    //bind events
+    $scrollBtn.on('click', scrollToContent);
+
+    //slide #main-navigation-container into visible canvas
+    function scrollToContent() {
+        $('html,body').animate({
+            scrollTop: $(this).offset().top - $headerHeight + 20
+        }, 500);  
+    }
+
+    }());   
+    
+    /*
     Wrap tables in .table-wrap div if it does not have one
     =====================================================================*/   
     $('table').each(function () {
@@ -53,6 +62,16 @@ $(function () {
             $(this).wrap("<div class='table-wrap'></div>")
         }
     });
+    
+    /*
+    Changes font weight of <h2> if an area of study is present
+    =====================================================================*/
+    function checkAreasofStudy() {
+        if( $('#header-site-id h2 strong').length) {
+             $('#header-site-id').addClass('change-font-weight')
+        }
+    }
+    checkAreasofStudy()
     
     /*
     Homepage Slide In Nav
@@ -63,7 +82,7 @@ $(function () {
         var $navOpenBtn = $('#open-main-nav'),
             $contentContainer = $('.content-container'),
             $hamburger = $('.hamburger'),
-            $breadcrumb = $('#breadcrumb');
+            $breadcrumb = $('.breadcrumb');
          
         //bind events
         $navOpenBtn.on('click', slideInNav);
@@ -75,16 +94,16 @@ $(function () {
             $contentContainer.toggleClass('main-nav-showing');
             $breadcrumb.toggleClass('push-over');
         }
-
+         
         //slide #main-navigation-container off canvas
         function slideOutNav(e){
             var target = e.target; 
             //allow close button to slide nav off canvas
-            if ( !jQuery(target).is('#main-navigation-container *, #open-main-nav') ) {
+            if ( !jQuery(target).is('#main-navigation-container *, #open-main-nav, #open-main-nav *') ) {
                 //remove visible class so it slides off canvas
                 $mainNavContainer.removeClass('visible');
                 $contentContainer.removeClass('main-nav-showing');
-                $breadcrumb.removeClass('push-over');
+                $breadcrumb.removeClass('push-over'); 
             }
         }
          
@@ -95,33 +114,30 @@ $(function () {
     =====================================================================*/  
     
     //accordion component
-    $( "#accordion, .accordion" ).accordion({
+    $( '.accordion' ).accordion({
         heightStyle: "content",
         active: false,
         collapsible: true,
+        activate: function( event, ui ) {
+            //make sure fixed right navigation is positioned correctly
+            sidebarNav.fixedMainNav();    
+        }
+    });
+    
+    $( '.accordion-open' ).accordion({
+        heightStyle: "content",
+        active: false,
+        collapsible: false,
+        activate: function( event, ui ) {
+            //make sure fixed right navigation is positioned correctly
+            sidebarNav.fixedMainNav();    
+        }
     });
     
     //tooltips component
-    $( document ).tooltip();
+    $( '.tooltip' ).tooltip();
     
-    /*
-    Match height of elements
-    =====================================================================*/
-    $('.equal, .feature-content').matchHeight(false);
-    
-    /*
-    Fancybox 3 Options
-    =====================================================================*/    
-    $("[data-fancybox]").fancybox({
-        buttons: [
-            'fullScreen',
-            'thumbs',
-            'zoom',
-            'close'
-        ],
-    });
-    
-    /* Carousel
+    /* Owl Carousel
     =====================================================================*/
     var $carousel = $('.owl-carousel');
     
@@ -133,17 +149,6 @@ $(function () {
         items: 1,
     })
 
-    /* 
-    Google inspired form input focus
-    =====================================================================*/
-    $('.au-form .input-group input, .au-form .input-group textarea').focusout(function(){
-        if(!$(this).val()) {
-            $(this).removeClass('has-value');
-        } else {
-            $(this).addClass('has-value');
-        }
-    });
-    
     /* 
     Check if window resizing is done. We don't want to call function for every pixel moved, 
     ======================================================================================*/ 
@@ -181,62 +186,69 @@ $(function () {
     Move elements depending on breakpoint variable
     =====================================================================*/   
     function moveElements(){
-        
         //variables
 		var $navigation = $('#main-navigation-inner'),
             $utility = $('.util-item'),
             $siteID = $('#header-site-id'),
+            $breadCrumb = $('#breadcrumb'),
   		    mobile = checkWindowWidthSm();
-        
         //we are in mobile
         if ( mobile ) {
             $navigation.detach();
             $siteID.detach();
-            $utility.detach();
+     
             $navigation.appendTo('#au-site-nav-panel');
-            $utility.appendTo($navigation).addClass('minor');
-            $siteID.insertBefore('#breadcrumb');
+            $siteID.prependTo('.content-container').delay(100).fadeIn();
+
         //now we are in desktop
         } else {
             $navigation.detach();
-            $utility.detach();
-            $navigation.prependTo('#main-navigation-container');
-            $utility.appendTo('#util-nav nav ul');
+
+            $navigation.appendTo('#main-navigation-container');
             $siteID.insertAfter('#au-logo');
+
         }
 	}
-
+     
     /*
-    Scroll to anchor
+    Slide open "on this page" div
     =====================================================================*/
     var anchorScroll = (function () {
-        
         //variables
-        var $anchorLinks = $('#anchor-dropdown ul li a')
-            
+        var $anchorDropdownTrigger = $('#anchor-dropdown-trigger'),
+            $anchorDropdown = $('#anchor-dropdown'),
+            $anchorDropdownLinks = $('#anchor-dropdown a');
+        
         //bind events
-        $anchorLinks.on('click', anchorScroll);
+        $anchorDropdownTrigger.on('click', openPageJumpLinks);
+        $anchorDropdownLinks.on('click', offsetStickyNav);
         
         //scroll to anchor and add offset for sticky header
-        function anchorScroll() {
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                if (target.length) {
-                    $('html, body').scrollTop(target.offset().top - 120);
-                    return false;
-                }
+        function openPageJumpLinks() {
+            $anchorDropdownTrigger.toggleClass('open');  
+            
+            if(($anchorDropdown).is(":visible")) {
+                $anchorDropdownTrigger.removeClass('open').attr('aria-expanded', false);
+                $anchorDropdown.slideUp('fast').attr('aria-hidden', true);
+            } else {
+                $anchorDropdownTrigger.addClass('open').attr('aria-expanded', true);
+                $anchorDropdown.slideDown('fast').attr('aria-hidden', false);
             }
         }
         
+        //smooth scroll to section and offset sticky navigation
+        function offsetStickyNav() {
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top - $headerHeight
+            }, 500);   
+        }
     }());
     
     /*
-    Multilevel accordion subnavigation
+    Multilevel accordion main navigation
     =====================================================================*/
     var sidebarNav = (function () {
-
-        //variables
+        //declare variables
         var $auMenu = $('.au-accordion-menu'),
             $auMenuCheckboxes = $('.has-children input[type="checkbox');
 
@@ -254,12 +266,12 @@ $(function () {
                     var $this = $(this);
                     //if it is checked, open sibling <ul> and add class to closest <li>
                     if ($this.prop('checked')){
-                        $this.siblings('ul').slideDown(300);
-                        $this.closest('li').addClass('open');  
+                        $this.siblings('ul').slideDown(300).attr('aria-expanded', true);
+                        $this.closest('li').addClass('open').attr('aria-hidden', false);  
                     //if it is unchecked we will close sibling <ul> and remove open class on closest <li>
                     } else {
-                        $this.siblings('ul').slideUp(300, function() {
-                            $this.closest('li').removeClass('open');
+                        $this.siblings('ul').attr('aria-expanded', false).slideUp(300, function() {
+                            $this.closest('li').removeClass('open').attr('aria-hidden', true);
                         });
                     }
                 });
@@ -272,9 +284,9 @@ $(function () {
             $auMenuCheckboxes.each(function(index, item){
                 var $this = $(this);
                 if($this.parent('li').hasClass('selected')) {
-                    $this.parent('li').last('li').addClass('open');
+                    $this.parent('li').last('li').addClass('open').attr('aria-hidden', false);
                     $this.prop('checked', true);
-                    $this.next('label').siblings('ul').slideDown(300);         
+                    $this.next('label').siblings('ul').slideDown(300).attr('aria-expanded', true);         
                 } else {
                     $this.prop('checked', false);
                     $this.next('label').siblings('ul').slideUp(300);  
@@ -285,37 +297,38 @@ $(function () {
         //fix #main-navigation-container to the far left. 
         //Do a little magic to stop it at the footer
         function fixedMainNav(){
-            
-            //variables
+            //delcare variables
             var $headerHeight = $('#main-header').outerHeight(),
                 $window_top = $(window).scrollTop() + $headerHeight,
                 $footer_top = $("#main-footer").offset().top,
                 $div_top = $navAnchor.offset().top,
                 $div_height = $mainNavContainer.height();
 
-
-            //sticky sidebar is at the top of viewport
+            //sticky sidebar is at the bottom of viewport
             if ($window_top + $div_height > $footer_top){
+                $mainNavContainer.removeClass('sticky');
+                $mainNavContainer.removeClass('at-top');
                 $mainNavContainer.css({
                     'position': 'absolute',
                     'bottom': 0,
-                    'top': 'auto',
-                    'padding-top': 0
+                    'top': 'auto'
                 });
             //sticky sidebar is in middle of viewport
             } else if ($window_top > $div_top) {
+                $mainNavContainer.addClass('sticky');
+                $mainNavContainer.removeClass('at-top');
                 $mainNavContainer.css({
                     'position': 'fixed',
                     'bottom': 'auto',
-                    'top' : 0,
-                    'padding-top': 90
+                    'top': 0
                 });
-            //sticky sidebar is at the bottom
+            //sticky sidebar is at the top
             } else {
+                $mainNavContainer.removeClass('sticky');
+                $mainNavContainer.addClass('at-top');
                 $mainNavContainer.css({
-                    'position': 'absolute',
-                    'bottom': 'auto',
-                    'padding-top': 0,
+                    'position': 'fixed',
+                    'bottom': '0',
                     'top': 0
                 });
             }
@@ -330,13 +343,13 @@ $(function () {
         };
  
     }());
-    
+
     /* 
     Open Able Player in a pop up window
     =====================================================================*/
     var ablePlayerLightBox= (function () {
         
-        //variables
+        //declare variables
         var $ableVidTrigger = $('.able-vid-trigger'),
             $ableVidLightbox = $('.able-vid-lightbox'),
             $ableVidClose = $('#able-vid-close'),

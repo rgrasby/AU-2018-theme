@@ -1,0 +1,14 @@
+#main-footer {
+    .footer-links {
+        li {
+            &.util-item{
+                a{
+                    margin: 0 1.2em 0 0; 
+                }
+                &::after{
+                    right: 0.5em;    
+                }
+            }
+        }
+    } 
+} 

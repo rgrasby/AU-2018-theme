@@ -20,29 +20,42 @@
 
 #main-navigation-container {
     left: 0;
-    background: white;
-    position: absolute;
+    background: white; 
+    position: fixed;
     left: 0;
     top: 0;
-    transition: 0.3s all ease-in;
+    transition: 0.1s all ease-in;
     height: 100vh;
-    overflow-x: hidden;
     display: none;
     @media (min-width: $screen-sm-min) {
         display: block;
-        width: 250px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         margin-right: 4.5%;    
+        padding-top: 130px;
     }
-    @media (min-width: $screen-md-min) {
-        width: 300px;
+    @media (min-width: $screen-xxl-min) {
+        padding-top: 150px;
+    }
+    &.sticky{
+        @media (min-width: $screen-sm-min) {
+            padding-top: 90px;
+        }
+    }
+    &.at-top{
+        @media (min-width: $screen-sm-min) {
+            padding-top: 130px;
+        }
+        @media (min-width: $screen-xxl-min) {
+            padding-top: 150px;
+        }
     }
     #main-navigation-inner {
         position: relative;
         z-index: 9;
         background: white;
         width: 100%;
-        overflow: visible;
+        height: 100%;
+        overflow-x: hidden;
         box-sizing: border-box;
         ul{
             width: 100%;
@@ -51,7 +64,7 @@
             width: 250px;
         }
         @media (min-width: $screen-md-min) {
-            width: 300px;
+            width: 300px; 
         }
     }
 }
@@ -63,15 +76,18 @@
 */
 
 #sidebar-nav {
-    header{
-        background: $orange;
-        text-align: center;
-        color: white;
-        height: 49px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
+    padding-bottom: 1em;
+    +#contextual{
+        padding-top: 1em;
+        &:before{
+            content: '';
+            height: 1px;
+            background: $border-color;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
     .au-accordion-menu {
         padding-left: 0;
@@ -82,12 +98,41 @@
         a {
             text-decoration: none;
             padding: 0.5rem 0;
-            display: block
+            display: block;
         }
-        //all levels
-        li {
+        li{
             position: relative;
             display: block;
+            &.open{
+                label {
+                    &::before {
+                        top: -1px;
+                    }
+                }    
+            }
+            a{
+                font-weight: 400;
+                line-height: 1.4em;
+            }
+        }
+
+        //all levels
+        >li {
+            position: relative;
+            display: block;
+            &:first-child{
+                a {
+                    /* Home icon */
+                    &:after {
+                        content: '\f015';
+                        font-family: FontAwesome;
+                        position: absolute;
+                        right: 22px;
+                        font-size: 1.4rem;
+                        color: darken($gray-light, 25%);
+                    }
+                }  
+            }
         }
         //first level items ONLY
         >li {
@@ -95,7 +140,7 @@
                 font-weight: 400;
                 font-size: 1em;
                 position: relative;
-                padding: 11px 1.5em;
+                padding: 13px 1.5em;
             }
             >ul {
                 padding-top: 1em;
@@ -103,7 +148,7 @@
             }
             &.has-children {
                 a {
-                    padding-right: 70px!important;
+                    padding-right: 60px!important;
                 }
             }
         }
@@ -128,7 +173,7 @@
             top: 50%;
             margin-top: -10px;
             display: flex;
-            margin-right: 25px;
+            margin-right: 15px;
             align-items: center;
             justify-content: center;
             border-radius: 25px;
@@ -144,7 +189,6 @@
                 color: white;
                 display: block;
                 position: relative;
-                top: -1px;
             }
         }
         /* hide native checkbox. We will use the label to toggle checkbox */
@@ -153,7 +197,7 @@
             opacity: 0;
             &:hover, &:focus {
                 +label {
-                    background: darken($gray-light, 30%);
+                    background: darken($gray-light, 35%);
                 }
             }
         }
@@ -161,7 +205,7 @@
         //top level selected is gray with left border
         >li {
             label {
-                top: 12px;
+                top: 15px;
                 margin-top: 0;
             }
             &.open {
@@ -201,7 +245,7 @@
                     &.open {
                         >label {
                             &::before {
-                                content: '\f106 ';
+                                content: '\f106';
                             }
                         }
                     }
@@ -252,6 +296,13 @@
                 >a {
                     background: $gray-light;
                 }
+                li{
+                    &.open{
+                        >a{
+                            font-weight: 600;
+                        }
+                    }
+                }
                 >ul {
                     &::before {
                         content: '';
@@ -286,17 +337,21 @@
                 >ul {
                     li {
                         &.current {
+                            a{
+                                font-weight: 600;
+                            }
                             &:before{
                                 content: '';
                                 width: 5px;
-                                left: 11px;
+                                left: 13px;
                                 height: 26px;
                                 position: absolute;
                                 z-index: 9;
                                 background: $orange;
                                 top: 50%;
                                 margin-top: -13px;
-                                border: 2px solid white;
+                                border-top: 2px solid white;
+                                border-bottom: 2px solid white;
                             }
                         }
                     }
@@ -306,34 +361,67 @@
     }
 }
 
-#main-navigation-container {
+
+#main-navigation-inner{
     #contextual {
-        border: 1px solid $brand-danger;
-        background: lighten($brand-danger, 50%);
-        padding: 1.5em;
-        font-size: 0.95em;
-        display: none;
-        display: none;
-        align-content: center;
-        height: auto;
-        margin: 2em auto;
-        width: 235px;
-        text-align: center;
-        @media (min-width: $screen-md-min) {
-            display: flex;
-        }
+        position: relative;
         .fa {
             font-size: 1.5em;
         }
         ul {
             margin: 0;
-            padding: 0.5em 0;
+            padding: 0;
             list-style: none;
+            font-size: 0.85em;
             li {
                 a {
                     text-decoration: none;
-                    padding: 5px 1em;
+                    padding: 10px 1.5rem;
                     display: block;
+                    position: relative;
+                    &:hover{
+                        &::after{
+                            color: $orange;
+                        }
+                    }
+                    &::after {
+                        content: '';
+                        top: 0;
+                        font-family: FontAwesome;
+                        text-rendering: optimizeLegibility;
+                        color: darken($gray-light, 35%);
+                        font-size: 14px;
+                        position: absolute;
+                        right: 15px;
+                        color: darken($gray-light, 35%)!important;
+                        top: 50%;
+                        margin-top: -9px;
+                    }
+                    &[href*="calendar"],
+                    &[href*="advising"],
+                    &[target=_blank] {
+                        &::after{
+                            content: '\f08e';
+                        }
+                    }
+                    &[href$=".doc"] {
+                        &::after{
+                            content: '\f1c2';
+                            margin-top: -10px;
+                        }
+                    }
+                    &[href$=".pdf"] {
+                        &::after{
+                            content: '\f1c1';
+                            margin-top: -10px;
+                            right: 17px;
+                        }
+                    }
+                    &[href^="mailto:"] {
+                        &::after{
+                            content: '\f003';
+                        }
+                    }
                 }
             }
         }
