@@ -1,15 +1,26 @@
-//////  syllabus styles, used on main website for undergraduate and graduate syllabus pages
+/**
+* #.# Syllabus styles, used on main website for undergraduate and graduate syllabus pages
+*/
+
 #main-content #main .syllabus-back-print {
     display: none;
 }
 
-#main-content #main .syllabus {
-    font-size: 0.9em;
-    table {
-        //max-width: 44em;
+#main-content .syllabus {
+    > hr:nth-child(1){
+        display: none;
     }
-    #course-body {
-        max-width: 44em;
+    .section:first-of-type hr{
+        display: none;
+        +h2{
+            margin-top: 0.5em;
+        }
+    }
+    #course-overview{
+        clear: both;
+        hr{
+            display: none;
+        }
     }
     p {
         margin-bottom: 1em;
@@ -28,10 +39,12 @@
         font-weight: bold;
     }
     h2 {
-        margin-top: 0;
         .revision {
             font-weight: normal;
         }
+    }
+    .label{
+        font-weight: 600;
     }
     h2.course-title {
         border-bottom: 0;
@@ -40,145 +53,82 @@
         margin-bottom: 1.4em;
         margin: 1em .2em 1.4em;
     }
-    img {
-        margin-right: 0;
-        margin-bottom: 0; 
-    }
-    .label {
-        font-weight: bold;
-    }
-    #calls {
-        margin-top: 0;
-        margin-bottom: 1em;
-    }
-    #calls .call-to-action {
-        width: 100%;
-        a {
-            display: block;
-            width: 100%;
-        }
-        img {
-            display: none;
-        }
-    }
     #course-header {
         background: $gray-light;
         padding: 1em;
-        margin-bottom: 1em;
-        float: left;
-        #course-cover {
+        margin-bottom: 2em;
+        width: 100%;
+        @media (min-width: $screen-md-min) {
+            display: flex;
+            width: 65%; 
             float: left;
-            margin-right: 1em;
-            margin-bottom: 0;
-            background: $gray-light;
-            padding: 0.75em;
-            width: 60%;
-            max-width: 20em;
+        }
+        #course-cover {
             img {
                 padding: 0.25em;
                 background: #FFFFFF;
-                width: 100%;
+                max-width: 175px;
                 height: auto;
             }
         }
-        #course-details {
-            clear: both;
-            float: left;
-            width: 100%;
-            //margin-top: 1em;
+        #course-details, #course-notes {
+            display: none;
+            @media (min-width: $screen-md-min) {
+                margin-left: 1.5em;
+            }
         }
-    }
-    #course-evaluation table {
-        width: 100%;
-        float: left;
-        margin-bottom: 1em;
-        border-collapse: none;
     }
     #related-links,
     #graduate-related-links {
         width: 100%;
-        float: left;
-        #calls {
-            float: left;
-            width: 100%;
-            #registercourse {
-                float: left;
-            }
+        margin-bottom: 2em;
+        @media (min-width: $screen-md-min) {
+            width: 35%; 
+            float: right;
+            padding-left: 1.5em;
+            margin-bottom: 0;
         }
-        ul { 
-            @include custom-lists(12px, "\f054");
+        #calls {
+            width: 100%;
+            margin-top: 0;
+            margin-bottom: 1em;
+            .call-to-action{
+                width: 100%;
+                a {
+                    display: block;
+                    width: 100%;
+                }
+                img {
+                    display: none;
+                }
+            }
         }
     }
     #course-body {
-        h2 {
-            font-weight: normal;
-        }
-        h3 {
-            font-weight: normal;
-        }
+
         .reference p {
             padding: 0 0 0 20px;
             text-align: left;
             text-indent: -20px;
         }
         #course-revision-date {
-            margin-top: 3em;
+            margin-top: 2em;
             p {
                 text-align: left;
-                font-style: italic;
+                font-style: italic; 
+                font-size: 0.9em;
+            }
+        }
+        #course-disclaimer{
+            p{
+                padding: 1.5em;
             }
         }
     }
-    ul{
-        @include custom-lists(8px, "\f111"); 
-    }
 }
 
-// special breakpoint for some responsive tabular data
-@media only screen and (max-width: 44em) {
-    /*706*/
-    .syllabus #challenge table.short-table,
-    .syllabus #course-evaluation table.short-table {
-        display: block;
-        position: relative;
-        width: 100%;
-        thead {
-            display: block;
-            float: left;
-            max-width: 70%;
-        }
-        tbody {
-            display: block;
-            width: auto;
-            position: relative;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        thead tr {
-            display: block;
-        }
-        th {
-            display: block;
-            border-bottom: 1px solid #FFFFFF;
-            width: auto;
-        }
-        tbody tr {
-            display: inline-block;
-            vertical-align: top;
-        }
-        td {
-            display: block;
-            min-height: 1.25em;
-        }
-        td {
-            border-left: 0;
-            border-right: 0;
-            border-bottom: 0;
-            width: auto;
-        }
-        tbody tr {
-            border-right: 1px solid #babcbf;
-        }
-    }
+.graduate{
+    #calculate-fees, #take-a-course{
+        display: none;
+    }   
 }
-

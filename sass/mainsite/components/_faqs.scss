@@ -4,6 +4,11 @@
 .qa-item {
     h3 {
         font-size: 1.3em;
+        + div{
+            @media (min-width: $screen-sm-min) {
+                margin-left: 2.2em;     
+            }
+        }
     }
     > h3, > div {
         position: relative;

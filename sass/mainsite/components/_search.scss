@@ -5,41 +5,46 @@
 .search-form {
     width: 100%;
     margin-top: 1em;
-    height: 3em;
-    display: flex;
     align-items: center;
     position: relative;
-    &::before {
-        content: '\f002';
-        font-family: FontAwesome;
-        position: absolute;
-        right: 36px;
-        top: 50%;
-        margin-top: -12px;
-        z-index: 9;
-        color: white;
-        font-size: 1.1em;
-    }
     .search-field {
         background: $gray-lighter;
         border: 1px solid $border-color;
         border-right: 0;
         margin: 0;
         font-size: 1.2em;
-        padding: 0.5em 3em 0.5em 0.5em;
         width: 100%;
-        height: 50px;
+        height: 70px;
+        padding: 0.5em 7em 0.5em 1em;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        @media (min-width: $screen-sm-min) {  
+            padding: 0.5em 6em 0.5em 1em;
+        }
     }
     .button {
         flex-grow: 0;
-        width: 100px;
-        height: 50px;
+        width: 125px;
+        height: 70px;
         background: $orange;
+        top: 0;
+        right: -1px;
+        position: absolute;
+        border: 0;
         color: white;
-        position: relative;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        @media (min-width: $screen-sm-min) {
+            width: 125px;    
+        }
         &:hover,
         &:focus {
-            background: darken ($orange, 10%);
+            background: darken($orange, 10%);
+        }
+    }
+    &.ask-au{
+        &::before{
+            display: none;
         }
     }
 }

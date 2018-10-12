@@ -1,0 +1,80 @@
+.dropdown{
+    .dropdown-toggle{
+        background-color: $gray-light;
+        border: 1px solid $border-color;
+        position: relative;
+        padding: 0.7em 4em 0.7em 1.5em;
+        border-radius: 3px;
+        p{
+            display: inline-block;
+            margin: 0;
+        }
+        .seperator{
+            position: absolute;
+            width: 1px;
+            top: 0;
+            bottom: 0;
+            background: $border-color;
+            right: 2.5em;
+        }
+    }
+    .dropdown-menu{
+        height: 0;
+        opacity: 0;
+        transition: all 0.4s ease-in;
+        overflow: hidden;
+        min-width: 200px;
+        max-width: 300px;
+        @include light-dropshadow;
+        border: 1px solid $border-color;
+    }  
+    &.open{
+        .dropdown-toggle{
+            border-bottom: 0;
+        }
+        .dropdown-menu{
+            height: auto;
+            transition: all 0.4s ease-in;
+            opacity: 1;
+            overflow: visible;
+            padding: 0.5em 0;  
+            margin: 0;
+            li{
+                margin: 0;
+                padding: 0.7em 1.5em;
+                &.active{
+                    &:after{
+                        content: '';
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        right: 1.5em;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -5px;
+                        background: $orange;
+                    }
+                }
+                &::before{
+                    display: none;
+                }
+                .fa{
+                    masrgin-right: 0.3em;
+                }
+            }
+        }
+    }
+    .fa-sort{
+        margin-right: 0.3em;
+    }
+    .fa{
+        margin-right: 0.5em;
+    }
+    .fa-angle-down{
+        position: absolute;
+        right: 0.9em;
+        top: 50%;
+        margin-top: -6px;
+        margin-right: 0;
+    }
+}

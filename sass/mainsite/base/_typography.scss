@@ -9,14 +9,18 @@ dl {
 }
 
 h1 {
-    font-size: 2.5em; 
-    font-weight: normal;
+    font-size: 2.5em;
+    font-weight: 600;
     color: $orange;
     line-height: 1.2em;
     margin: 0 0 .2em;
     margin-top: 0;
-    + h2{
+    +h2 {
         margin-top: 0.3em;
+        font-size: 1.4em;
+        @media (min-width: $screen-sm-min) {
+            font-size: 1.8em;
+        }
     }
     @media (min-width: $screen-sm-min) {
         font-size: 3em;
@@ -30,8 +34,8 @@ h5,
 h6 {
     color: $text-color;
     font-weight: 400;
-    line-height: 1.3em;
-    margin: 1.2em 0 0.6em;
+    line-height: 1.4em;
+    margin: 1em 0 0.6em;
 }
 
 h2 {
@@ -44,14 +48,14 @@ h2 {
     +h3 {
         margin-top: -0.4em;
     }
-    +p{
+    +p {
         margin-top: -0.5em;
     }
 }
 
 h3 {
     font-size: 1.5em;
-    +p{
+    +p {
         margin-top: -0.5em;
     }
 }
@@ -64,11 +68,15 @@ h5 {
     font-size: 1.1em;
 }
 
-.lead {
-    font-size: 1.1em;
+p {
+    font-size: 1.05em;
     line-height: 1.5em;
-    @media (min-width: $screen-sm-min) {
+    &.lead {
         font-size: 1.2em;
+        @media (min-width: $screen-sm-min) {
+            font-size: 1.3em;
+            margin-top: 0.6em;
+        } 
     }
 }
 
@@ -83,13 +91,15 @@ address {
     line-height: 1.55em;
 }
 
-.callout-box{
-    +a{
-        +h2{
+.callout-box {
+    +a {
+        +h2 {
             margin-top: 0;
         }
     }
 }
+
+
 /**
 * #.# Landing page section heading
 */
@@ -218,4 +228,8 @@ a {
             }
         }
     }
+}
+
+#updated {
+    font-size: 0.8em;
 }

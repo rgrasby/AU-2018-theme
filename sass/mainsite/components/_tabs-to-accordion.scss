@@ -40,10 +40,10 @@
             }
         }
         &:focus, &:active{
-            background: $blue-secondary;
+            background: $orange;
         }
         &:hover{
-            background: $orange;
+            background: $blue-secondary;
             i{
                 color: white;
             }
@@ -64,12 +64,12 @@
         }
     }
     &.active{
-        background: $blue-secondary;
+        background: $orange;
         color: white;
         border-top: 0;
         button{
             &:hover{
-                background: $blue-secondary;
+                background: $orange;
             }            
         }
         .fa{
@@ -182,26 +182,19 @@
     .qa-item{
         margin-bottom: 2em;
     }
-    ul{
-        @include custom-lists(8px, "\f111"); 
-    }       
-    .custom-list {
-        @include custom-lists(8px, "\f111");
-    }
-    .custom-list.chevron, .custom-list.links{
-        @include custom-lists(10px, "\f054", 7px); 
-    }
-    ol{
-        @include custom-count() ;    
-    }
     h2, h3, h4{
         &:first-of-type{
             margin-top: 0;
         }
     }
+    p{
+        +h2, +h3, +h4{
+            margin: 1em 0 0.6em;
+        }
+    }
 }
 
-#main{
+#main-content, #program-landing{
     [id*="tab-wrapper"]{
         position: relative;
         border: 1px solid lighten($border-color, 3%);    
@@ -293,7 +286,6 @@
                     margin: 1.875em 0 1.5em;
                 }
             }
-            @include link-icons(after);
             hr{
                 margin: 2em 0;
             }

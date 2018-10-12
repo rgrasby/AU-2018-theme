@@ -11,22 +11,14 @@
 }
 
 table {
-<<<<<<< HEAD
     margin: 2em 0;
     width: 100%;
-=======
-    margin-top: 0.4em;
-    margin-bottom: 1em;
-    width: 100%;
     max-width: 100%;
->>>>>>> master
     cellspacing: 0;
     border-spacing: 0;
     border-collapse: collapse;
-    border: 0;
     &.no-striping{
         tbody{
-            border-top: 0;
             tr{
                 &:nth-child(even){
                     background: white;
@@ -36,12 +28,7 @@ table {
     }
     th, td{
         text-align: left;
-<<<<<<< HEAD
-        padding: 1em;
-        border: 0;
-=======
         padding: 1em; 
->>>>>>> master
     }
     thead{
         th{
@@ -49,21 +36,14 @@ table {
             border: 1px solid $blue-secondary;
             border-bottom: 0;
             color: white;
+            position: relative;
         }
     }
     tbody{
-<<<<<<< HEAD
-        border: 0;
-        border-bottom: 0;
-        tr{
-            &:nth-child(odd){
-                background: $gray-light;
-=======
         border-bottom: 0;
         tr{
             &:nth-child(even){
                 background: lighten($gray-light, 2%);
->>>>>>> master
             }
         }
         th{
@@ -71,7 +51,7 @@ table {
             color: white;
             border: 1px solid $blue-secondary;
             border-bottom: 0;
-        }
+        } 
         td {
             border: 1px solid $border-color;
         }
@@ -82,11 +62,14 @@ table {
             border-top: 0;
         }
     }
-    tr{
-        &:first-child{
-            td{
-                border-top: 0;
-            }
-        }
+}
+
+
+.mobile-scroll-table{
+    display: none;
+    @media (max-width: $screen-md-min) {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1em;
     }
 }

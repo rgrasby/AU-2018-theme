@@ -69,6 +69,8 @@
     display: none;
     transition: all .1s ease-in;
     text-align: center;
+    position: relative;
+    height: 100%;
     @media (min-width: $screen-sm-min) {
         padding: 0 0 0 2.5em;  
         opacity: 1;
@@ -118,6 +120,7 @@
         margin: auto;
         margin: 0;
         position: relative;
+        width: 100%;
         &::before{
             content: '';
             position: absolute;

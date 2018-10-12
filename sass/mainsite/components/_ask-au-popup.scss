@@ -1,0 +1,121 @@
+#ask-au-app{
+    background: transparent;
+    overflow: hidden;
+    body{
+        background: transparent;
+    }
+    #askau-container {
+        padding-top: 2.5em;
+        .msg{
+            margin-top: 1.5em;
+        }
+    }
+}
+
+#ask-au-popup {
+    position: fixed;
+    background: $orange;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 99998;
+    top: 50%;
+    margin-top: -20px;
+    padding: 0.5em 0.7em 0.7em;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85em;
+    display: none;
+    @media (min-width: $screen-sm-min) {
+        font-size: 0.90em;  
+        display: block;
+        right: -73px;
+    }
+    @media (min-width: $screen-lg-min) {
+        padding: 0.7em;
+        font-size: 0.95em;
+        right: -82px;
+    }
+    i {
+        margin-right: 0.25em;
+        transform: rotate(-90deg)
+    }
+}
+
+.ask-au-inner {  
+    .lead{
+        text-align: center;
+        margin: 0 0 1em;
+    }
+}
+
+@keyframes fadeInRightTab {
+    from {
+        opacity: 0;
+        transform: rotate(90deg) translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(90deg) translateY(100%);
+    }
+}
+
+.fadeInRightTab {
+    animation-name: fadeInRightTab;
+}
+
+//Input field for questions
+.ask-au-form{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background: $blue;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(20em at top right, #db6331, transparent);
+    }
+    .ask-au-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-size: no-repeat;
+        background-position: center;
+        opacity: 0.50;     
+        background-image: url('../images/askau-bg.jpg');
+    }
+    .ask-au-inner {
+        z-index: 9;
+        position: relative;
+        .lead{
+            color: white;
+            text-shadow: 0px 2px 0px rgba(0,0,0,0.65);
+        }
+    }
+    #askau-input {
+        background: rgba(255,255,255,.7);
+        transition: all 0.3s ease-out;
+        &:focus{
+            background: white;
+        }
+    }
+}
+
+.link-list{
+    @include custom-lists(10px, "\f054", 5px); 
+}

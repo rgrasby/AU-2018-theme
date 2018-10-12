@@ -1,35 +1,27 @@
-<<<<<<< HEAD
-/**
-* #.# Sometimes called "cards"
-*
-* With a heading a panel can make content standout from the rest
-*/
-
-
-.au-panel{
-=======
 .au-panel {
->>>>>>> master
     margin: 1em 0;
     background: $gray-light;
     padding: 0.75em;
     .icon {
         width: 135px;
         height: 135px;
-    }
-    @media (min-width: $screen-xs-min) {
-        padding: 1.5em;
+        display: block;
+        margin: auto;
+        margin-bottom: 1em;
     }
     .panel-heading {
         background: $blue-secondary;
-        padding: 1.5em 1em;
+        padding: 1.3em 1em;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         h2,
         h3,
         h4 {
             color: white;
             margin: 0;
-            font-size: 1.35rem;
+            font-size: 1.2rem;
         }
     }
     &.zero-padding {
@@ -37,15 +29,16 @@
             border: 1px solid $border-color;
         }
     }
+    .panel-inner{
+        height: 100%;
+    }
     .panel-body {
         padding: 1.5em;
         background: white;
         position: relative;
         p {
             color: $text-color;
-            &:first-of-type {
-                margin-top: 0;
-            }
+            margin: 0 0 0.5em;
         }
     }
     >a,
@@ -57,10 +50,6 @@
         transition: all 0.2s ease-in;
         transform: scale(1);
         @include light-dropshadow;
-        .btn {
-            display: inline-block;
-            padding-bottom: 0;
-        }
     }
     >a{
         &:hover,
@@ -75,5 +64,17 @@
     }
     .btn[class*="btn-circle-icon"]{
         margin: 0.8em 0 0;
+    }
+    .btn-group{
+        padding: 0.5em 0;
+        a {
+            &[class*="btn-circle-icon"] {
+                padding-top: 0.3em;
+                padding-bottom: 0.3em;
+                &:last-of-type {
+                    margin-bottom: 0!important;
+                }
+            }
+        }
     }
 }

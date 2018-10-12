@@ -1,0 +1,151 @@
+/**
+* #.# Global AU Search
+*
+* Used to search the entire AU network
+*/
+
+
+/* A-Z Index */
+.content-container{
+    .index-letters{
+        margin: 1.5em 0 2em;
+        ol{
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-flow: wrap;
+            li{
+                padding: 0;
+                a{
+                    background: white;
+                    width: 30px;
+                    height: 30px;
+                    padding: 0;
+                    margin: 0.4em 0.4em 0 0;
+                    transform: scale(1);
+                    transition: all 0.2s ease-in;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid $border-color;
+                    position: relative;
+                    list-style: none;
+                    text-decoration: none;
+                    &:hover{
+                        transform: scale(1.2); 
+                        background: white;
+                        font-weight: bold;
+                        @include light-dropshadow;
+                        border: 1px solid $border-color;
+                        color: $blue-tertiary;
+                    }
+                }
+                &:last-child{
+                    margin-right: 0;
+                }
+                &::before{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.ui-accordion-content{
+    .index-link{
+        display: block;
+        padding: 0.2em 0;
+        text-decoration: none;
+        &:hover, &:focus{
+            text-decoration: underline;
+            color: $orange;
+        }
+        i{
+            color: lighten($text-color, 25%);
+            margin-right: 0.6em;
+        }
+    }
+}
+
+/* Phone Search */
+#phone-search{
+    center, input[type="submit"], input, font, > hr:nth-child(13), > p:nth-child(11), > form:nth-child(5) > p:nth-child(1), {
+        display: none;
+    }
+    div{
+        pre{
+            padding-bottom: 2em;
+            hr{
+                margin: 0;
+            }
+            a{
+                text-decoration: none;
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    i{
+        font-size: 0.9em;
+    }
+}
+
+/* People Search */
+#people-search{
+    h2{
+        font-size: 1.5em;
+    }
+    form{
+        + p{
+            display: none;
+        }
+    }
+}
+
+/* Website Search */
+#results{
+    font-size: 0.9em;
+    .callout-box{
+        margin-top: 0;
+    }
+    h3{
+        text-decoration: none;    
+    }
+    blockquote{
+        height: 0;
+        opacity: 0;
+        transition: all 0.3s ease-in;
+    }
+    hr{
+        margin: 1.5em 0 1.3em;
+    }
+    .related-less{
+        display: none;
+    }
+    .related-shown{
+        .related-less{
+            display: block;
+        }
+        .related-more{
+            display: none;
+        }
+        blockquote{
+            height: 100%;
+            opacity: 1;
+            transition: all 0.3s ease-in;
+        }
+    }
+    .related-more{
+        display: block;
+    }
+    .related-more, .related-less{
+        background: white;
+        height: 15px;
+        margin-top: -2em;
+    }
+}
+
+#sort-by{
+    margin: 2em 0 0.8em;
+}

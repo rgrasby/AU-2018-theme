@@ -44,6 +44,11 @@ body{
             right: 65px;
         }
     }  
+    &.nav-panel-visible{
+        .cp-fav-trigger {
+            z-index: 9;    
+        }
+    }
 }
 
 .cp-fav-trigger,
@@ -54,7 +59,7 @@ body{
 }
 
 .cp-fav-trigger {
-    z-index: 999999;
+    z-index: 99998;
     height: 50px;
     width: 50px;
     text-align: center;
@@ -194,8 +199,8 @@ body{
         }
         #cp-fav-list{
             .fav-item{
-                margin-bottom: 10px;
-                padding: 0 40px 10px 0;
+                margin-bottom: 0.5em;
+                padding: 0 3em 0.5em 0;
                 border-bottom: 1px solid $border-color;
                 position: relative;
                 transition: all 0.4s ease-out;
@@ -203,8 +208,11 @@ body{
                 max-height: 0;
                 background: white;
                 background-image: none;
+                &::before{
+                    display: none;
+                }
                 h3{
-                    color: $gray-darker;
+                    color: $text-color;
                     font-size: .8em;
                     font-weight: 400;
                     margin: 0;
@@ -267,10 +275,9 @@ body{
             @media (min-width: $screen-lg-min){
                 height: calc(100% - 119px);    
             }
-            @include reset-list();
             > ul{
                 overflow: hidden;
-                padding: 0 20px 50px;
+                padding: 0 1.5em 50px;
                 position: relative;
                 margin: 0;
                 list-style: none;
@@ -323,7 +330,7 @@ body{
         .icon{
             width: 20px;
             height: 20px;
-            fill: lighten($gray-darker, 30%);
+            fill: darken($gray-light, 35%);
         }
     }
 }
@@ -374,7 +381,7 @@ body{
         display: block;
         width: 50%;
         float: left;
-        color: $gray-darker;
+        color: $text-color;
         background: $gray-light;
         padding: .9375em 0;
         position: relative;
@@ -387,14 +394,14 @@ body{
             background: $blue;
             color: white;
         }
-        &:first-of-type{
+        &:first-of-type{ 
             border-right: 1px solid $border-color;
         }
         &.active{
             background: white;
             &:focus, &:active, &:hover{
                 background: white;
-                color: $gray-darker;
+                color: $blue;
             }
             span{
                 &:before{

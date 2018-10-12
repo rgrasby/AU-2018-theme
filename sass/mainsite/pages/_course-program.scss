@@ -1,0 +1,32 @@
+#au-offerings {
+    .callout-box-content{
+        @media (min-width: $screen-md-min) {
+            padding: 2.4em;    
+        }
+    }
+    .row {
+        margin: 0;
+        flex-wrap: nowrap;
+    }
+    .btn-group {
+        padding-top: 0;
+    }
+    [class*="col-fixed"] {
+        display: none;
+        @media (min-width: $screen-xs-min) {
+            display: flex;
+        }
+    }
+    .col {
+        padding: 0;
+        @media (min-width: $screen-xs-min) {
+            padding-left: 2em;
+        }
+    }
+    .icon {
+        width: 80px;
+        height: 80px;
+        position: relative;
+        top: 0.4em;
+    }
+}

@@ -19,51 +19,75 @@ body {
     overflow-x: hidden;
 }
 
-.vertical-align{
+.content-container{
+    position: relative;
+}
+
+.vertical-align {
     @include vertical-align();
 }
 
 a,
-a:link,
-a:visited {
-    color: $blue;
+a:link,{
+    color: $blue-secondary;
     text-decoration: underline;
+}
+
+a:visited {
+    color: $blue-tertiary;
 }
 
 a:focus,
 a:active,
 a:hover {
-    color: $orange;
+    color: darken($orange, 5%);
     text-decoration: underline;
     outline: none;
 }
 
-#main{
-    p, ul, ol{
-        line-height: 1.55em;
+.bold-link {
+    color: $blue-secondary;
+    font-weight: 600;
+    a:focus,
+    a:active,
+    a:hover {
+        color: $orange;
     }
 }
 
-.missing{
+.missing {
     background: yellow;
     display: inline!important;
 }
 
-hr{
+hr {
     border: 0;
     height: 1px;
     background: $border-color;
     margin: 2.5em 0 2.3em;
-    +h2{
-        margin-top: -0.4em;    
+    +h2,
+    +.section h2 {
+        margin-top: -0.4em;
     }
-    &.spacer{
+    &.spacer {
         background: transparent;
     }
 }
 
+.responsive-svg {
+    position: relative;
+    overflow: hidden;
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+
 /* Code examples powered by Github */
-.gist{
+
+.gist {
     margin-top: 2em;
 }
 
@@ -84,20 +108,36 @@ iframe {
     width: 100%;
 }
 
+.responsive-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+    margin: 1em 0;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 .float {
     width: 50%;
     float: left;
     margin-bottom: 10px;
 }
 
-.indent{
+.indent {
     padding-left: 1em;
     @media (min-width: $screen-sm-min) {
-        padding-left: 2em;    
+        padding-left: 2em;
     }
 }
 
-//// skip to content, for accessibility
+// skip to content, for accessibility
 #skipToContent {
     float: left;
 }
@@ -114,35 +154,17 @@ iframe {
     height: auto;
 }
 
-.svg-img{
-    img{
+.svg-img {
+    img {
         width: 100%;
         height: auto;
     }
-<<<<<<< HEAD
 }
 
-/**
-* #.# Frequently Asked Questions
-*/
-.qa-item {
-    h3 {
-        font-size: 1.3em;
-    }
-    > h3, > div {
-        position: relative;
-        padding-left: 35px;
-        .qa-letter {
-            font-size: 20px;
-            color: $orange;
-            position: absolute;
-            left: 0;
-            top: -2px; 
-            font-weight: 700;
-            display: inline-block;
-            width: 25px;
+.nav-panel-visible {
+    .cd-top {
+        @media (max-width: $screen-xs-max) {
+            display: none;
         }
     }
-=======
->>>>>>> master
 }

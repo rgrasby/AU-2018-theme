@@ -1,0 +1,268 @@
+/**
+* #.# Main landing page to professional development
+*
+*/
+
+#pro-dev-au-landing {
+    .landing-hero {
+        background-image: url(../images/pro-dev/Pro-Dev-Landing-Hero.jpg);
+    }
+    #leadership {
+        +section {
+            .overlap-bg {
+                background-image: url(../images/pro-dev/leadership/pro-dev-leadership.jpg);
+            }
+        }
+    }
+    #management {
+        +section {
+            .overlap-bg {
+                background-image: url(../images/pro-dev/management/pro-dev-management.jpg);
+            }
+        }
+    }
+    #digital-pedagogy {
+        +section {
+            .overlap-bg {
+                background-image: url(../images/pro-dev/digital-pedagogy/pro-dev-digital-teaching.jpg);
+            }
+        }
+    }
+    #corp-learning { 
+        +section {
+            .overlap-bg {
+                background-image: url(../images/pro-dev/corporate-learning/pro-dev-partnerships.jpg);
+            }
+        }
+    }
+    #enquire{
+        +section{
+            margin: 4em 0 ;
+        }    
+    }
+}
+
+
+/* Our Team */
+
+.team-card {
+    background: $blue;
+    .team-bio {
+        padding: 2em;
+        position: relative;
+        h3 {
+            margin-top: 0.5em;
+        }
+        h3,
+        p {
+            color: white;
+        }
+    }
+    .shield-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 3px white solid;
+        background: $orange;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        margin-left: -25px;
+        top: -1.6em;
+    }
+    .shield-accent {
+        width: 20px;
+        height: 29px;
+        position: relative;
+        top: 2px;
+        svg {
+            fill: white;
+        }
+    }
+    .team-img {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-bottom: 140%;
+        background-image: url(../images/pro-dev/pro-dev-partnerships.jpg);
+    }
+    &#team-card-1 {
+        .team-img {
+            background-image: url(../images/pro-dev/team-member-1.jpg);
+        }
+    }
+    &#team-card-2 {
+        .team-img {
+            background-image: url(../images/pro-dev/team-member-2.jpg);
+        }
+    }
+    &#team-card-3 {
+        .team-img {
+            background-image: url(../images/pro-dev/team-member-3.jpg);
+        }
+    }
+}
+
+
+/**
+* #.# Professional Development category listings
+*
+*/
+
+#pro-dev-manage-listings {
+    padding: 0;
+    .grid {
+        .card {
+            height: 100%;
+            padding-bottom: 2.5em;
+            width: auto;
+            h3 {
+                margin: 1em 0 0.8em;
+            }
+            a {
+                display: block;
+                text-decoration: none;
+                p {
+                    color: $text-color;
+                }
+            }
+        }
+    }
+    .section-wrap {
+        padding: 3em 0 4em;
+    }
+    div[class*="col"] {
+        margin-bottom: 3em;
+    }
+}
+
+
+/**
+* #.# Landing pages for each Professional Development single item
+*
+*/
+
+#pro-dev-landing-single {
+    .section-wrap{
+        padding-bottom: 1em;
+    }
+    #sub-nav {
+        #sub-nav-primary {
+            justify-content: center;
+        }
+        &.sticky {
+            #sub-nav-primary {
+                justify-content: flex-start;
+            }
+        }
+    }
+    .landing-hero{
+        .hero-content {
+            .hero-inner {
+                h1::before {
+                    display: none;
+                }   
+            } 
+        }
+    }
+    .ui-accordion-content{
+        p, h4{
+            +.table-wrap{
+                table{
+                    margin-top: 0;
+                }
+            }
+        }    
+    }
+    #cursor-apply-btn{
+        padding: 2em 0;
+    }
+}
+
+#designed-for {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../images/pro-dev/designed-for-bg.jpg);
+    padding: 3.2em 2em 4em 2em;
+    &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-position: center;
+        background-color: rgba($orange, 0.85);
+        @media (min-width: $screen-sm-min) {
+            background-color: transparent;
+            background-image: url(../images/pro-dev/orange-blue-angled-split.png);    
+        }
+    }
+    h2 {
+        color: white;
+        margin: 0 0 0.3em;
+        font-size: 3em;
+    }
+    p {
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-size: 1.2em;
+    }
+    a{
+        color: $orange;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+
+/* What you will learn */
+
+#what-you-will-learn {
+    +section {
+        .callout-box-content {
+            padding: 0.5em 2em;
+        }
+    }
+}
+
+
+/* Choose your path */
+#path{
+    +section{
+        padding: 1em 0 0;   
+        .cursor-apply-btn{
+            padding: 2em 0;
+        }
+        .owl-nav{
+            margin: -0.5em 0 1em;
+        }
+        .owl-dots{
+            display: none;
+        }
+    }
+}
+.item-content {
+    display: none;
+}
+
+#item-1 {
+    display: block;
+}
+
+#pro-dev-landing-single{
+    #enquire{
+        +section{
+            margin: 0 0 4em 0;
+        }
+    }
+}

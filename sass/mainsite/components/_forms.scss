@@ -1,12 +1,11 @@
-/////////////////////////////////////////////////
-//    form and form validation styles    ////////
-/////////////////////////////////////////////////
-form {
-    float: left;
-    #thank-you {
-        display: none;
-        margin: 0 2em;
-    }
+/**
+* #.# Forms and Validation styles
+*
+*/
+
+#thank-you {
+    display: none;
+    margin: 0 2em;
 }
 
 input,
@@ -15,10 +14,29 @@ select,
 {
     width: 100%;
     display: block;
+    outline: none;
+    height: 60px;
+    padding: 0 1.5em;
 }
 
-.material-form, .au-form {
-    float: none; 
+textarea,
+input[type="text"],
+input[type="submit"],
+input[type="password"],
+[type="email"] {
+    -webkit-appearance: none;  
+}
+
+.material-form,
+.au-form {
+    float: none;
+    input[type="submit"], #submit{
+        margin-top: 1em
+    }
+    .row{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
     .req-msg {
         text-align: right;
         margin: -10px 0 10px;
@@ -44,9 +62,6 @@ select,
                 padding-left: 2.1em;
             }
         }
-    }
-    span.error{
-        display: none!important;
     }
     input,
     textarea,
@@ -119,7 +134,8 @@ select,
             top: 8px;
         }
     }
-    .radio-group, .checkbox-group {
+    .radio-group,
+    .checkbox-group {
         border: 1px solid darken($border-color, 5%);
         .group-title {
             padding: 0.7em 1.5em 0.6em;
@@ -129,13 +145,15 @@ select,
             font-size: .9em;
             border-bottom: 1px solid $border-color;
         }
-        .radio-group-inner, .checkbox-group-inner {
+        .radio-group-inner,
+        .checkbox-group-inner {
             padding: 1em;
         }
         p {
             margin: 0 0 1em;
         }
-        .radio, .checkbox {
+        .radio,
+        .checkbox {
             .radio {
                 margin-bottom: .6em;
             }
@@ -156,7 +174,12 @@ select,
         border: 1px solid $border-color;
         color: $blue;
         font-size: .9em;
-        background: $gray-lighter;
+        background-color: $gray-lighter;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2OTZDMDZENjU4NzIxMUU4OTkyREQ1NUQ1OTkzNEJBMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2OTZDMDZENzU4NzIxMUU4OTkyREQ1NUQ1OTkzNEJBMCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY5NkMwNkQ0NTg3MjExRTg5OTJERDU1RDU5OTM0QkEwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY5NkMwNkQ1NTg3MjExRTg5OTJERDU1RDU5OTM0QkEwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+0LxN/wAAB1xJREFUeNrs3U+IVWUY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');
+        background-position: 98% 50%;
+        background-size: 15px;
+        background-repeat: no-repeat;
+        appearance: none;
         option:disabled {
             color: #B0A4A4;
         }
@@ -168,22 +191,31 @@ select,
             border: 1px solid $brand-danger;
             background: lighten($brand-danger, 50%);
             color: $brand-danger;
-            + label {
+            +label {
                 color: $brand-danger;
             }
         }
     }
     #form-error {
         display: none;
+        span{
+            display: block;
+            position: static;
+            margin: 0;
+            font-size: 1em;
+            padding: 0.3em 0;
+            line-height: 1.5em;
+        }
     }
 }
- 
+
 .checkbox,
 .radio {
     position: relative;
     input {
         display: inline-block;
         width: auto;
+        height: auto;
         position: absolute;
         top: 4px;
         left: 0;
@@ -205,11 +237,22 @@ select,
         }
     }
 }
+
+.mobile-device{
+    .checkbox,
+    .radio {
+        input{
+            top: 1px;
+        }    
+    }
+}
+
 /**
 * #.# Lead generation form with image
 */
 
-.lead-gen-wrap, .form-wrap {
+.lead-gen-wrap,
+.form-wrap {
     position: relative;
     margin-top: 3.5em;
     border: 1px solid $border-color;
@@ -263,4 +306,32 @@ select,
             }
         }
     }
+}
+
+/**
+* #.# AskAu contact form
+*/
+#askau-contactform {
+    max-width: 500px;
+    margin: auto;
+    padding: 1.5em;
+    overflow-x: hidden;
+    height: 100vh;
+    padding: 2em 2em;
+    #submitButton{
+        padding: 1.5em 2em;    
+    }
+    h2{
+        margin-top: 0!important;
+        padding-top: 0!important;
+    }
+}
+
+.foip {
+    font-size: 0.8em;
+    font-style: italic;
+    margin-top: 1em;
+    margin-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 2em;
 }

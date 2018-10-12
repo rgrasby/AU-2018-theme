@@ -71,6 +71,7 @@
                 padding-left: 0;
                 padding-right: 0;
                 display: inline-block;
+                margin: 0;
             }
         }
         p{
@@ -86,7 +87,7 @@
     text-align: center;
     margin: 3em 0 0;
     .cta-header{
-        background: $blue;
+        background: $blue-secondary;
         color: white;
         padding: 2em 1em 2.4em;
         h2, h3{
@@ -143,7 +144,7 @@
 
     }
     .cta-inner{
-        padding: 2.5em 2em;
+        padding: 2.5em 1em;
         border-left: 1px solid $border-color;
         border-right: 1px solid $border-color;
         @media (min-width: $screen-xs-min) {
@@ -187,7 +188,7 @@
         border-top: 0;
         font-size: 0.9em;
         p{
-            padding: 0.7em;
+            padding: 1em 1.5em;
             margin: 0;
         }
     }

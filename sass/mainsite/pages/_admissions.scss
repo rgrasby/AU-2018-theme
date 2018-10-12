@@ -1,15 +1,8 @@
 #admissions-au-landing{
-    padding-bottom: 0;
-    #landing-intro{
-        padding-bottom: 1em;
-        @media (min-width: $screen-sm-min) {
-            padding-bottom: 3em;    
-        }
-        h2{
-            font-size: 1.4em;
-        }    
+    padding-bottom: 0;   
+    .landing-hero{
+        background-image: url(../images/admissions/admissions-hero.jpg);
     }
-    
     #student-profile{
         + section{
             padding: 0;
@@ -37,7 +30,6 @@
             background-color: $blue;  
             background-image: url(../images/dotted-map-bg.jpg);
             background-size: cover;
-            text-align: center;
             @media (min-width: $screen-sm-min) {
                 padding: 8em 0 6.5em;    
             }
@@ -49,30 +41,9 @@
     
     #perfect-fit{
         + section {
-            .z-row-graphic{
+            img{
                 max-width: 300px;    
                 margin: auto;
-            }
-            .z-row-graphic-left {
-                border-bottom: 1px solid $border-color;
-                padding: 2em 0;
-                @media (min-width: $screen-sm-min) {
-                    .z-row-graphic {
-                        float: left;
-                        width: 30%;
-                        
-                    }
-                    .z-row-content {
-                        width: 70%;
-                        float: right;
-                        padding-left: 3em;
-                    }
-                }
-                .z-row-content{
-                    h3{
-                        margin-top: 0;
-                    }
-                }
             }
             .section-heading{
                 @media (max-width: $screen-xs-max) {   

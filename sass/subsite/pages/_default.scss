@@ -1,15 +1,26 @@
-#page-resources{
-    margin-top: 3em;
-    ul{
-        margin: 0;
-        padding: 0!important;
-    }
-}
-
 #main-header{
     #breadcrumb{
         &.homepage-breadcrumb{
-            display: none;
+            display: none; 
         }
     }
 } 
+
+//sidebar bug fix when content is not long enough
+#main-content{
+    @media (min-width: $screen-sm-min) {
+        min-height: 1000px;
+        min-height: calc(100vh - 200px);
+    }
+}
+
+.top{
+    display: none;
+}
+
+//hide breadcrumb if subsite has only one page
+.no-menu{
+    #breadcrumb{
+        display: none!important;    
+    }
+}

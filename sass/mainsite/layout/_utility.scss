@@ -1,6 +1,6 @@
 #utility {
     display: flex;
-    font-size: 0.75em;
+    font-size: 0.70em;
     text-align: center;
     align-items: center;
     background: $blue-secondary;
@@ -12,17 +12,20 @@
     padding: 0 2rem;
     @media (min-width: $screen-sm-min) {
         height: $utility-height-lg;
-        padding: 0 2rem;
+        padding: 0 1.5rem;
     }
     @media (min-width: $screen-md-min) {
         text-align: center;
     }
     @media (min-width: $screen-lg-min) {
-        font-size: 0.8em;
         text-align: left;
     } 
+    @media (min-width: $screen-xl-min) {
+        padding: 0 2rem;
+    }
     @media (min-width: $screen-xxl-min) {
         padding: 0 2.5rem;
+        font-size: 0.8em;
     }    
     p {
         margin: 0;
@@ -71,10 +74,10 @@
                     text-decoration: none;
                     font-weight: 400;
                     display: block; 
-                    margin-left: 1em;
+                    margin-left: 1rem;
                     color: white;
                     @media (min-width: $screen-xl-min) {
-                        padding-left: 1.2em;
+                        padding-left: 1.2rem;
                     }
                     &:hover,
                     &:active,
@@ -92,10 +95,7 @@
         a {
             font-size: 0.8em;
             border-bottom: 0;
-            padding: 0.3rem 1rem;
-            @media screen and ( max-height: 600px ){
-                padding: 0.4rem 1rem;
-            }
+            padding: 0em 1rem;
         }
     }
 }

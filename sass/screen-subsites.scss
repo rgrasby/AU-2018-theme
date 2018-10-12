@@ -39,10 +39,7 @@
 @import "mainsite/layout/header";
 @import "mainsite/layout/utility";
 @import "mainsite/layout/footer";
-<<<<<<< HEAD
-@import "subsite/layout/two-column";
-=======
->>>>>>> master
+@import "subsite/layout/utility";
 
 /* Subsite specific layout styles */
 @import "subsite/layout/header";
@@ -76,15 +73,26 @@
 @import "mainsite/components/callouts";
 @import "mainsite/components/owl-carousel-custom";
 @import "mainsite/components/fancybox-custom";
+@import "mainsite/components/jquery-ui.scss";
 @import "mainsite/components/lists";
 @import "mainsite/components/img-floats";
+@import "mainsite/components/search";
+@import "mainsite/components/animate";
+@import "mainsite/components/cta";
+@import "mainsite/components/ask-au-popup";
+@import "mainsite/components/dropdown";
+@import "mainsite/components/pagination";
+@import "mainsite/components/icons";
 
-/* Subsite specific layout styles */
+/* Subsite specific component styles */
 @import "subsite/components/sidebar-menu"; 
-@import "subsite/components/accordion";
 @import "subsite/components/ableplayer-popup";
 @import "subsite/components/search";
-@import "subsite/components/on-page-dropdown";
 @import "subsite/components/owl-carousel-custom";
 @import "subsite/components/cta";
-@import "subsite/components/breadcrumb";
+@import "subsite/components/tooltips";
+
+@import "mainsite/pages/default-landing"; /* Default styles shared with multiple landing pages */
+@import "subsite/pages/global_au_search";
+@import "subsite/pages/tcas";
+@import "subsite/pages/web_standards";

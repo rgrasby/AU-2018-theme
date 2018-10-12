@@ -1,13 +1,22 @@
-#main{  
-    ul{
-        @include custom-lists(7px, "\f111", 4px); 
+.content-container{  
+    //List of links with a chevron. Use ".link-list" instead of ".custom-list.chevron".
+    //The latter class is phased out
+    .link-list, .custom-list.chevron{
+        @include custom-lists(10px, "\f054", 5px); 
+    }
+    
+    //default list style
+    ul, ul.custom-list{
+        @include custom-lists(8px, "\f111");//standard solid circle
         ul{
             margin-bottom: 0;
         }
         li{
             margin: 0.3em 0 0;
+            //indicates type of link(pdf, doc, external, etc.)
+            @include link-icons(after);
             ul{
-                @include custom-lists(10px, "\f10c", 4px); 
+                @include custom-lists(10px, "\f10c", 4px); //standard outline circle
                 li{
                     ul{
                         @include custom-lists(8px, "\f10c", 5px);   
@@ -16,11 +25,8 @@
             }
         }
     }
-    ul.link-list, .custom-list.chevron, .custom-list.links {
-        @include custom-lists(12px, "\f054", 4px);
-    }
     ol{  
-        li{
+        > li{
             padding-left: 0.4em;
             ol{
                 margin: 0.3em 0 0;
@@ -44,6 +50,33 @@
                     }
                 }
             }
+        }
+        hr{
+            display: none;
+        }
+    }
+    
+    ol{
+        @include custom-count() ;    
+    }
+}
+
+ul.shield-list{
+    li{
+        position: relative;
+        padding-left: 2.8em;
+        margin: 1.2em 0;
+        &::before{
+            content: '';
+            width: 30px;
+            height: 30px;
+            background-image: url(../images/shield-orange-o.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            display: block;
+            top: 0.2em;
+            left: 0;
         }
     }
 }

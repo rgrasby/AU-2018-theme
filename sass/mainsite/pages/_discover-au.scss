@@ -1,92 +1,86 @@
-  #discover-au-landing{
-    .fixed-nav-offset{
-        display: block;
-    }
-    section:not(.start-journey){
+#discover-au-landing {
+    section:not(.start-journey) {
         padding: 0!important;
     }
-    #discover-au-hero{
+    #discover-au-hero {
         //hide tint
-        &:before{
+        &:before {
             display: none;
         }
-        #landing-intro{
-            z-index: 9;    
+        #landing-intro {
+            z-index: 9;
         }
-        .hero-bg{
-            padding-bottom: 40%;
+        .hero-bg {
+            padding-bottom: 38%;
             background-image: url(../images/discover-au-mountain-bg.jpg);
             background-size: cover;
             background-position: center 0;
             position: relative;
             margin-left: -1em;
             margin-right: -1em;
-            @media (min-width: $screen-md-min) {
-                margin-top: -8em;    
+            margin-top: -3em;
+            @media (min-width: $screen-xs-min) {
+                margin-top: -8em;  
             }
             @media (min-width: $screen-lg-min) {
-                margin-top: -12em;    
-            }
-            @media (min-width: $screen-xl-min) {
-                margin-top: -14em;    
+                margin-top: -16em;
             }
         }
     }
-    #credit, #recognized, #how-au-works, #get-started{
-        h2{
+    #credit,
+    #recognized,
+    #how-au-works,
+    #get-started {
+        h2 {
             font-size: 1.8em;
             @media (min-width: $screen-sm-min) {
                 font-size: 2.2em;
             }
         }
     }
-    #credit{
-        + section{
-            .z-row-bg-img{
+    #credit {
+        +section {
+            .z-row-bg-img {
                 background-image: url(../images/discover-au/flexible-row-bg-reversed.jpg);
             }
         }
-    }  
-
-    #recognized{
-        + section{
-            .z-row-bg-img{
+    }
+    #recognized {
+        +section {
+            .z-row-bg-img {
                 background-image: url(../images/discover-au/recognized-row-bg.jpg);
             }
         }
-    }   
-
-    #how-au-works{
-        + section{
-            .z-row-bg-img{
+    }
+    #how-au-works {
+        +section {
+            .z-row-bg-img {
                 background-image: url(../images/discover-au/unique-row-bg.jpg);
             }
         }
-    }   
-
-    #get-started{
-        + section{
-            .z-row-bg-img{
+    }
+    #get-started {
+        +section {
+            .z-row-bg-img {
                 background-image: url(../images/discover-au/getting-started-row-bg.jpg);
             }
         }
-    }   
-
-    #start-journey{
-        + section{
+    }
+    #start-journey {
+        +section {
             margin-bottom: -32px;
             padding: 80px 0;
-            .lead-gen-wrap{
-                margin: 0;    
+            .lead-gen-wrap {
+                margin: 0;
             }
-            .container-md-span10{
+            .container-md-span10 {
                 @media (min-width: $screen-md-min) {
-                    padding: 0 2em; 
+                    padding: 0 2em;
                 }
             }
-            .cta{
-                margin: 0 0 3.5em;   
+            .cta {
+                margin: 0 0 3.5em;
             }
         }
-    }  
-} 
+    }
+}

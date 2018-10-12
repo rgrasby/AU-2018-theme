@@ -1,0 +1,45 @@
+.modal {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    @media (min-width: $screen-xs-min) {
+        max-width: 400px;  
+        top: 50%;
+        left: 50%;
+        margin-left: -200px;
+    }
+    .modal-header {
+        background: $orange;
+        display: flex;
+        align-items: center;
+        color: white;
+        position: relative;
+        z-index: 99;
+        h5{
+            width: 100%;
+            margin: 0;
+            color: white;
+            font-weight: 600;
+            padding-left: 1.5em;
+        }
+        .close {
+            background: darken($orange, 10%);
+            border: 0;
+            color: white; 
+            flex-grow: 0;
+            padding: 1em 0 1em;
+            width: 60px;
+        }
+    }
+    .modal-body{
+        border: 1px solid $border-color;
+        background: white;
+        padding: 1.5em;
+        p{
+            &:first-of-type{
+                margin-top: 0;
+            }
+        }
+    }
+}

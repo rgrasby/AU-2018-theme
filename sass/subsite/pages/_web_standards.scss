@@ -1,0 +1,24 @@
+#custom-icons{
+    svg{
+        margin: auto;
+        display: block;
+        margin-bottom: 0.5em;
+        padding: 1em;
+        width: 75%;
+    }
+    .text-center{
+        margin-bottom: 2em;
+    }
+    .svg-orange {
+        fill: $orange;
+    }
+}
+ 
+.size-example{
+    margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+    strong{
+        margin-left: 0.5em;
+    }
+}

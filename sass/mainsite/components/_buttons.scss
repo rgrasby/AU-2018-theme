@@ -24,21 +24,21 @@ body {
     display: inline-block;
     height: 40px;
     width: 40px;
-    background: $blue;
+    background: $orange;
     position: fixed;
-    z-index: 99999;
+    z-index: 99998;
     bottom: 15px;
     right: 10px;
     border: 0;
     color: #fff;
     text-align: center;
-    box-shadow: 0 0 10px rgba(#000, .05);
     overflow: hidden;
     white-space: nowrap;
-    background: lighten($blue, 10%);
     visibility: hidden;
     opacity: 0;
     transition: opacity .3s 0s, visibility 0s .3s;
+    padding: 0;
+    border-radius: 3px;
     &.cd-is-visible,
     &.cd-fade-out,
     .no-touch &:hover {
@@ -58,13 +58,14 @@ body {
 }
 
 .btn {
-    padding: .9em 1.875em;
+    padding: 1.2em 2.5em;
     display: inline-block;
     cursor: pointer;
     position: relative;
     font-weight: 600;
     text-align: center;
     border-radius: 3px;
+    height: auto;
     &.btn-full{
         display: block;
         @include full-width;
@@ -76,14 +77,24 @@ body {
         top: -.045em;
     }
     &.btn-sm {
-        font-size: .9em;
+        font-size: .8em;
     }
     &.btn-md {
         font-size: 1.05em;
     }
     &.btn-lg {
         font-size: 1.2em;
-        padding: .8em 2.5em;
+        padding: 1em 3em;
+    }
+    &.btn-link{
+        font-size: 1.1em;
+        border: 0;
+        background: none;
+        color: $blue;
+        padding: .9em 1em;
+        &:hover, &:focus{
+            color: $orange;
+        }
     }
     &.btn-orange {
         border: 0;
@@ -93,11 +104,12 @@ body {
         font-weight: 400;
         border: 2px solid $orange;
         margin-top: 1em;
+        transition: all 0.3s ease-in;
         &:hover,
         &:focus,
         &:active {
-            background: darken($orange, 8%);
-            border: 2px solid darken($orange, 8%);
+            background: darken($orange, 10%);
+            border: 2px solid darken($orange, 10%);
             i {
                 &:first-of-type {
                     display: none;
@@ -131,14 +143,13 @@ body {
     }
     &.btn-gray {
         background-color: $border-color;
-        border: 1px solid $gray-medium;
-        color: $orange;
+        border: 1px solid $gray-lighter;
+        color: $text-color;
+        font-weight: 400;
         &:hover,
         &:focus,
         &:active {
-            background-color: $orange;
-            color: #ffffff;
-            border: 1px solid $orange;
+            background-color: $gray-lighter;
         }
     }
     &[class*="btn-circle-icon"] {
@@ -192,7 +203,6 @@ body {
             text-align: center;
             line-height: 31px;
             margin-left: 1px;
-
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
@@ -208,6 +218,24 @@ body {
                 content: '\f0c1';
             }
         }
+        &.download {
+            &:hover,
+            &:focus,
+            &:active {
+                &::after{
+                    content: '\f061'!important;  
+                }
+            }
+            &::after {
+                content: '\f019';
+                left: 0;
+            }
+        }
+        &.apply {
+            &::after {
+                content: '\f245';
+            }    
+        }
         &.anchor {
             &:hover,
             &:focus,
@@ -219,13 +247,6 @@ body {
             }
             &::after {
                 content: '\f063';
-            }
-        }
-        &.icon-top {
-            &::after,
-            &::before {
-                top: 20px;
-                margin-top: 0;
             }
         }
     }
@@ -301,57 +322,80 @@ body {
     }
 } 
 
-/* Button Links - Orange border on left with arrow to the right */
-.button-links{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    li{
-        margin-bottom: 0.5em;
-        &:before{
-            display: none;
-        }
-        a{
-            display: block;
-            position: relative;
-            border: 1px solid $border-color;
-            padding: 0.8em 2em;
-            text-decoration: none;
-            span{
-                position: relative;
-                z-index: 9;
+#report{
+    display: inline-block;
+    width: auto;
+}
+
+.content-container{
+    #main-content, #governance{
+        .button-links{
+            list-style: none;
+            padding: 1em;
+            margin: 0;
+            background-color: $gray-light;  
+            ul, .button-links-inner{
+                @include light-dropshadow;
+                background: white;
+                margin: 0;
+                padding: 0;
             }
-            &:hover{
-                &:before{
-                    width: 100%;
+            ul{
+                li{
+                    padding: 0;
+                    margin: 0;
+                    &:before{
+                        display: none;
+                    }
                 }
-                &:after{
-                    color: white;
+            }
+            ul, div{
+                a{
+                    display: block;
+                    position: relative;
+                    border-bottom: 1px solid $border-color;
+                    padding: 1em 2em 1em 3.3em;
+                    text-decoration: none;
+                    background-color: $gray-lighter;
+                    span{
+                        position: relative; 
+                        z-index: 9;
+                    }
+                    .fa{
+                        position: absolute;
+                        left: 1.2em;
+                        top: 50%;
+                        margin-top: -8px;
+                        color: $orange;
+                    }
+                    &:hover, &:focus{
+                        background: $orange;
+                        color: white;
+                        .fa{
+                            color: white;
+                        }
+                        &:before{
+                            width: 100%;
+                        }
+                        &:after{
+                            color: white;
+                        }
+                    }
+                    &:after{
+                        font-family: FontAwesome;
+                        content:"\f105";
+                        position: absolute;
+                        right: 1em;
+                        color: $gray-dark;
+                        font-size: 1.1em;
+                        top: 50%;
+                        margin-top: -12px;
+                    }
                 }
-                color: white;
-            }
-            &:before{
-                transition: all .2s ease-in;
-                content: '';
-                width: 5px;
-                height: 100%;
-                background: $orange;
-                display: block;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-            &:after{
-                font-family: FontAwesome;
-                content:"\f105";
-                position: absolute;
-                right: 1.5em;
-                color: $gray-medium;
             }
         }
     }
 }
-
 a {
     &:hover,
     &:focus,
@@ -368,6 +412,12 @@ a {
                 }
             }
         }
+    }
+}
+
+.text-center{
+    .btn{
+        display: inline-block!important;
     }
 }
 
@@ -395,13 +445,43 @@ a {
     }
 }
 
-.foip {
-    font-size: 0.7em;
-    font-style: italic;
-    margin-top: 1em;
-    border-top: 2px solid #CCCCCC;
-    float: left;
-    clear: both;
-    margin-top: 2em;
-    padding-top: 1em;
+#cursor-apply-btn{
+    padding: 1em 0 1.5em;
+    margin: 0;
+    position: relative;
+    font-size: 1.5em;
+    color: $blue;
+    background-color: transparent;
+    border: 0;
+    text-decoration: none;
+    &:not(.no-animation) {
+        opacity: 0;
+    }
+    @media (min-width: $screen-sm-min) {
+        padding: 1em 0 1.1em;
+        font-size: 2em;
+    }
+    @media (min-width: $screen-lg-min) {
+        font-size: 2.7em;
+    }
+    &:hover,
+    &:focus,
+    &:active {
+        span {
+            text-decoration: underline;
+        }
+    }
+    svg.icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 10px;
+        @media (min-width: $screen-md-min) {
+            margin: 0 7px 10px 0;
+        }
+    }
+    svg.icon {
+        fill: $orange;
+        vertical-align: middle;
+        position: relative;
+    }
 }

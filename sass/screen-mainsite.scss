@@ -16,7 +16,11 @@
 @import "mainsite/vendor/owl-theme-default";
 @import "mainsite/vendor/susy"; 
 @import "mainsite/vendor/normalize";
-@import "mainsite/layout/footer"; 
+@import "mainsite/vendor/jquery-ui";
+@import "mainsite/vendor/jquery-ui.structure";
+@import "mainsite/vendor/jquery.fancybox";
+@import "mainsite/vendor/bootstrap-grid/grid"; 
+
 /**
 * #.# Boilerplate
 *
@@ -37,39 +41,41 @@
 @import "mainsite/layout/utility";
 @import "mainsite/layout/footer"; 
  
-
+ 
 /**
 * #.# Components
 *
 * Specific modules/elements like (buttons, forms, menus…)
 */
+@import "mainsite/components/lists";
 @import "mainsite/components/forms";
-@import "mainsite/components/buttons";
 @import "mainsite/components/breadcrumb";
 @import "mainsite/components/icons"; 
+@import "mainsite/components/cards";
 @import "mainsite/components/animate";
 @import "mainsite/components/tags";
 @import "mainsite/components/cta";
 @import "mainsite/components/tabs-to-accordion";
+@import "mainsite/components/jquery-ui.scss";
 @import "mainsite/components/msg-boxes";
 @import "mainsite/components/stats";
 @import "mainsite/components/testimonials";
 @import "mainsite/components/tables";
 @import "mainsite/components/panels";
-@import "mainsite/components/panels";
 @import "mainsite/components/owl-carousel-custom";
-<<<<<<< HEAD
-@import "mainsite/components/calloutbox";
-=======
 @import "mainsite/components/fancybox-custom";
 @import "mainsite/components/callouts";
 @import "mainsite/components/faqs";
 @import "mainsite/components/search";
-@import "mainsite/components/lists";
 @import "mainsite/components/img-floats";
->>>>>>> master
+@import "mainsite/components/modal";
+@import "mainsite/components/buttons";
+@import "mainsite/components/ask-au-popup";
+@import "mainsite/components/chat";
+@import "mainsite/components/dropdown";
+@import "mainsite/components/pagination";
 
-//Course and Program Listings
+//Course and Program Listings 
 @import "mainsite/pages/course-program-listings/listings.scss"; /* listing cards */
 @import "mainsite/pages/course-program-listings/filters.scss"; /* sidebar filters */
 @import "mainsite/components/favorites.scss"; /* listing favorites popup */
@@ -81,16 +87,15 @@
 */
 @import "mainsite/pages/default-landing"; /* Default styles shared with multiple landing pages */
 @import "mainsite/pages/program-landing"; /* Program Landing Pages */
-@import "mainsite/pages/main-homepage"; /* Homepage */ 
-@import "mainsite/pages/open-house"; /* Open House */ 
-@import "mainsite/pages/discover-au"; /* Discover AU */ 
-@import "mainsite/pages/admissions"; /* Admissions */
-<<<<<<< HEAD
-@import "mainsite/pages/default.scss"; /* Default Content. Simple pages */ 
-=======
-@import "mainsite/pages/default.scss"; /* Default single column layout */ 
->>>>>>> master
-@import "mainsite/pages/main-syllabus"; /* Course Syllabus */ 
+@import "mainsite/pages/default.scss"; /* Default pages/Non Landing Pages */
+@import "mainsite/pages/main-homepage"; 
+@import "mainsite/pages/open-house"; 
+@import "mainsite/pages/discover-au"; 
+@import "mainsite/pages/admissions"; 
+@import "mainsite/pages/about-au"; 
+@import "mainsite/pages/main-syllabus"; 
 @import "mainsite/pages/ask-au";
-@import "mainsite/pages/social"; 
 @import "mainsite/pages/main-contact";
+@import "mainsite/pages/pro-dev";
+@import "mainsite/pages/course-program"; /*Not to be confused with the course and program listings. This is for the Programs & Courses selection/landing page */
+@import "mainsite/pages/health-dashboard"; 

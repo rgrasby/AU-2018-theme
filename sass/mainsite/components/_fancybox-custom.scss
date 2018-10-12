@@ -6,6 +6,9 @@
 
 .fancybox-container {
     z-index: 999999;
+    h2, h3, h4{
+        margin-top: 0;
+    }
     .fancybox-bg {
         background: #29292e;
     }
@@ -36,6 +39,14 @@
             margin: auto;
         }
     }
+    .fancybox-slide--inline{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        left: 50%;
+        margin-left: -200px;
+    }
 }
 .fancybox-button--arrow_right,
 .fancybox-button--arrow_left {
@@ -50,4 +61,25 @@
     h1, h2, h3, h4, h5, h6{
         margin-top: 0;
     }
+}
+
+.fancybox-slide--iframe .fancybox-content {
+	max-width  : 70%;
+	max-height : 70%;
+	margin: 0;
+    height: 100%!important;
+    width: 100%!important;
+}
+
+.fancybox-button{
+    background: $orange;
+}
+
+.compensate-for-scrollbar{
+    margin-right: 0!important;
+}
+
+//Ask AU popup
+.fancybox-error, .fancybox-iframe, .fancybox-slide--iframe .fancybox-content {
+    background: transparent;
 }

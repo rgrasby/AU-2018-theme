@@ -8,45 +8,50 @@
     */        
     #filter-sidebar,
     #cp-type,
-    #mobile-global,
     #global-search-nav,
-    .footer,
-    .utility,
+    #main-footer,
+    #utility,
     .cp-banner,
     .cp-fav-container,
-    .controls,
-    .success-message,
     .cd-top,
-    #global-megamenu,,
-    .fail-message{
-        display: none!important;
+    #au-right-nav,
+    #au-site-nav,
+    #main-navigation-container,
+    #breadcrumb{
+        display: none;
     }
-    page{
-        padding: 0!important;
+
+    .container, .container-wide, .container-wider, #main-content{
+        padding: 2em;    
     }
     
-    .container-md-span10, .container-lg-span10{
-        width: 100%!important;
-        margin-left: 0!important;
-        margin-right: 0!important;
-    }
-    #main{
-        a:not(.fixed-nav-offset){
-            &::before{
-                display: none!important;
-            }
-            &::after { 
-                content:" [" attr(href) "] "!important; 
-                display: inline-block!important;
-            }
-        } 
-        a[href^="tel:"]{
-            &::after { 
-                display: none!important;
-            }           
+    #main-header{
+        background: white;
+        padding: 0;
+        border-bottom: 2px solid $border-color;
+        margin-bottom: 3em;
+        #au-logo{
+            width: 145px;
+            margin-bottom: 3em;
+            .main{
+                fill: $blue;
+            }    
         }
     }
     
+    #header-site-id{
+        background: white;
+        div{
+            background: white;
+        }
+        h2{
+            color: $text-color;
+        }
+    } 
+    
+    .content-container{
+        padding-left: 0!important;
+    }
     /**
     * #.# Course and program listings
     *
@@ -61,7 +66,7 @@
             box-shadow: none;
         }
         .accordion-content, .accordion-trigger{   
-            border: 0!important;
+            border: 0!important; 
             margin: 0;
         } 
         .accordion-trigger{

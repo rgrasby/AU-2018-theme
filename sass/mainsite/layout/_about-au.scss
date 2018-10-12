@@ -1,0 +1,174 @@
+#about-au-landing {
+    padding-bottom: 0;
+    .landing-hero{
+        background-image: url(../images/about-au/strat-plan-bg.jpg);
+    }
+}
+
+a {
+    #strat-plan {
+        padding-bottom: 0;
+    }
+}
+
+.popup {
+    display: none;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.8);
+    &.showpopup {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+    }
+    .btn {
+        margin-top: 1em;
+    }
+    #closepopup {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 2.5em;
+        background: none;
+        border: 0;
+        color: white;
+        font-weight: 400;
+        span {
+            display: block;
+            font-size: 0.5em;
+        }
+    }
+}
+
+#strat-plan {
+    margin: auto;
+    margin: auto;
+    margin-top: 1em;
+    @media (min-width: $screen-lg-min) {
+        max-width: 80%;
+    }
+}
+
+#governance {
+    padding: 3em 0;
+    @media (min-width: $screen-sm-min) {
+        padding: 4em 0 5em;
+    }
+    .button-links {
+        margin-top: 2em;
+        @media (min-width: $screen-sm-min) {
+            margin-top: 0.5em;
+        }
+    }
+}
+
+#at-a-glance {
+    background: $gray-light;
+    padding: 0;
+    position: relative;
+    @media (min-width: $screen-sm-min) {
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            background: white;
+        }
+        &:before {
+            top: 0;
+        }
+        &:after {
+            bottom: 0;
+        }
+    }
+    .at-a-glance-facts {
+        height: 135%;
+        background: $blue;
+        position: relative;
+        z-index: 9;
+        padding: 3em 2em;
+        color: white;
+        display: none;
+        @include reset-list();
+        @media (min-width: $screen-sm-min) {
+            display: block;
+        }
+        h3,
+        h4 {
+            color: white;
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 100%;
+            background: $blue;
+            width: 4000px;
+            height: 100%;
+        }
+        .lg-number {
+            font-weight: bold;
+            font-size: 1.6em;
+            margin-right: 7px;
+        }
+    }
+    ul {
+        li {
+            padding: 0.3em 0!important;
+        }
+    }
+    .at-a-glance-content {
+        padding: 2em 0;
+        @media (min-width: $screen-sm-min) {
+            padding-left: 3em;
+        }
+    }
+}
+
+#accreditation {
+    .modal {
+        opacity: 0;
+        transform: translateY(-100px);
+        transition: all 0.3s ease-in;
+        z-index: -1;
+        text-align: left;
+        &.modal-showing {
+            z-index: 99;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .pins {
+        cursor: pointer;
+    }
+    .responsive-svg {
+        margin: 4em 0;
+        margin: auto;
+        width: 100%;
+        margin-top: 1em;
+        padding-top: 75%;
+        @media (min-width: $screen-sm-min) {
+            width: 90%;
+        }
+    }
+    #canada,
+    #united-states {
+        cursor: pointer;
+        &:hover {
+            .st0 {
+                fill: darken(#DCD8E6, 5%);
+                stroke: darken(#DCD8E6, 5%);
+            }
+        }
+    }
+    p {
+        text-align: justify;
+    }
+}

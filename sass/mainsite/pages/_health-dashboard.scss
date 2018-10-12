@@ -1,0 +1,201 @@
+$health-target-green: #00c000;
+$health-target-red: #bf3a38;
+$health-no-change: #ffd003;
+
+#no-utility{
+    #utility{
+        height: 0;
+        border-bottom: 0;
+    }
+    @media only screen and (max-width: $screen-md-max) and (min-width: $screen-sm-min) {
+        #main-header {
+            #au-site-nav-panel {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                z-index: -10;
+                padding-top: $header-height-md;
+                width: 325px;
+            }      
+        }
+    }
+}
+.on-target,
+.trending-up {
+    .icon {
+        fill: $health-target-green;
+    }
+}
+
+.off-target,
+.trending-down {
+    .icon {
+        fill: $health-target-red;
+    }
+}
+
+.no-change {
+    .icon {
+        fill: $health-no-change;
+    }
+}
+
+.read-no{
+    i{
+        color: $health-no-change;
+    }
+}
+.read-yes{
+    i{
+        color: $gray-medium;
+    }
+}
+
+.legend{
+    font-size: 1.3em;
+    text-transform: uppercase;
+    position: relative;
+    @media (min-width: $screen-sm-min) {
+        span{
+            &::after{
+                content: '';
+                width: 1px;
+                position: absolute;
+                display: block;
+                top: 50%;
+                right: 0;
+                margin-top: -30px;
+                height: 60px;
+                z-index: 9;
+                background: $border-color;
+            }
+        }
+    }
+}
+
+.subtitle-orange{
+    background: rgba($orange, .8);
+    color: white;
+    display: inline-block;
+    font-size: 1.8em;
+    padding: 0.5em 1.1em;
+}
+
+#health-report {
+    .fa-bell{
+        font-size: 1.2em;
+        margin-right: 0.2em;
+        position: absolute;
+        top: 50%;
+        margin-top: -11px;
+        left: 16px;
+    }
+    .accordion {
+        &.alt-blue {
+            border: 0;
+            margin: 1.5em 0;
+            @media (min-width: $screen-sm-min) {
+                margin: 3em 0;    
+            }
+            tr:last-of-type {
+                td {
+                    border-bottom: 0;
+                }
+            }
+            td:first-of-type,
+            th:first-of-type {
+                border-left: 0;
+            }
+            td:last-of-type,
+            th:last-of-type {
+                border-right: 0;
+            }
+            .ui-accordion-content {
+                padding: 0;
+                overflow-y: hidden;
+                font-size: 0.9em;
+            }
+            .ui-accordion-header {
+                background: $blue;
+                color: white;
+                border: 0;
+                padding: 1.2em 1em 1.2em 3.4em;
+                svg.down{
+                    display: none;
+                }   
+                svg.right{
+                    display: inline-block;
+                } 
+                &.ui-accordion-header-active{
+                    svg.right{
+                        display: none;
+                    }   
+                    svg.down{
+                        display: inline-block;
+                    } 
+                }
+                &:hover {
+                    background: $orange;
+                }
+                &::before{ 
+                    display: none;
+                }
+                svg{
+                    position: absolute;
+                    left: 20px;
+                    @media (min-width: $screen-sm-min) {
+                        left: 30px;
+                        margin-top: 2px;
+                    }
+                }
+            }
+            .table-wrap {
+                padding: 0;
+            }
+            table {
+                margin: 0;
+                min-width: 550px;
+                th {
+                    background: darken($gray-light, 3%);
+                    color: $blue;
+                    border: 1px solid $border-color;
+                }
+                td{
+                    position: relative;
+                }
+            }
+        }
+    }
+    .status,
+    .trend,
+    {
+        text-align: center;
+        color: white;
+    }
+    .status{
+        border-left: 0;
+        margin-left: 0.7em;
+        min-width: 100px;
+    }
+    .date,
+    .target {
+        color: white;
+        border-color: lighten($blue-shade1, 8%);
+        border-bottom: 0;
+        border-top: 0;
+    }
+    .date {
+        background: $blue-shade2;
+        border-right: 1px solid white;
+    }
+    .target {
+        background: $blue-shade3;
+    }
+    .off-target{
+        + .measure{
+            background: $health-target-red;
+            color: white;
+            border: 1px solid lighten($health-target-red, 10%);
+        }
+    }
+}

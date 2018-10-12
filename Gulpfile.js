@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var watch = require('gulp-watch');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
@@ -13,24 +14,24 @@ gulp.task('sass', function() {
 }); 
 
 gulp.task('listings', function() {
-    return gulp.src(['./js/mainsite/listings/cp-listings-plugins.js', './js/mainsite/listings/cp-listings.js'])
+    return gulp.src(['./js-dev/mainsite/listings/cp-listings-plugins.js', './js-dev/mainsite/listings/cp-listings.js', './js-dev/mainsite/listings/favorites.js'])
     .pipe(concat('cp-listings.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./js'));
 });
 
 gulp.task('mainsite', function() {
-    return gulp.src(['./js/vendor/jquery.waypoints.min.js', './js/global-plugins.js', './js/mainsite/mainsite-plugins.js', './js/global-main.js', './js/navigation.js', './js/mainsite/mainsite-main.js'])
+    return gulp.src(['./js-dev/vendor/jquery-ui.min.js', './js-dev/vendor/dropdown.js', './js-dev/vendor/jquery.waypoints.min.js', './js-dev/global-plugins.js', './js-dev/mainsite/mainsite-plugins.js', './js-dev/global-main.js', './js-dev/navigation.js', './js-dev/mainsite/mainsite-main.js', './js-dev/mainsite/askau.js'])
     .pipe(concat('mainsite.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./js'));
 });
 
 gulp.task('subsites', function() {
-    return gulp.src(['./js/vendor/jquery-ui.min.js', './js/global-plugins.js', './js/global-main.js', './js/navigation.js', './js/subsites/subsite-plugins.js', './js/subsites/subsite-main.js'])
+    return gulp.src(['./js-dev/vendor/jquery-ui.min.js', './js-dev/vendor/dropdown.js', './js-dev/global-plugins.js', './js-dev/global-main.js', './js-dev/navigation.js', './js-dev/subsites/subsite-plugins.js', './js-dev/subsites/subsite-main.js'])
     .pipe(concat('subsite.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./js'));
 });
 
 //Watch task
@@ -40,3 +41,4 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['sass', 'listings', 'mainsite', 'subsites', 'watch']);
 
+ 

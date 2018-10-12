@@ -4,6 +4,11 @@ $sidebaroffset-lg: 325px;
     background-color: yellow;
 }
 
+.course, .programs{
+    #breadcrumb{
+        display: none;
+    }
+}
 #courses-additional-info {
     display: none;
     div {
@@ -22,7 +27,7 @@ $sidebaroffset-lg: 325px;
     text-align: center;
     font-size: 1.2em;
     padding: 3em 0;
-    background: $gray-light;
+    background: lighten($gray-light, 1%);
     color: $blue;
     z-index: 10;
     p{
@@ -115,7 +120,7 @@ button:focus {
 .cp-listing-container {
     padding: 50px 0 60px 0;
     transition: all 0.3s ease;
-    background: $gray-light;
+    background: lighten($gray-light, 1%);
     @media (min-width: $screen-md-min) {
         padding: 60px 0;
     }
@@ -167,12 +172,22 @@ button:focus {
     }
     ul {
         padding: 0;
-        margin: 0;
+        margin: 0 0 0 50px;
         display: block;
         text-align: center;
+        border-top: 1px solid $border-color;
+        @media (min-width: $screen-lg-min) {
+            margin-left: 0;
+        }
         li {
             display: inline-block;
             margin-left: -4px;
+            margin: 0;
+            padding: 0;
+            height: auto;
+            &:before{
+                display: none;
+            }
             a {
                 display: block;
                 position: relative;
@@ -358,7 +373,7 @@ button:focus {
         }
         .accordion-content {
             position: relative;
-            background: $gray-light;
+            background: lighten($gray-light, 1%);
             display: flex;
             flex-flow: row wrap;
             align-content: flex-start;
@@ -379,7 +394,7 @@ button:focus {
             border-top: 0;
             font-size: 1em;
             border-bottom: 1px solid $border-color;
-            background: $gray-light;
+            background: lighten($gray-light, 1%);
             font-weight: 400;
             display: none;
             color: $blue;
@@ -568,75 +583,6 @@ button:focus {
 
 
 /**
-* #.# Default styles for card and list views
-*
-*/
-
-.card {
-    background: white;
-    position: relative;
-    h3 {
-        font-weight: 400;
-        line-height: 1.5em;
-        color: $blue;
-        position: relative;
-        display: block;
-        padding-right: 10px;
-        margin: 0;
-        a {
-            text-decoration: none;
-            display: block;
-            i {
-                color: white;
-                font-size: .65rem;
-                margin-left: 4px;
-                background: white;
-                padding: 2px 5px 3px;
-                &:after {
-                    content: 'Visited';
-                    @include sans;
-                    display: inline-block;
-                    padding-left: 3px;
-                }
-            }
-            &:focus {
-                text-decoration: none;
-                outline: 0;
-            }
-            &:hover {
-                color: $blue;
-            }
-            &:visited {
-                i {
-                    color: $text-color;
-                }
-            }
-        }
-    }
-    .cp-actions {
-        .view {
-            text-align: center;
-        }
-    }
-    .cp-link-group {
-        margin: 0;
-        list-style: none;
-        li {
-            padding: 0;
-            line-height: 1em;
-        }
-    }
-    .credits {
-        display: block;
-        margin-top: .5em;
-        font-size: 1rem;
-        line-height: 1em;
-        color: $text-color;
-    }
-}
-
-
-/**
 * #.# Card view
 *
 * Styles for courses & programs when in "card" view
@@ -644,7 +590,7 @@ button:focus {
 
 .grid {
     .card {
-        padding: 20px 20px 63px;
+        padding: 2em 2em 3.93em;
         width: 100%;
         margin: 10px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.20);
@@ -692,7 +638,7 @@ button:focus {
             bottom: 0;
             left: 0;
             width: 100%;
-            background: $gray-light;
+            background: lighten($gray-light, 1%);
             padding: 0.625em 0.94em 0.625em 0;
             .view {
                 float: right;

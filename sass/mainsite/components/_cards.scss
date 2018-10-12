@@ -1,0 +1,79 @@
+/**
+* #.# Default styles for card and list views
+*
+*/
+
+.card {
+    background: white;
+    position: relative;
+    h3 {
+        font-weight: 400;
+        line-height: 1.4em;
+        color: $blue;
+        position: relative;
+        display: block;
+        padding-right: 10px;
+        margin: 0;
+        a {
+            text-decoration: none;
+            display: block;
+            i {
+                color: white;
+                font-size: .65rem;
+                margin-left: 4px;
+                background: white;
+                padding: 2px 5px 3px;
+                &:after {
+                    content: 'Visited';
+                    @include sans;
+                    display: inline-block;
+                    padding-left: 3px;
+                }
+            }
+            &:focus {
+                text-decoration: none;
+                outline: 0;
+            }
+            &:hover {
+                color: $blue;
+            }
+            &:visited {
+                i {
+                    color: $text-color;
+                }
+            }
+        }
+    }
+    .cp-actions {
+        .view {
+            text-align: center;
+        }
+    }
+    .cp-link-group {
+        margin: 0;
+        list-style: none;
+        li {
+            padding: 0;
+            line-height: 1em;
+        }
+    }
+    .credits {
+        display: block;
+        margin-top: .5em;
+        font-size: 1rem;
+        line-height: 1em;
+        color: $text-color;
+    }
+    &.has-img{
+        .card-img{
+            height: 225px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: calc(100% + 4em);
+            margin-left: -2em;
+            margin-top: -2em;
+            border-bottom: 5px solid $orange;
+        }
+    }
+}

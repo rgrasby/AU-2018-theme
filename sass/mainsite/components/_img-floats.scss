@@ -13,7 +13,7 @@ figure{
         float: none;
         width: 100%;
         @media (min-width: $screen-md-min) {
-            margin: 1.5em 1.5em 1.5em 0; 
+            margin: 1.5em 1.5em 0.5em 0; 
             float: left;
         }
         @media (min-width: $screen-lg-min) {
@@ -25,7 +25,7 @@ figure{
         float: none;
         width: 100%;
         @media (min-width: $screen-md-min) {
-            margin: 1.5em 0 1.5em 1.5em; 
+            margin: 1.5em 0 0.5em 1.5em; 
             float: right;
         }
         @media (min-width: $screen-lg-min) {

@@ -23,6 +23,10 @@
     clear: both;
 }
 
+.clear{
+    @extend .clearfix;
+}
+
 .hidden{
     display: none;
 }
@@ -31,6 +35,12 @@
     margin-top: -160px;
     padding-top: 160px;
     display: block;
+}
+
+hr{
+    +.fixed-nav-offset{
+        padding-top: 110px;
+    }
 }
 
 .hidden-inline-xs {
@@ -63,6 +73,36 @@ img {
     border: 1px solid $border-color;
 }
 
+/**
+* #.# Hide Element Helpers
+*/
+
+.hidden-xs{
+    @media (min-width: $screen-xs-min) {
+        display: none;
+    }
+    @media (min-width: $screen-sm-min) {
+        display: flex;
+    }
+}
+
+.hidden-sm{
+    @media (min-width: $screen-sm-min) {
+        display: none;
+    }
+    @media (min-width: $screen-sm-min) {
+        display: flex;
+    }
+}
+
+.hidden-md{
+    @media (min-width: $screen-md-min) {
+        display: none;
+    }
+    @media (min-width: $screen-md-min) {
+        display: flex;
+    }
+}
 
 /**
 * #.# Spacing Helpers
@@ -78,6 +118,20 @@ img {
     padding-top: 0!important;
 }
 
+.zero-top-sm {
+    @media (min-width: $screen-sm-min) {
+        margin-top: 0!important;
+        padding-top: 0!important;
+    }
+}
+
+.zero-top-md {
+    @media (min-width: $screen-md-min) {
+        margin-top: 0!important;
+        padding-top: 0!important;
+    }
+}
+
 .zero-bottom {
     margin-bottom: 0!important;
     padding-bottom: 0!important;
@@ -88,7 +142,7 @@ img {
 }
 
 .zero-padding {
-    margin: 0!important;
+    padding: 0!important;
 }
 
 .zero-top-padding {
@@ -108,8 +162,14 @@ img {
 }
 
 
-/* Margin Top */
+/**
+* #.# Margin Help Classes
+*
+* Overrides any margin on a current element as needed
+*/
 
+
+/* Margin Top */
 .mt-1 {
     margin-top: 1em!important;
 }
@@ -134,9 +194,7 @@ img {
     margin-top: 0.33333em!important;
 }
 
-
 /* Margin Bottom */
-
 .mb-1 {
     margin-bottom: 1em!important;
 }
@@ -161,9 +219,65 @@ img {
     margin-bottom: 0.33333em!important;
 }
 
+/* Margin Left */
+.ml-1 {
+    margin-left: 1em!important;
+}
+
+.ml-2 {
+    margin-left: 2em!important;
+}
+
+.ml-3 {
+    margin-left: 3em!important;
+}
+
+.ml-4 {
+    margin-left: 4em!important;
+}
+
+.ml-half {
+    margin-left: 0.5em!important;
+}
+
+.ml-third {
+    margin-left: 0.33333em!important;
+}
+
+/* Margin Right */
+.mr-1 {
+    margin-left: 1em!important;
+}
+
+.mr-2 {
+    margin-left: 2em!important;
+}
+
+.mr-3 {
+    margin-left: 3em!important;
+}
+
+.mr-4 {
+    margin-left: 4em!important;
+}
+
+.mr-half {
+    margin-left: 0.5em!important;
+}
+
+.mr-third {
+    margin-left: 0.33333em!important;
+}
+
+
+/**
+* #.# Padding Helper Classes
+*
+* Overrides any padding on a current element as needed
+*/
+
 
 /* Padding Top */
-
 .pt-1 {
     padding-top: 1em!important;
 }
@@ -183,14 +297,13 @@ img {
 .pt-half {
     padding-top: 0.5em!important;
 }
-
+ 
 .pt-third {
     padding-top: 0.33333em!important;
 }
 
 
 /* Padding Bottom */
-
 .pb-1 {
     padding-bottom: 1em!important;
 }
@@ -213,4 +326,54 @@ img {
 
 .pt-third {
     padding-bottom: 0.33333em!important;
+}
+
+/* Padding Left */
+.pl-1 {
+    padding-left: 1em!important;
+}
+
+.pl-2 {
+    padding-left: 2em!important;
+}
+
+.pl-3 {
+    padding-left: 3em!important;
+}
+
+.pl-4 {
+    padding-left: 4em!important;
+}
+
+.pl-half {
+    padding-left: 0.5em!important;
+}
+
+.pl-third {
+    padding-left: 0.33333em!important;
+}
+
+/* Padding Right */
+.pr-1 {
+    padding-left: 1em!important;
+}
+
+.pr-2 {
+    padding-left: 2em!important;
+}
+
+.pr-3 {
+    padding-left: 3em!important;
+}
+
+.pr-4 {
+    padding-left: 4em!important;
+}
+
+.pr-half {
+    padding-left: 0.5em!important;
+}
+
+.pr-third {
+    padding-left: 0.33333em!important;
 }

@@ -40,8 +40,8 @@ $screen-lg-max:              ($screen-lg-min - .1);
 */
 
 $brand-success:         #158460;
-$brand-info:            #006BA6;
-$brand-warning:         #f0ad4e;
+$brand-info:            #2198c2;
+$brand-warning:         #efa640;
 $brand-danger:          #AC3E3B;
 
 //courses and programs tag colors
@@ -105,19 +105,19 @@ $orange-dark : darken($orange, 10%);
 
 $gray-light: #EDEFF5;
 $gray-lighter: lighten($gray-light, 3%);
-$gray-medium : darken($gray-light, 5%);
-$gray-dark : darken($gray-light, 10%);
-$gray-darker : darken($gray-light, 15%);
+$gray-medium : darken($gray-light, 8%);
+$gray-dark : darken($gray-light, 20%);
+$gray-darker : darken($gray-light, 25%);
 
 $content-margin-lg: 4em;
 $content-margin-sm: 2em;
 
 $text-color: #39414e;
-$text-color-light: lighten(#39414e, 20%);
+$text-color-light: lighten($text-color, 15%);
 $border-color: $gray-medium;
 
 // NEW VARIABLES FOR HEADER //
-$help-tab-width-lg: 150px;
+$help-tab-width-lg: 125px;
 $help-tab-width-sm: 100px;
 
 $header-height-lg: 110px;
@@ -125,7 +125,6 @@ $header-height-md: 90px;
 $header-height-sm: 70px;
 $header-height-xs: 60px;
 
-$nav-width-md: 296px;
 $utility-height-lg: 40px;
 $utility-height-sm: 50px;
 

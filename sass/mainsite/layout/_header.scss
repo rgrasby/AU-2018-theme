@@ -54,7 +54,7 @@
         transition: top 0.075s 0.12s ease, opacity 0.075s ease;
     }
     &::after {
-        bottom: -8px;
+        bottom: -8px; 
         transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 }
@@ -80,6 +80,12 @@
     @media (min-width: $screen-sm-min) {
         overflow-x: hidden;
         overflow-y: auto;
+    }
+}
+
+#nav-home{
+    @media (min-width: $screen-lg-min) {    
+        display: none!important;    
     }
 }
 
@@ -121,9 +127,11 @@
     transition: all 0.1s ease-in;
     padding: 0;
     @media (min-width: $screen-sm-min) {
-        padding: 0 2rem;
+        padding: 0 1.5rem;
         height: $header-height-md;
-		z-index: 999999;
+    }
+    @media (min-width: $screen-xl-min) {
+        padding: 0 2rem;
     }
     @media (min-width: $screen-xxl-min) {
         height: $header-height-lg;
@@ -197,11 +205,6 @@
                 .fa {
                     left: 0!important;
                 }
-            }
-        }
-        .help-tab-container {
-            .help-tab-content {
-                height: calc(100% + 90px;)    
             }
         }
     }
@@ -578,6 +581,7 @@
     }
 }
 
+
 /**
 * #.# Navigation for medium size devices such as a table
 *
@@ -605,9 +609,13 @@
             bottom: 0;
             z-index: -10;
             padding-top: $header-height-md + $utility-height-lg!important;
+            width: 325px;
         }
         #au-site-nav-panel #au-site-nav{
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        #btn-mobile-menu-apply{
+            width: 325px;    
         }
     }
 }
@@ -623,11 +631,8 @@
     bottom: 0;
     left: 0;
     z-index: 9;
-    display: block;
+    display: none;
     width: 100%;
-    @media (min-width: $screen-sm-min) {
-        width: $nav-width-md;
-    }
     a {
         display: flex;
         align-items: center;
@@ -653,7 +658,6 @@
 .nav-panel {
     visibility: hidden;
     width: 100%;
-    height: 100%;
     position: fixed;
     left: 0;
     right: 0;
@@ -665,9 +669,10 @@
     transition: all 0.3s ease-in;
     background: white;
     height: 100%;
+    height: 100vh;
     @media (min-width: $screen-sm-min) {
         position: absolute;
-        width: 500px;
+        width: 525px;
         top: 100%;
         left: auto;
         bottom: auto;
@@ -683,34 +688,39 @@
     &#au-site-nav-panel {
         left: 0;
         width: 100%;
-        height: calc(100% - 50px);
-        /* offset apply button */
-        @media (min-width: $screen-sm-min) {
-            width: $nav-width-md;
-        }
+        height: 100%;
         nav {
             position: relative;
             height: 100%;
             width: 100%;
         } //utility nav for smaller devices
         .minor {
-            font-size: 0.95em;
-            &:nth-child(6) {
-                position: relative;
-                margin-top: 1em;
-                &:before {
-                    content: '';
-                    height: 1px;
-                    position: absolute;
-                    top: -0.5em;
-                    background: $border-color;
-                    z-index: 9;
-                    left: 1em;
-                    width: calc(100% - 2em);
-                }
-            }
+            font-size: 1.2em;
+            margin-top: 0.6em;
             a {
                 font-weight: 400!important;
+                &::after {
+                    content: '';
+                    top: 0;
+                    font-family: FontAwesome;
+                    text-rendering: optimizeLegibility;
+                    color: darken($gray-light, 35%);
+                    font-size: 14px;
+                    position: absolute;
+                    right: 15px;
+                    color: darken($gray-light, 35%)!important;
+                    top: 50%;
+                    margin-top: -9px;
+                    font-size: 0.9em;
+                }
+                &::after{
+                    content: '\f0c1';
+                }
+                &[target=_blank] {
+                    &::after{
+                        content: '\f08e';
+                    }
+                }
             }
         }
     }
@@ -732,8 +742,7 @@
             box-shadow: 0 10px 25px 0 rgba(49, 49, 93, 0.1);
         }
     }
-    &#site-search,
-    &#my-au {
+    &#site-search {
         .nav-panel-inner {
             padding: 2rem 1rem;
             p {
@@ -742,21 +751,6 @@
             }
             @media (min-width: $screen-xs-min) {
                 padding: 2rem;
-            }
-        }
-    }
-    &#my-au {
-        @media (min-width: $screen-sm-min) {
-            max-width: 350px;
-        }
-        .btn-orange {
-            margin: 0;
-            font-size: 1.1rem;
-            .fa {
-                display: inline-block;
-                position: relative;
-                top: 1px;
-                margin-right: 0.3em;
             }
         }
     }
@@ -771,6 +765,7 @@
 
 /* height 100% does not work in Safari with Flexbox. This is a work around */
 
+/*
 #main-header {
     #au-primary-nav {
         #nav-admissions {
@@ -798,19 +793,23 @@
             }
         }
     }
-}
+} 
+*/
 
 #au-site-nav {
     text-align: left;
     background: white;
     display: none;
     flex-shrink: 1;
-    @media (min-width: $screen-sm-min) {
-        background: $blue;
-    }
+    position: relative;
+    height: 100%; 
+    background: none;
     @media (min-width: $screen-lg-min) {
         display: block;
         width: 100%;
+    }
+    li.util-item:nth-child(13){
+        margin-bottom: 1em;
     }
 }
 
@@ -818,7 +817,7 @@
     #au-primary-nav {
         > li:not(.minor) {
             > a {
-                font-size: 1em;
+                font-size: 1em; 
             }
         }
     }
@@ -868,7 +867,7 @@
         margin: 0 0.5em 0 -0.2em;
         width: 25px;
         text-align: center;
-        color: $blue-secondary;
+        color: $gray-darker;
         @media (min-width: $screen-lg-min) {
             display: none;
         }
@@ -891,8 +890,7 @@
                 padding: 0.45rem 1rem;
                 font-size: 0.9em;
             }
-            &:hover,
-                {
+            &:hover{
                 background: $gray-light;
             }
             &:focus,
@@ -901,7 +899,7 @@
             }
             .nav-arrow {
                 transform: rotate(270deg);
-                fill: lighten($text-color, 40%);
+                fill: darken($gray-light, 35%);
                 width: 12px;
                 height: 12px;
                 vertical-align: middle;
@@ -955,16 +953,20 @@
                 height: 11px;
                 margin-top: -6px;
             }
-            + li {
+            +li {
                 a {
                     /* Home icon */
-                    &:after {
+                    &::after {
                         content: '\f015';
                         font-family: FontAwesome;
                         position: absolute;
                         right: 0.9rem;
                         font-size: 1rem;
                         color: lighten($text-color, 40%);
+                        display: block;
+                        top: 50%;
+                        margin-top: -10px;
+                        
                     }
                     &.current {
                         background: $gray-light;
@@ -1045,12 +1047,12 @@
                 height: inherit;
                 display: flex;
                 align-items: center;
-                padding: 0 0.7rem;
+                padding: 0 0.5rem;
                 background: transparent;
                 color: white;
                 text-decoration: none;
                 font-weight: 600;
-                font-size: 0.75em;
+                font-size: 0.8em;
                 transition: none;
                 border: 0;
                 @include nav-top-states;
@@ -1063,13 +1065,10 @@
                     &::after {
                         content: '';
                         position: absolute;
-                        left: 10px;
                         top: auto;
                         bottom: 0;
-                        width: calc(100% - 20px);
                         background: $orange;
                         height: 5px;
-
                     }
                 }
                 &.selected {
@@ -1235,7 +1234,6 @@
         min-height: 445px;
     }
     .help-tab-content {
-        display: none;
         padding: 2em;
         height: 100%;
         overflow: auto;
@@ -1247,6 +1245,11 @@
             p:first-of-type {
                 font-size: 0.85em;
                 margin: 0 0 0.7em;
+                i{
+                    position: relative;
+                    top: 2px;
+                    margin-left: 5px;
+                }
             }
         }
         ul {
@@ -1259,6 +1262,7 @@
             li {
                 position: relative;
                 padding: 0.35em 0;
+                list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
                 a {
                     display: block;
                     text-decoration: none;
@@ -1302,22 +1306,23 @@
 
     /* Contact */
     #contact {
-        p {
-            a {
-                display: block;
-            }
-        }
         ul {
             border-top: 1px solid $border-color;
             border-bottom: 1px solid $border-color;
-            margin: 0.7em 0;
-            padding: 0.7em 0;
+            margin: 1em 0;
+            padding: 1em 0;
             li{
                 font-size: 0.95em;
                 padding: 0.25em;
+                &:first-child{
+                    padding-top: 0;
+                }
+                &:last-child{
+                    padding-bottom: 0;
+                }
             }
             .fa {
-                margin-right: 0.6em;
+                margin-right: 0.7em;
                 color: lighten($text-color, 25%);
                 font-size: 0.9em;
                 line-height: 1rem;
@@ -1327,14 +1332,25 @@
             }
         }
         .phone-numbers {
+            .row{
+                margin-bottom: 0;
+                margin-top: 0;
+                .col{
+                    text-align: center;
+                    margin-bottom: 0.5em;
+                }
+            }
+            a{
+                color: $text-color;
+                text-decoration: none;
+            }
             strong {
                 font-weight: 600;
-                font-size: 1.1em;
-            }
+                font-size: 1.2em;
+            } 
             span {
                 display: block;
-                margin-bottom: 1em;
-                font-size: 0.9em;
+                font-size: 0.8em;
             }
         }
         /* Status Indicator */
@@ -1409,17 +1425,14 @@
     }
     #directories {
         ul {
-            @include custom-lists(9px, "\f054", 5px);
+            
             padding-left: 0;
         }
     }
     /* Top Questions */
     #questions {
-        a {
-            font-weight: 400;
-        }
         .btn-orange {
-            margin: 1.7em 0 0;
+            margin: 1.7em 0 1em;
         }
     }
 }
@@ -1456,6 +1469,7 @@
         padding: 0 1.5em;
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
+        height: 60px;
         @media (min-width: $screen-xs-min) {
             padding: 0 2em;
         }

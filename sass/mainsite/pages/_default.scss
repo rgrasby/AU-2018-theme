@@ -1,21 +1,18 @@
-#main-content{    
-    
-    #updated{
-        font-size: 0.8em;
-        font-style: italic;
-    }
-
+#main-content{     
     /**
     * #.# Jump navigation
     *
-    * Not the sitcky navigation that is found in landing pages
+    * Not the sticky navigation that is found in landing pages
     */
     #section-jump-nav{
         padding: 1em 0 0;
+        @include reset-list();
         ul{
             padding: 0;
             margin: 0;
             @extend .clearfix;
+            display: flex;
+            flex-flow: wrap;
             li{
                 background: none; 
                 text-align: center;
@@ -58,20 +55,13 @@
                 }
             }
         }
+        +a +h2{
+            margin-top: 0.7em;
+        }
     }
-    #main{
-        ul{
-            @include custom-lists(10px, "\f054", 7px); 
-        }       
-        .custom-list {
-            @include custom-lists(8px, "\f111");
-        }
-        .custom-list.chevron, .custom-list.links{
-            @include custom-lists(10px, "\f054", 7px); 
-        }
-        ol{
-            @include custom-count() ;    
-        }
+    //indicates type of link(pdf, doc, external, etc.)
+    p{
+        @include link-icons(after);
     }
 }
 
@@ -92,7 +82,7 @@
         left: 0;
         top: 0;
         height: 100%;
-        background: $blue;
+        background: $orange;
     }
     h4{
         margin: 0 0 10px;
@@ -105,4 +95,14 @@
         margin: 0;
         font-size: 1.4em!important;
     }
+}
+
+.programs-courses{
+    .au-panel{
+        .panel-body{
+            p{
+                min-height: 126px;   
+            }
+        }
+    }  
 }

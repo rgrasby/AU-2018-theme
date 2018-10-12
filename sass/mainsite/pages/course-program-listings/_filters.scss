@@ -55,7 +55,6 @@
     border: 1px solid $border-color;
     border-top: 0;
     margin-top: -1px;
-    display: none;
     top: 0;
     height: auto;
     transition: all 0.1s ease;
@@ -79,12 +78,13 @@
         position: absolute!important;
         @media (min-width: $screen-sm-min) { 
             top: 0;    
+            bottom: 0;
         }
     }
     &.at-bottom{
         position: absolute;
         bottom: 0;
-        top: auto;
+        top: 0;
     }
     &.filters-open {
         @media (min-width: $screen-lg-min) {
@@ -391,7 +391,7 @@
         input { 
             width: 100%;
             border: 0;
-            padding: 15px 20px 15px 40px;
+            padding: 0 1.5em;
             font-size: .9em;
             border: 0;
             border-left: 0;
@@ -399,11 +399,10 @@
             font-weight: 300;
             border: 1px solid $border-color;
             &::placeholder{
-                color: black;
+                color: black; 
             }
             @media (min-width: $screen-md-min) {
                 font-size: 1.1em;
-                padding: 25px 40px 25px 25px;
             }
             &:focus,
             &:active {
@@ -424,8 +423,7 @@
 * In mobile we make the search and filters show as a popup
 */
 #filter-sidebar {
-    @media (max-width: $screen-lg-max) {
-        position: fixed!important;
+    @media (max-width: $screen-md-max) {
         width: 320px;
         display: none;
         z-index: 99999;
@@ -433,9 +431,8 @@
         bottom: auto!important;
         left: 50%;
         margin-left: -160px;
+        margin-top: -209px;
         padding-top: 0!important;
-        height: 325px;
-        margin-top: -190px;
     }
     /* Tint behind panels when opened */
     &:before {
@@ -451,8 +448,14 @@
             background: rgba(0, 0, 0, 0.5);
         }
     }
-    &.visible {
+    #filter-scroll{
         @media (max-width: $screen-md-max) {
+            height: 275px; 
+        }
+    }
+    &.visible, &.visible.at-top, &.visible.at-botom {
+        @media (max-width: $screen-md-max) {
+            position: fixed!important;
             display: block;
         }
         &:before {
@@ -506,15 +509,15 @@
 *
 * These button show in the sticky nav on mobile
 */
-.btn-refine, .btn-search{
+.btn-refine{
     position: absolute;
     top: 0;
-    background: none;
+    background: $orange;
     padding: 0 20px;
     border: 0;
     font-size: 1em;
     line-height: 50px;
-    color: $blue;
+    color: white;
     border-radius: 0;
     i{
         top: -3px;

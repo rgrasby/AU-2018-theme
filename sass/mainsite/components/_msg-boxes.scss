@@ -1,78 +1,89 @@
 .msg {
     position: relative;
-    border: 2px solid $blue;
-    padding: 1em 1.25em 1em 4.69em;
+    padding: 1em 1.25em 1em 4.5em;
+    display: block;
     width: 100%;
-    background: white;
-    margin: .625em 0 2.5em;
+    margin: .75em 0 2.5em;
+    color: white;
+    text-decoration: none!important;    
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
     h3,
     h4,
     h5 {
         font-size: 1.3rem;
         margin: .0 0 .6em;
+        margin-top: -0.1em;
     }
-    p, ul, span{
-        font-size: .95em!important;
-        line-height: 1.5em;  
+    p,
+    ul,
+    span {
+        line-height: 1.5em;
         display: block;
-    } 
-    p {
-        color: $text-color;
-        margin: 0;
     }
-    i {
+    h3,
+    h4,
+    li,
+    p,
+    a,
+    span {
+        color: white;
+        margin: 0;
+        padding: 0;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.30);
+    }
+    i,em, span {
         position: absolute;
         top: 50%;
         margin-top: -11px;
-        left: 14px;
+        left: 16px;
         color: white;
-        font-size: 1.4em;
+        font-size: 1.4em; 
+        line-height: 1em;
+        font-style: normal;
     }
     &:before {
         content: '';
         position: absolute;
-        background: $blue;
-        top: -1px;
-        left: -1px;
-        height: calc(100% + 2px);
+        background: transparent;
+        height: 100%;
         width: 50px;
+        left: 0;
+        top: 0;
     }
-    &.info, &.deadline {
-        border-color: $brand-info;
+    &.info,
+    &.deadline {
+        background: $brand-info;
         &:before {
-            background: $brand-info;
+            background: darken($brand-info, 8%);
         }
     }
     &.error {
-        border-color: $brand-danger;
+        background: $brand-danger;
         &:before {
-            background: $brand-danger;
-        }
-        h3,h4,li,p, span {
-            color: $brand-danger; 
+            background: darken($brand-danger, 8%);
         }
     }
     &.success {
-        border-color: $brand-success;
+        background: $brand-success;
         &:before {
-            background: $brand-success;
+            background: darken($brand-success, 8%);
         }
-        h3,h4,li,p, span { 
-            color: darken($brand-success, 10%);
-            
-        }    
     }
     &.warning {
-        border-color: $brand-warning;
+        background: $brand-warning;
         &:before {
-            background: $brand-warning;
+            background: darken($brand-warning, 8%);
         }
-        h3,h4,li,p, span { 
-            color: darken($brand-warning, 20%);
-        }    
     }
     +.content-testimonial {
         margin-top: 3.1em;
+    }
+    ul{
+        li{
+            &::before{
+                color: white!important;
+            }
+        }
     }
 }
 
