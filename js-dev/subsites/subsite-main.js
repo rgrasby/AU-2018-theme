@@ -133,10 +133,10 @@ $(function () {
             //make sure fixed right navigation is positioned correctly
             sidebarNav.fixedMainNav();   
             
-            //offset accordions
-            $('html,body').animate({
-                scrollTop: $(this).offset().top - 200
-            }, 1000);
+            //smooth scroll to active accordion
+            $('html, body').animate({
+               scrollTop: $('.accordion').find('.ui-state-active').offset().top - 160
+            }); 
         }
     });
     
@@ -146,7 +146,12 @@ $(function () {
         collapsible: false,
         activate: function( event, ui ) {
             //make sure fixed right navigation is positioned correctly
-            sidebarNav.fixedMainNav();    
+            sidebarNav.fixedMainNav(); 
+            
+            //smooth scroll to active accordion
+            $('html, body').animate({
+               scrollTop: $('.accordion').find('.ui-state-active').offset().top - 160
+            }); 
         }
     });
     
